@@ -13,6 +13,10 @@ Scene* Sandbox::handleEvents(float deltaTime)
         delete this;
         return nullptr;
     }
+    if(IsKeyPressed(KEY_F10))
+    {
+        ToggleFullscreen();
+    }
     return this;
 }
 
@@ -27,6 +31,8 @@ void Sandbox::render() const
     BeginDrawing();
 
     ClearBackground(WHITE);
+
+    DrawText("TEST", 190, 200, 20, LIGHTGRAY);
 
     EndDrawing();
 

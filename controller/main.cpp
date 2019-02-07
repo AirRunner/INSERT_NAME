@@ -4,7 +4,7 @@
 
 int main(int argc, char* argv[])
 {
-    int screenWidth = 960;
+    int screenWidth = 1280;
     int screenHeight = 720;
 
     const int minimalFPS = 6;
@@ -19,8 +19,13 @@ int main(int argc, char* argv[])
     }
 
     SetTargetFPS(FPS);
+    SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
+    SetTraceLogLevel(LOG_DEBUG);
+    SetTraceLogExit(LOG_WARNING);
 
     Scene* scene = new Sandbox;
+
+    entt::DefaultRegistry registry;
 
     while(scene)
     {
