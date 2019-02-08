@@ -1,3 +1,4 @@
+#include "../scenes/level_select.hpp"
 #include "../scenes/main_menu.hpp"
 #include "../scenes/pause_menu.hpp"
 #include "../scenes/sandbox.hpp"
@@ -9,7 +10,7 @@ int main(int argc, char* argv[])
 
     const int minimalFPS = 6;
     const int minimalFrameDelay = 1000/minimalFPS;
-    const int FPS = 60;
+    const int maxFPS = 500;
     float deltaTime = 1; //init to 1 so that it can draw the first frame
 
     InitWindow(screenWidth, screenHeight, "[INSERT GAME NAME]");
@@ -18,14 +19,15 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    SetTargetFPS(FPS);
+    SetTargetFPS(maxFPS);
     SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
     SetTraceLogLevel(LOG_DEBUG);
     SetTraceLogExit(LOG_WARNING);
 
-    Scene* scene = new Sandbox;
-
     entt::DefaultRegistry registry;
+
+    Scene* scene = new LevelSelect(registry);
+
 
     while(scene)
     {

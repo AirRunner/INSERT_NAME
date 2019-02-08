@@ -1,7 +1,7 @@
 #include "sandbox.hpp"
 
 
-Sandbox::Sandbox()
+Sandbox::Sandbox(entt::DefaultRegistry& registry) : registry(registry)
 {
 
 }
@@ -17,6 +17,7 @@ Scene* Sandbox::handleEvents(float deltaTime)
     {
         ToggleFullscreen();
     }
+
     return this;
 }
 
@@ -31,6 +32,8 @@ void Sandbox::render() const
     BeginDrawing();
 
     ClearBackground(WHITE);
+
+    DrawFPS(0,0);
 
     DrawText("TEST", 190, 200, 20, LIGHTGRAY);
 

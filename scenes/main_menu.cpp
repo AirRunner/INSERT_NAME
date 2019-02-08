@@ -1,7 +1,7 @@
 #include "main_menu.hpp"
 
 
-MainMenu::MainMenu()
+MainMenu::MainMenu(entt::DefaultRegistry& registry) : registry(registry)
 {
 
 }

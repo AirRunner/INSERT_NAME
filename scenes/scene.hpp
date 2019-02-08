@@ -3,6 +3,7 @@
 #include <chrono>
 #include <thread>
 #include <raylib.h>
+#include <raymath.h>
 #include <entt/entt.hpp>
 
 class Scene {

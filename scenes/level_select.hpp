@@ -1,13 +1,15 @@
 #pragma once
 #include "scene.hpp"
 
-class MainMenu: public Scene {
+class LevelSelect: public Scene {
     public:
-        MainMenu(entt::DefaultRegistry& registry);
+        LevelSelect(entt::DefaultRegistry& registry);
         Scene* handleEvents(float deltaTime) override;
         Scene* update(float deltaTime) override;
         void render() const override;
-        ~MainMenu();
+        ~LevelSelect();
     private:
         entt::DefaultRegistry& registry;
+        Font font;
+        int levelSelect;
 };
