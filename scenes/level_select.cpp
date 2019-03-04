@@ -28,8 +28,8 @@ Scene* LevelSelect::update(float deltaTime)
     (
         [](auto entity, auto& movement)
         {
-            movement.position.x += movement.velocity.x;
-            movement.position.y += movement.velocity.y;
+            movement.position.x += movement.velocity.x * deltaTime;
+            movement.position.y += movement.velocity.y * deltaTime;
         }
     );
     return this;
