@@ -11,7 +11,7 @@ file(GLOB_RECURSE HEADERS "*.hpp")
 
 set(OUTPUT "project")
 
-set(OPT "-Wall -Werror -std=c++14 -g")
+set(OPT "-Wall -Werror -std=c++17 -g")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 
@@ -27,7 +27,7 @@ project(project)
 find_package(EnTT REQUIRED)
 find_package(Raylib REQUIRED)
 
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPT}")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
@@ -49,7 +49,7 @@ list(REMOVE_DUPLICATES INCLUDE_DIRS)
 
 
 add_executable(${OUTPUT} ${SOURCES} ${HEADERS})
-set_property(TARGET ${OUTPUT} PROPERTY CXX_STANDARD 14)
+set_property(TARGET ${OUTPUT} PROPERTY CXX_STANDARD 17)
 
 target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} #[[${SDL2_INCLUDE_DIRS} ${SDL2_IMAGE_INCLUDE_DIRS} ${SDL2_TTF_INCLUDE_DIRS} ${SDL2_MIXER_INCLUDE_DIRS} ${SDL2_GFX_INCLUDE_DIRS}]] ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS})
 
