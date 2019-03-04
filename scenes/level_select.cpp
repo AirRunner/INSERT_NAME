@@ -26,7 +26,7 @@ Scene* LevelSelect::update(float deltaTime)
 {
     registry.view<movement>().each
     (
-        [](auto entity, auto& movement)
+        [deltaTime](auto entity, auto& movement)
         {
             movement.position.x += movement.velocity.x * deltaTime;
             movement.position.y += movement.velocity.y * deltaTime;

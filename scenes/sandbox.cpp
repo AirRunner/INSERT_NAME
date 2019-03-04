@@ -25,7 +25,7 @@ Scene* Sandbox::update(float deltaTime)
 {
     registry.view<movement>().each
     (
-        [](auto entity, auto& movement)
+        [deltaTime](auto entity, auto& movement)
         {
             movement.position.x += movement.velocity.x * deltaTime;
             movement.position.y += movement.velocity.y * deltaTime;
@@ -39,8 +39,9 @@ void Sandbox::render() const
     BeginDrawing();
 
     registry.view<sprite, movement>().each(
+        [](auto entity, auto& sprite, auto& movement)
         {
-            DrawTexture(sprite.texture, movement.position.x, movement.position.y);
+            DrawTexture(sprite.texture, movement.position.x, movement.position.y, WHITE);
         }
     );
 
