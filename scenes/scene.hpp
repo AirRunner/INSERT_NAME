@@ -6,6 +6,8 @@
 #include <raymath.h>
 #include <entt/entt.hpp>
 
+#include "../components/components.hpp"
+
 class Scene {
     public:
         virtual Scene* handleEvents(float deltaTime) = 0; //using pure virtual functions to force implementation by sub-classes

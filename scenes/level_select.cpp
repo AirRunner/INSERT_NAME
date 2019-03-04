@@ -24,7 +24,14 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
 Scene* LevelSelect::update(float deltaTime)
 {
-
+    registry.view<movement>().each
+    (
+        [](auto entity, auto& movement)
+        {
+            movement.position.x += movement.velocity.x;
+            movement.position.y += movement.velocity.y;
+        }
+    );
     return this;
 }
 
@@ -36,13 +43,21 @@ void LevelSelect::render() const
     sprintf(numLevel, "%d", levelSelect);
     BeginDrawing();
 
+    registry.view<sprite, movement>().each
+    (
+        [](auto entity, auto& sprite, auto& movement)
+        {
+            DrawTexture(sprite.texture, movement.position.x, movement.position.y, WHITE);
+        }
+    );
+
     ClearBackground(BLACK);
 
     DrawTextEx(font, "1 \n2 \n3 \n4 \n5 \n6 ", {0,0}, fontSize, spacing, DARKGRAY);
     DrawTextEx(font, "vector<int>            ;\n\n\nint newLevel = access(                 );", {fontSize, 0}, fontSize, spacing, GRAY);
-    DrawTextEx(font, "levelSelect", Vector2Add(MeasureTextEx(font, "vector<int> ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE); //has to be a ttf cause here it's not and it's an absolute mess...
-    DrawTextEx(font, "levelSelect[   ]", Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE); //has to be a ttf cause here it's not and it's an absolute mess...
-    DrawTextEx(font, numLevel, Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( levelSelect[ ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE); //has to be a ttf cause here it's not and it's an absolute mess...
+    DrawTextEx(font, "levelSelect", Vector2Add(MeasureTextEx(font, "vector<int> ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
+    DrawTextEx(font, "levelSelect[   ]", Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
+    DrawTextEx(font, numLevel, Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( levelSelect[ ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
 
     EndDrawing();
 }

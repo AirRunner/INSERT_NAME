@@ -2,6 +2,7 @@
 #include "../scenes/main_menu.hpp"
 #include "../scenes/pause_menu.hpp"
 #include "../scenes/sandbox.hpp"
+#include "../components/components.hpp"
 
 int main(int argc, char* argv[])
 {
