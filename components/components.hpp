@@ -1,7 +1,7 @@
 #ifndef COMPONENTS_HPP
 #define COMPONENTS_HPP value
 
-#include <entt/entt.hpp>
+#include <entt.hpp>
 #include <raylib.h>
 
 struct sprite
