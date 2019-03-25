@@ -4,7 +4,7 @@
 #include <thread>
 #include <raylib.h>
 #include <raymath.h>
-#include <entt/entt.hpp>
+#include <entt.hpp>
 
 #include "../components/components.hpp"
 
