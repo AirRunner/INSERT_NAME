@@ -40,6 +40,7 @@ find_path(ENTT_INCLUDE_DIR entt.hpp
   HINTS
     ENV ENTTDIR
     ${ENTT_DIR}
+    C:/libraries/EnTT/src/
   PATH_SUFFIXES ENTT
                 # path suffixes to search inside ENV{ENTTDIR}
                 include/entt include
