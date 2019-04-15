@@ -25,9 +25,7 @@ int main(int argc, char* argv[])
     SetTraceLogLevel(LOG_DEBUG);
     SetTraceLogExit(LOG_WARNING);
 
-    entt::DefaultRegistry registry;
-
-    Scene* scene = new LevelSelect(registry);
+    Scene* scene = new LevelSelect();
 
 
     while(scene)

@@ -1,7 +1,7 @@
 #include "sandbox.hpp"
 
 
-Sandbox::Sandbox(entt::DefaultRegistry& registry) : registry(registry)
+Sandbox::Sandbox()
 {
 
 }

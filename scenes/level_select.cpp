@@ -1,7 +1,7 @@
 #include "level_select.hpp"
 
 
-LevelSelect::LevelSelect(entt::DefaultRegistry& registry) : registry(registry)
+LevelSelect::LevelSelect()
 {
     font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;

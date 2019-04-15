@@ -1,7 +1,7 @@
 #include "pause_menu.hpp"
 
 
-PauseMenu::PauseMenu(entt::DefaultRegistry& registry) : registry(registry)
+PauseMenu::PauseMenu()
 {
 
 }

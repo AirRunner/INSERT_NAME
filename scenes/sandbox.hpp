@@ -3,11 +3,10 @@
 
 class Sandbox: public Scene {
     public:
-        Sandbox(entt::DefaultRegistry& registry);
+        Sandbox();
         Scene* handleEvents(float deltaTime) override;
         Scene* update(float deltaTime) override;
         void render() const override;
         ~Sandbox();
     private:
-        entt::DefaultRegistry& registry;
 };
