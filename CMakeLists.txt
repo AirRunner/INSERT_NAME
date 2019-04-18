@@ -24,6 +24,7 @@ project(project)
 
 find_package(EnTT REQUIRED)
 find_package(Raylib REQUIRED)
+find_package(RJson REQUIRED)
 
 IF(APPLE)
   find_library(COCOA_LIBRARY Cocoa)
@@ -56,7 +57,7 @@ list(REMOVE_DUPLICATES INCLUDE_DIRS)
 add_executable(${OUTPUT} ${SOURCES} ${HEADERS})
 set_property(TARGET ${OUTPUT} PROPERTY CXX_STANDARD 17)
 
-target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS})
+target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS} ${RJSON_INCLUDE_DIRS})
 
 target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES})
 
