@@ -1,5 +1,4 @@
 build/
-cmake/
 tags
 SOURCES
 compile_commands.json
