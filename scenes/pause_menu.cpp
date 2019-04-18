@@ -14,7 +14,7 @@ Scene* PauseMenu::handleEvents(float deltaTime)
 
 Scene* PauseMenu::update(float deltaTime)
 {
-    registry.view<movement>().each
+    registry->view<movement>().each
     (
         [deltaTime](auto entity, auto& movement)
         {
@@ -29,7 +29,7 @@ void PauseMenu::render() const
 {
     BeginDrawing();
 
-    registry.view<sprite, movement>().each(
+    registry->view<sprite, movement>().each(
         [](auto entity, auto& sprite, auto& movement)
         {
             DrawTexture(sprite.texture, movement.position.x, movement.position.y, WHITE);

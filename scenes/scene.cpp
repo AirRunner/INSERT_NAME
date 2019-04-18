@@ -8,5 +8,5 @@ Scene::Scene()
 
 Scene::~Scene()
 {
-    delete &registry;
+    delete registry;
 }

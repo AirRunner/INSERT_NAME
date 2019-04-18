@@ -17,5 +17,5 @@ class Scene {
         virtual ~Scene();
 
     protected:
-        entt::DefaultRegistry& registry;
+        entt::DefaultRegistry* registry;
 };

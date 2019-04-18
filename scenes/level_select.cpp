@@ -24,7 +24,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
 Scene* LevelSelect::update(float deltaTime)
 {
-    registry.view<movement>().each
+    registry->view<movement>().each
     (
         [deltaTime](auto entity, auto& movement)
         {
@@ -43,7 +43,7 @@ void LevelSelect::render() const
     sprintf(numLevel, "%d", levelSelect);
     BeginDrawing();
 
-    registry.view<sprite, movement>().each
+    registry->view<sprite, movement>().each
     (
         [](auto entity, auto& sprite, auto& movement)
         {
