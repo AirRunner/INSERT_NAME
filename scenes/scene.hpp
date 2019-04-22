@@ -1,11 +1,5 @@
 #pragma once
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include <raylib.h>
-#include <raymath.h>
-#include <entt.hpp>
-
+#include "../systems/systems.hpp"
 #include "../components/components.hpp"
 
 class Scene {
