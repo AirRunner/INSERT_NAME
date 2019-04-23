@@ -35,11 +35,7 @@
                 }
             }
         ],
-        "Transition": {
-            "Type": "Left-Right",
-            "Next": "VisRep",
-            "Duration": 800
-        }
+        "Transition": null
     },
     {
         "Event": "Mouse-Click",
@@ -50,15 +46,15 @@
                 "Fade-In": {
                     "id": "Player",
                     "Attribute": "movement.position.x",
-                    "Start": 0,
-                    "End": 10,
+                    "Start": 10,
+                    "End": 0,
                     "Duration": 800
                 },
                 "Fade-In": {
                     "id": "Guide",
                     "Attribute": "movement.position.x",
-                    "Start": 1000,
-                    "End": 990,
+                    "Start": 990,
+                    "End": 1000,
                     "Duration": 800
                 }
             }
