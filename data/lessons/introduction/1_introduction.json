@@ -20,6 +20,7 @@
         "Animation": [
             {
                 "Fade-In": {
+                    "Type": "Linear",
                     "id": "Player",
                     "Attribute": "movement.position.x",
                     "Start": 0,
@@ -27,6 +28,7 @@
                     "Duration": 800
                 },
                 "Fade-In": {
+                    "Type": "Linear",
                     "id": "Guide",
                     "Attribute": "movement.position.x",
                     "Start": 1000,
@@ -44,6 +46,7 @@
         "Animation": [
             {
                 "Fade-In": {
+                    "Type": "Linear",
                     "id": "Player",
                     "Attribute": "movement.position.x",
                     "Start": 10,
@@ -51,6 +54,7 @@
                     "Duration": 800
                 },
                 "Fade-In": {
+                    "Type": "Linear",
                     "id": "Guide",
                     "Attribute": "movement.position.x",
                     "Start": 990,
