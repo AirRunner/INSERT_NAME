@@ -1,6 +1,5 @@
 #pragma once
 #include "../systems/systems.hpp"
-#include "../components/components.hpp"
 
 class Scene {
     public:

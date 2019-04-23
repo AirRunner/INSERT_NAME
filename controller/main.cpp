@@ -1,7 +1,4 @@
-#include "../scenes/level_select.hpp"
-#include "../scenes/main_menu.hpp"
-#include "../scenes/pause_menu.hpp"
-#include "../scenes/sandbox.hpp"
+#include "../scenes/include_scenes.hpp"
 #include "../components/components.hpp"
 
 int main(int argc, char* argv[])
