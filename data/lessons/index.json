@@ -1,0 +1,57 @@
+[
+    {
+        "name": "Introduction",
+        "Unlocked": true,
+        "Index": "Introduction/index.json"
+    },
+    {
+        "name": "World I",
+        "Unlocked": true,
+        "Index": "world_1/index.json"
+    },
+    {
+        "name": "World II",
+        "Unlocked": true,
+        "Index": "world_2/index.json"
+    },
+    {
+        "name": "World III",
+        "Unlocked": true,
+        "Index": "world_3/index.json"
+    },
+    {
+        "name": "World IV",
+        "unlocked": true,
+        "index": "world_4/index.json"
+    },
+    {
+        "name": "World V",
+        "unlocked": true,
+        "index": "world_5/index.json"
+    },
+    {
+        "name": "World VI",
+        "unlocked": true,
+        "index": "world_6/index.json"
+    },
+    {
+        "name": "World bonus I",
+        "unlocked": true,
+        "index": "world_bonus_1/index.json"
+    },
+    {
+        "name": "World bonus II",
+        "unlocked": true,
+        "index": "world_bonus_2/index.json"
+    },
+    {
+        "name": "World bonus III",
+        "Unlocked": true,
+        "Index": "world_bonus_3/index.json"
+    },
+    {
+        "name": "DLC",
+        "Unlocked": false,
+        "Index": "dlc/index.json"
+    }
+]

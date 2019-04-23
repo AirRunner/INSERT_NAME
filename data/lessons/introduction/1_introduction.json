@@ -1,0 +1,72 @@
+[
+    {
+        "Event": null,
+        "Text": null,
+        "Entities": [
+            {
+                "Components": [
+                    "Movement",
+                    "Sprite"
+                ]
+            }
+        ],
+        "Animations": null,
+        "Transition": null
+    },
+    {
+        "Event": null,
+        "Text": "...",
+        "Entities": null,
+        "Animation": [
+            {
+                "Fade-In": {
+                    "id": "Player",
+                    "Attribute": "movement.position.x",
+                    "Start": 0,
+                    "End": 10,
+                    "Duration": 800
+                },
+                "Fade-In": {
+                    "id": "Guide",
+                    "Attribute": "movement.position.x",
+                    "Start": 1000,
+                    "End": 990,
+                    "Duration": 800
+                }
+            }
+        ],
+        "Transition": {
+            "Type": "Left-Right",
+            "Next": "VisRep",
+            "Duration": 800
+        }
+    },
+    {
+        "Event": "Mouse-Click",
+        "Text": "...",
+        "Entities": null,
+        "Animation": [
+            {
+                "Fade-In": {
+                    "id": "Player",
+                    "Attribute": "movement.position.x",
+                    "Start": 0,
+                    "End": 10,
+                    "Duration": 800
+                },
+                "Fade-In": {
+                    "id": "Guide",
+                    "Attribute": "movement.position.x",
+                    "Start": 1000,
+                    "End": 990,
+                    "Duration": 800
+                }
+            }
+        ],
+        "Transition": {
+            "Type": "Left-Right",
+            "Next": "VisRep",
+            "Duration": 800
+        }
+    }
+]

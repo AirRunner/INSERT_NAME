@@ -1,0 +1,14 @@
+{
+    "name": "World I",
+    "Unlocked": true,
+    "Unlocks": [
+        "World II",
+        "World Bonus I",
+        "World Bonus II"
+    ],
+    "Levels": [
+        "1_variables.json",
+        "2_functions.json",
+        "3_pointers.json"
+    ]
+}
