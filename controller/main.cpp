@@ -21,6 +21,7 @@ int main(int argc, char* argv[])
     SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
     SetTraceLogLevel(LOG_DEBUG);
     SetTraceLogExit(LOG_WARNING);
+    SetExitKey(0);
 
     Scene* scene = new LevelSelect();
 
