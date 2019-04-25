@@ -1,9 +1,11 @@
 #include "lesson.hpp"
 
 
-Lesson::Lesson()
+Lesson::Lesson(std::string path)
 {
-
+    std::ifstream ifs(path);
+    rj::IStreamWrapper isw(ifs);
+    doc.ParseStream(isw);
 }
 
 Scene* Lesson::handleEvents(float deltaTime)
