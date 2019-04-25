@@ -14,6 +14,7 @@ class LevelSelect: public Scene {
     private:
         Font font;
         rj::Document doc;
+        rj::SizeType size;
         int levelSelect;
         Vector2 mousePos;
         bool mouseActive;

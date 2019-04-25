@@ -77,6 +77,14 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
 Scene* LevelSelect::update(float deltaTime)
 {
+    if(levelSelect < 0)
+    {
+        levelSelect = 0;
+    }
+    else if(levelSelect > (int) size)
+    {
+        levelSelect = (int) size;
+    }
     systems::updatePos(registry, deltaTime);
     levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
     return this;
@@ -108,8 +116,6 @@ void LevelSelect::resetButtons(bool level)
     {
         registry->destroy(entity);
     }
-
-    rj::SizeType size;
 
     if(level)
     {
