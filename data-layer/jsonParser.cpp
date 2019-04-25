@@ -32,5 +32,6 @@ void JsonParser::parseTransition() //parses and execute the transition between t
 
 int JsonParser::parseKey() //parses and returns the continue key
 {
-
+    
+    return 0;
 }

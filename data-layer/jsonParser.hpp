@@ -23,4 +23,4 @@ class JsonParser
         //helper functions for parseAnim()
 
 
-}
+};
