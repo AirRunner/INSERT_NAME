@@ -1,10 +1,17 @@
 #include "level_select.hpp"
 
+class Lesson;
 
 LevelSelect::LevelSelect()
 {
+    std::ifstream ifs("../data/lessons/index.json");
+    rj::IStreamWrapper isw(ifs);
+    doc.ParseStream(isw);
+
     font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
+    
+    resetButtons();
 }
 
 Scene* LevelSelect::handleEvents(float deltaTime)
@@ -19,12 +26,49 @@ Scene* LevelSelect::handleEvents(float deltaTime)
         ToggleFullscreen();
     }
 
+    if(IsKeyPressed(KEY_UP))
+    {
+        levelSelect--;
+    }
+    if(IsKeyPressed(KEY_DOWN))
+    {
+        levelSelect++;
+    }
+
+    Vector2 newMousePos = GetMousePosition();
+    if(Vector2Distance(mousePos, newMousePos))
+    {
+        mousePos = newMousePos;
+        mouseActive = true;
+    }
+    else
+    {
+        mouseActive = false;
+    }
+    
+    if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    {
+        if(assert(doc.IsArray())) //the world select part
+        {
+            std::ifstream ifs(doc[levelSelect]["index"].GetString());
+            rj::IStreamWrapper isw(ifs);
+            doc.ParseStream(isw);
+            resetButtons();
+        }
+        else //the level select part
+        {
+            delete this;
+            return new Lesson(doc["levels"][levelSelect].GetString());
+        }
+    }
+
     return this;
 }
 
 Scene* LevelSelect::update(float deltaTime)
 {
     systems::updatePos(registry, deltaTime);
+    levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
     return this;
 }
 
@@ -32,19 +76,12 @@ void LevelSelect::render() const
 {
     float fontSize = 40;
     float spacing = 0;
-    char numLevel[4];
-    sprintf(numLevel, "%d", levelSelect);
     BeginDrawing();
-
-    systems::drawEntities(registry);
 
     ClearBackground(BLACK);
 
-    DrawTextEx(font, "1 \n2 \n3 \n4 \n5 \n6 ", {0,0}, fontSize, spacing, DARKGRAY);
-    DrawTextEx(font, "vector<int>            ;\n\n\nint newLevel = access(                 );", {fontSize, 0}, fontSize, spacing, GRAY);
-    DrawTextEx(font, "levelSelect", Vector2Add(MeasureTextEx(font, "vector<int> ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
-    DrawTextEx(font, "levelSelect[   ]", Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
-    DrawTextEx(font, numLevel, Vector2Add(MeasureTextEx(font, "\n\n\nint newLevel = access( levelSelect[ ", fontSize, spacing), {fontSize, -fontSize}), fontSize, spacing, WHITE);
+    systems::drawEntities(registry);
+    systems::drawButtons(registry, font, fontSize, spacing);
 
     EndDrawing();
 }
@@ -52,4 +89,23 @@ void LevelSelect::render() const
 LevelSelect::~LevelSelect()
 {
     UnloadFont(font);
+}
+
+void LevelSelect::resetButtons()
+{
+    auto view = registry->view<button>();
+    registry->destroy(view.begin(), view.end());
+    for(rj::SizeType i = 0; i < doc.Size(); ++i)
+    {
+        auto entity = registry->create();
+        auto& btn = registry->assign<button>(entity);
+        btn.rect.x = 50;
+        btn.rect.y = 150*i + 50;
+        btn.rect.width = 500;
+        btn.rect.height = 120;
+        btn.text = doc[i]["name"].GetString();
+        btn.selected = false;
+        btn.color = BLACK;
+        btn.id = i;
+    }
 }
