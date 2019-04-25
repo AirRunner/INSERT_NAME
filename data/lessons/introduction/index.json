@@ -4,6 +4,9 @@
         "World I"
     ],
     "levels": [
-        "../data/lessons/introduction/1_introduction.json"
+        {
+            "name": "introduction",
+            "path": "../data/lessons/introduction/1_introduction.json"
+        }
     ]
 }
