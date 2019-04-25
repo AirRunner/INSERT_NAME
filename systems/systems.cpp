@@ -57,3 +57,10 @@ int systems::updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bo
     );
     return id;
 }
+
+void systems::loadJson(rj::Document& doc, const char* path)
+{
+    std::ifstream ifs(path);
+    rj::IStreamWrapper isw(ifs);
+    doc.ParseStream(isw);
+}

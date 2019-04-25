@@ -24,4 +24,5 @@ namespace systems
     void drawEntities(entt::DefaultRegistry* registry);
     void drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing);
     int updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected);
+    void loadJson(rj::Document& doc, const char* path);
 }

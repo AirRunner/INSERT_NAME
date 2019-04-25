@@ -4,9 +4,7 @@ class Lesson;
 
 LevelSelect::LevelSelect()
 {
-    std::ifstream ifs("../data/lessons/index.json");
-    rj::IStreamWrapper isw(ifs);
-    doc.ParseStream(isw);
+    systems::loadJson(doc, "../data/lessons/index.json");
 
     font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
@@ -48,9 +46,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     if(IsKeyPressed(KEY_ESCAPE))
     {
-        std::ifstream ifs("../data/lessons/index.json");
-        rj::IStreamWrapper isw(ifs);
-        doc.ParseStream(isw);
+        systems::loadJson(doc, "../data/lessons/index.json");
         levelSelect = 0;
         resetButtons(false);
     }
@@ -59,9 +55,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     {
         if(doc.IsArray()) //the world select part
         {
-            std::ifstream ifs(doc[levelSelect]["index"].GetString());
-            rj::IStreamWrapper isw(ifs);
-            doc.ParseStream(isw);
+            systems::loadJson(doc, doc[levelSelect]["index"].GetString());
             levelSelect = 0;
             resetButtons(true);
         }
