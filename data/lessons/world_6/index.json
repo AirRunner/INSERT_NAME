@@ -1,7 +1,6 @@
 {
     "name": "World VI",
-    "Unlocked": true,
-    "Unlocks": [
+    "unlocks": [
         "DLC"
     ]
 }

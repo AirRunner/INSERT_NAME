@@ -1,5 +1,4 @@
 {
     "name": "World I",
-    "Unlocked": true,
-    "Unlocks": null
+    "unlocks": null
 }

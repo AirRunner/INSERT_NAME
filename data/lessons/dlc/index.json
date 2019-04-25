@@ -1,6 +1,5 @@
 {
     "name": "DLC",
-    "Unlocked": false,
-    "Unlocks": null,
-    "Levels": null
+    "unlocks": null,
+    "levels": null
 }

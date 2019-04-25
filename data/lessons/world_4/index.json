@@ -1,7 +1,6 @@
 {
     "name": "World IV",
-    "Unlocked": true,
-    "Unlocks": [
+    "unlocks": [
         "World V"
     ]
 }

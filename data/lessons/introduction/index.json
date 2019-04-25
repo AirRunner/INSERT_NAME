@@ -1,10 +1,9 @@
 {
     "name": "Introduction",
-    "Unlocked": true,
-    "Unlocks": [
+    "unlocks": [
         "World I"
     ],
-    "Levels": [
-        "1_introduction.json"
+    "levels": [
+        "../data/lessons/introduction/1_introduction.json"
     ]
 }
