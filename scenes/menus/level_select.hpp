@@ -10,7 +10,7 @@ class LevelSelect: public Scene {
         void render() const override;
         ~LevelSelect();
     private:
-        void resetButtons();
+        void resetButtons(bool level);
     private:
         Font font;
         rj::Document doc;

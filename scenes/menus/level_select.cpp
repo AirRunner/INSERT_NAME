@@ -11,7 +11,7 @@ LevelSelect::LevelSelect()
     font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
     
-    resetButtons();
+    resetButtons(false);
 }
 
 Scene* LevelSelect::handleEvents(float deltaTime)
@@ -45,20 +45,30 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     {
         mouseActive = false;
     }
+
+    if(IsKeyPressed(KEY_ESCAPE))
+    {
+        std::ifstream ifs("../data/lessons/index.json");
+        rj::IStreamWrapper isw(ifs);
+        doc.ParseStream(isw);
+        levelSelect = 0;
+        resetButtons(false);
+    }
     
     if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
     {
-        if(assert(doc.IsArray())) //the world select part
+        if(doc.IsArray()) //the world select part
         {
             std::ifstream ifs(doc[levelSelect]["index"].GetString());
             rj::IStreamWrapper isw(ifs);
             doc.ParseStream(isw);
-            resetButtons();
+            levelSelect = 0;
+            resetButtons(true);
         }
         else //the level select part
         {
             delete this;
-            return new Lesson(doc["levels"][levelSelect].GetString());
+            return new Lesson(doc["levels"][levelSelect]["path"].GetString());
         }
     }
 
@@ -91,11 +101,26 @@ LevelSelect::~LevelSelect()
     UnloadFont(font);
 }
 
-void LevelSelect::resetButtons()
+void LevelSelect::resetButtons(bool level)
 {
     auto view = registry->view<button>();
-    registry->destroy(view.begin(), view.end());
-    for(rj::SizeType i = 0; i < doc.Size(); ++i)
+    for(auto entity : view)
+    {
+        registry->destroy(entity);
+    }
+
+    rj::SizeType size;
+
+    if(level)
+    {
+        size = doc["levels"].Size();
+    }
+    else
+    {
+        size = doc.Size();
+    }
+
+    for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
         auto& btn = registry->assign<button>(entity);
@@ -103,7 +128,14 @@ void LevelSelect::resetButtons()
         btn.rect.y = 150*i + 50;
         btn.rect.width = 500;
         btn.rect.height = 120;
-        btn.text = doc[i]["name"].GetString();
+        if(level)
+        {
+            btn.text = doc["levels"][i]["name"].GetString();
+        }
+        else
+        {
+            btn.text = doc[i]["name"].GetString();
+        }
         btn.selected = false;
         btn.color = BLACK;
         btn.id = i;
