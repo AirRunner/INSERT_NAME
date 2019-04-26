@@ -75,9 +75,9 @@ Scene* LevelSelect::update(float deltaTime)
     {
         levelSelect = 0;
     }
-    else if(levelSelect > (int) size)
+    else if(levelSelect >= (int) size)
     {
-        levelSelect = (int) size;
+        levelSelect = (int) size -1;
     }
     systems::updatePos(registry, deltaTime);
     levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
