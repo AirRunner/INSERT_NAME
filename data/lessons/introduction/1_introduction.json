@@ -1,76 +1,132 @@
 [
     {
-        "Event": null,
-        "Text": null,
-        "Entities": [
-            {
-                "Components": [
-                    "Movement",
-                    "Sprite"
-                ]
-            }
-        ],
-        "Animations": null,
-        "Transition": null
-    },
-    {
-        "Event": null,
-        "Text": "...",
-        "Entities": null,
-        "Animation": [
+        "text": null,
+        "cache": {
+            "texture": [
+                {
+                    "id": "button_inative",
+                    "path": "../data/assets/buttons/button_inactive"
+                }
+            ],
+            "animations": [
+                {
+                    "id": "button_active",
+                    "path": "../data/assets/buttons/button_active"
+                }
+            ],
+            "music": null,
+            "audio_fx": null
+        },
+        "entities": [
             [
                 {
-                    "Fade-Type": "in",
-                    "Type": "Linear",
-                    "Id": "Player",
-                    "Attribute": "movement.position.x",
-                    "Start": 0,
-                    "End": 10,
-                    "Duration": 800
+                    "Component": "sprite",
+                    "id": "button_inactive"
                 },
                 {
-                    "Fade-Type": "in",
-                    "Type": "Linear",
-                    "Id": "Guide",
-                    "Attribute": "movement.position.x",
-                    "Start": 1000,
-                    "End": 990,
-                    "Duration": 800
+                    "Component": "position",
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            [
+                {
+                    "Component": "sprite",
+                    "id": "player"
+                },
+                {
+                    "Component": "position",
+                    "x": 0,
+                    "y": 250
+                },
+                {
+                    "Component": "velocity",
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            [
+                {
+                    "Component": "sprite",
+                    "id": "guide"
+                },
+                {
+                    "Component": "position",
+                    "x": 1000,
+                    "y": 250
+                },
+                {
+                    "Component": "velocity",
+                    "x": 0,
+                    "y": 0
                 }
             ]
         ],
-        "Transition": null
+        "animations": null,
+        "transition": null,
+        "event": null
     },
     {
-        "Event": "Mouse-Click",
-        "Text": "...",
-        "Entities": null,
-        "Animation": [
+        "text": "...",
+        "cache": null,
+        "entities": null,
+        "animation": [
             [
                 {
-                    "Fade-Type": "in",
-                    "Type": "Linear",
-                    "Id": "Player",
-                    "Attribute": "movement.position.x",
-                    "Start": 10,
-                    "End": 0,
-                    "Duration": 800
+                    "fade-type": "in",
+                    "type": "linear",
+                    "id": "player",
+                    "attribute": "movement.position.x",
+                    "start": 0,
+                    "end": 10,
+                    "duration": 800
                 },
                 {
-                    "Fade-Type": "in",
-                    "Type": "Linear",
-                    "Id": "Guide",
-                    "Attribute": "movement.position.x",
-                    "Start": 9900,
-                    "End": 1000,
-                    "Duration": 800
+                    "fade-type": "in",
+                    "type": "linear",
+                    "id": "guide",
+                    "attribute": "movement.position.x",
+                    "start": 1000,
+                    "end": 990,
+                    "duration": 800
                 }
             ]
         ],
-        "Transition": {
-            "Type": "Left-Right",
-            "Next": "VisRep",
-            "Duration": 800
-        }
+        "transition": null,
+        "event": "mouse-click"
+    },
+    {
+        "text": "...",
+        "cache": null,
+        "entities": null,
+        "animation": [
+            [
+                {
+                    "fade-type": "in",
+                    "type": "linear",
+                    "id": "player",
+                    "attribute": "movement.position.x",
+                    "start": 10,
+                    "end": 0,
+                    "duration": 800
+                },
+                {
+                    "fade-type": "in",
+                    "type": "linear",
+                    "id": "guide",
+                    "attribute": "movement.position.x",
+                    "start": 9900,
+                    "end": 1000,
+                    "duration": 800
+                }
+            ]
+        ],
+        "transition": {
+            "type": "left-right",
+            "next": "lesson",
+            "path": "../data/lessons/world_1/1_variables.json",
+            "duration": 800
+        },
+        "event": null
     }
 ]
