@@ -40,14 +40,13 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
 }
 
 
-
-
 void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack, int halign, int valign)
 {
 
     int length = strlen(text);
     int textOffsetX = 0;        // Offset between characters
     int textOffsetY = 0;        // Required for line break!
+    
     float scaleFactor = 0.0f;
 
     int letter = 0;             // Current character
@@ -55,10 +54,21 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
 
     scaleFactor = fontSize/font.baseSize;
 
+
     enum { MEASURE_STATE = 0, DRAW_STATE = 1 };
     int state = wordWrap? MEASURE_STATE : DRAW_STATE;
     int startLine = -1;   // Index where to begin drawing (where a line begins)
     int endLine = -1;     // Index where to stop drawing (where a line ends)
+
+    // NOTE ; valign is used to set the vertical alignement of the text. When it is set at 0,
+    // the text will be pushed to the top. When set to 1, the text will be centered. When set to 2,
+    // it will be pushed to the bottom. The calculation is done through the measurement of the gap
+    // between the total height of the text and the height of the rectangle.
+
+    if(valign != 0)
+        textOffsetY = rec.height - MeasureHeightTextRec(font, text, rec, fontSize, spacing);
+    if(valign == 1)
+        textOffsetY /= 2;
 
     for (int i = 0, k = 0; i < length; i++, k++)
     {
@@ -112,6 +122,10 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
             if (state == DRAW_STATE)
             {
                 textOffsetX = 0;
+                // NOTE ; valign is used to set the horizontal alignement of the text. When it is set at 0,
+                // the text will be pushed to the left. When set to 1, the text will be centered. When set to 2,
+                // it will be pushed to the right. The calculation is done through the measurement of the gap
+                // between the total width of the Line and the width of the rectangle.
                 if(halign != 0)
                 {
                     char *cptext = new char[endLine - startLine + 2];
@@ -186,6 +200,76 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
     }
 }
 
+int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, float fontSize, float spacing)
+{
+
+    int length = strlen(text);
+    int textOffsetX = 0;        // Offset between characters
+    int nbLines = 0;
+    float scaleFactor = 0.0f;
+
+    int letter = 0;             // Current character
+    int index = 0;              // Index position in sprite font
+
+    scaleFactor = fontSize/font.baseSize;
+
+    enum { MEASURE_STATE = 0, NEW_STATE = 1 };
+    int state = MEASURE_STATE;
+    int startLine = -1;   // Index where to begin drawing (where a line begins)
+    int endLine = -1;     // Index where to stop drawing (where a line ends)
+
+    for (int i = 0; i < length; i++)
+    {
+        int glyphWidth = 0;
+        int next = 1;
+        letter = GetNextCodepoint(&text[i], &next);
+        if(letter == 0x3f) next = 1; 
+        index = GetGlyphIndex(font, letter);
+        i += next - 1;
+
+        if (letter != '\n')
+        {   
+            glyphWidth = (font.chars[index].advanceX == 0)?
+                         (int)(font.chars[index].rec.width*scaleFactor + spacing):
+                         (int)(font.chars[index].advanceX*scaleFactor + spacing);
+        }
+
+        if (state == MEASURE_STATE)
+        {
+            // TODO: there are multiple types of `spaces` in UNICODE, maybe it's a good idea to add support for more
+            // see: http://jkorpela.fi/chars/spaces.html 
+            if ((letter == ' ') || (letter == '\t') || (letter == '\n')) endLine = i;
+
+            if ((textOffsetX + glyphWidth + 1) >= rec.width)
+            {
+                endLine = (endLine < 1)? i : endLine;
+                if (i == endLine) endLine -= next;
+                if ((startLine + next) == endLine) endLine = i - next;
+                state = !state;
+            }
+            else if ((i + 1) == length)
+            {
+                endLine = i;
+                state = !state;
+            }
+            else if (letter == '\n')
+            {
+                state = !state;
+            }
+            if (state == NEW_STATE)
+            {
+                textOffsetX = 0;
+                i = startLine;
+                glyphWidth = 0;
+                nbLines += 1;
+            }
+
+        }
+
+        textOffsetX += glyphWidth;
+    }
+    return (int)((font.baseSize + font.baseSize/2)*scaleFactor)* nbLines;
+}
 
 int systems::updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected)
 {
