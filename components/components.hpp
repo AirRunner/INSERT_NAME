@@ -9,10 +9,16 @@ struct sprite
     Texture2D texture;
 };
 
-struct movement
+struct position
 {
-    Vector2 position;
-    Vector2 velocity;
+    int x;
+    int y;
+};
+
+struct velocity
+{
+    float x;
+    float y;
 };
 
 struct button

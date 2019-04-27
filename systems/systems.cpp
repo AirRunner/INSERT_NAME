@@ -2,22 +2,22 @@
 
 void systems::updatePos(entt::DefaultRegistry* registry, float deltaTime)
 {
-    registry->view<movement>().each
+    registry->view<position, velocity>().each
     (
-        [deltaTime](auto entity, auto& movement)
+        [deltaTime](auto entity, auto& position, auto& velocity)
         {
-            movement.position.x += movement.velocity.x * deltaTime;
-            movement.position.y += movement.velocity.y * deltaTime;
+            position.x += velocity.x * deltaTime;
+            position.y += velocity.y * deltaTime;
         }
     );
 }
 
 void systems::drawEntities(entt::DefaultRegistry* registry)
 {
-    registry->view<sprite, movement>().each(
-        [](auto entity, auto& sprite, auto& movement)
+    registry->view<sprite, position>().each(
+        [](auto entity, auto& sprite, auto& position)
         {
-            DrawTexture(sprite.texture, movement.position.x, movement.position.y, WHITE);
+            DrawTexture(sprite.texture, position.x, position.y, WHITE);
         }
     );
 }
