@@ -268,7 +268,7 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
 
         textOffsetX += glyphWidth;
     }
-    return (int)((font.baseSize + font.baseSize/2)*scaleFactor)* nbLines;
+    return (int)((font.baseSize + font.baseSize/2)*scaleFactor)*nbLines - (int)(font.baseSize/2*scaleFactor);
 }
 
 int systems::updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected)
