@@ -1,13 +1,13 @@
 #include "jsonParser.hpp"
 
 
-int JsonParser::parseLesson() //returns the continue key
+Event JsonParser::parseLesson() //returns the continue key
 {
     createEntities();
     parseAnim();
     updateText();
     parseTransition();
-    return parseKey();
+    return parseEvent();
 }
 
 void JsonParser::updateText() //updates the text of the scene
@@ -30,8 +30,8 @@ void JsonParser::parseTransition() //parses and execute the transition between t
 
 }
 
-int JsonParser::parseKey() //parses and returns the continue key
+Event JsonParser::parseEvent() //parses and returns the continue key
 {
     
-    return 0;
+    return Continue;
 }
