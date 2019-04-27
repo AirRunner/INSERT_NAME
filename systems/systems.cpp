@@ -42,7 +42,6 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
 
 void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack, int halign, int valign)
 {
-
     int length = strlen(text);
     int textOffsetX = 0;        // Offset between characters
     int textOffsetY = 0;        // Required for line break!
@@ -131,9 +130,8 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
                     char *cptext = new char[endLine - startLine + 2];
                     for(int j = startLine+1; j <= endLine; j++)
                         cptext[j - startLine + 1] = text[j];
-                    cptext[endLine + 1] = '\0';
-                    textOffsetX = rec.width - MeasureTextEx(font, cptext, fontSize, spacing).x;
-
+                    cptext[endLine - startLine + 1] = '\0';
+                    textOffsetX = (int)rec.width - (int)MeasureTextEx(font, cptext, fontSize, spacing).x;
                     delete[] cptext;
                 }
                 if(halign == 1)
@@ -205,7 +203,7 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
 
     int length = strlen(text);
     int textOffsetX = 0;        // Offset between characters
-    int nbLines = 0;
+    int nbLines = 1;
     float scaleFactor = 0.0f;
 
     int letter = 0;             // Current character
@@ -215,8 +213,6 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
 
     enum { MEASURE_STATE = 0, NEW_STATE = 1 };
     int state = MEASURE_STATE;
-    int startLine = -1;   // Index where to begin drawing (where a line begins)
-    int endLine = -1;     // Index where to stop drawing (where a line ends)
 
     for (int i = 0; i < length; i++)
     {
@@ -236,36 +232,19 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
 
         if (state == MEASURE_STATE)
         {
-            // TODO: there are multiple types of `spaces` in UNICODE, maybe it's a good idea to add support for more
-            // see: http://jkorpela.fi/chars/spaces.html 
-            if ((letter == ' ') || (letter == '\t') || (letter == '\n')) endLine = i;
 
             if ((textOffsetX + glyphWidth + 1) >= rec.width)
-            {
-                endLine = (endLine < 1)? i : endLine;
-                if (i == endLine) endLine -= next;
-                if ((startLine + next) == endLine) endLine = i - next;
                 state = !state;
-            }
-            else if ((i + 1) == length)
-            {
-                endLine = i;
-                state = !state;
-            }
             else if (letter == '\n')
-            {
                 state = !state;
-            }
             if (state == NEW_STATE)
             {
                 textOffsetX = 0;
-                i = startLine;
                 glyphWidth = 0;
                 nbLines += 1;
+                state = !state;
             }
-
         }
-
         textOffsetX += glyphWidth;
     }
     return (int)((font.baseSize + font.baseSize/2)*scaleFactor)*nbLines - (int)(font.baseSize/2*scaleFactor);
