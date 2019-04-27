@@ -93,7 +93,7 @@
             ]
         ],
         "transition": null,
-        "event": "mouse-click"
+        "event": "continue"
     },
     {
         "text": "...",
