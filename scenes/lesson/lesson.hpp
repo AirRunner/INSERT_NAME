@@ -1,5 +1,6 @@
 #pragma once
 #include "../scene.hpp"
+#include "../../data-layer/jsonParser.hpp"
 
 class Lesson: public Scene {
     public:
@@ -12,4 +13,6 @@ class Lesson: public Scene {
         Font font;
         std::string text;
         rj::Document doc;
+        JsonParser parser;
+        Event nextEvent;
 };

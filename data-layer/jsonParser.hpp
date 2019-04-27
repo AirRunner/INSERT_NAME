@@ -4,10 +4,16 @@
 #include <rapidjson.h>
 #include <raylib.h>
 
+typedef enum
+{
+    Continue,
+    Null
+} Event;
+
 class JsonParser
 {
     public:
-        int parseLesson(); //returns the continue key
+        Event parseLesson(); //returns the continue key
 
     private:
         int counter;
@@ -18,7 +24,7 @@ class JsonParser
         void createEntities(); //creates the appropiate entities
         void parseAnim(); //parses and executes the animations
         void parseTransition(); //parses and execute the transition between two screens
-        int parseKey(); //parses and returns the continue key
+        Event parseEvent(); //parses and returns the continue key
 
         //helper functions for parseAnim()
 

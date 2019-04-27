@@ -3,9 +3,8 @@
 
 Lesson::Lesson(std::string path)
 {
-    std::ifstream ifs(path);
-    rj::IStreamWrapper isw(ifs);
-    doc.ParseStream(isw);
+    systems::loadJson(doc, path.c_str());
+    nextEvent = parser.parseLesson();
 }
 
 Scene* Lesson::handleEvents(float deltaTime)
@@ -18,6 +17,27 @@ Scene* Lesson::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+    }
+
+    if(nextEvent == Null)
+    {
+        nextEvent = parser.parseLesson();
+    }
+
+    if(nextEvent == Continue)
+    {
+        if(IsKeyPressed(KEY_ENTER))
+        {
+            nextEvent = parser.parseLesson();
+        }
+        else if(IsKeyPressed(KEY_SPACE))
+        {
+            nextEvent = parser.parseLesson();
+        }
+        else if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        {
+            nextEvent = parser.parseLesson();
+        }
     }
 
     return this;
@@ -33,16 +53,13 @@ void Lesson::render() const
 {
     BeginDrawing();
 
-    systems::drawEntities(registry);
-
-    ClearBackground(WHITE);
+    ClearBackground(BLACK);
 
     DrawFPS(0,0);
 
-    DrawText("TEST", 190, 200, 20, LIGHTGRAY);
+    systems::drawEntities(registry);
 
     EndDrawing();
-
 }
 
 Lesson::~Lesson()
