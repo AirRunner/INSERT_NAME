@@ -130,7 +130,10 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
                     char *cptext = new char[endLine - startLine + 2];
                     for(int j = startLine+1; j <= endLine; j++)
                         cptext[j - startLine + 1] = text[j];
-                    cptext[endLine - startLine + 1] = '\0';
+                    if(letter == '\n')
+                        cptext[endLine - startLine] = '\0';
+                    else
+                        cptext[endLine - startLine + 1] = '\0';
                     textOffsetX = (int)rec.width - (int)MeasureTextEx(font, cptext, fontSize, spacing).x;
                     delete[] cptext;
                 }
@@ -211,8 +214,8 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
 
     scaleFactor = fontSize/font.baseSize;
 
-    enum { MEASURE_STATE = 0, NEW_STATE = 1 };
-    int state = MEASURE_STATE;
+    enum { CURRENT_LINE = 0, NEW_LINE = 1 };
+    int state = CURRENT_LINE;
 
     for (int i = 0; i < length; i++)
     {
@@ -230,14 +233,14 @@ int systems::MeasureHeightTextRec(Font font, const char *text, Rectangle rec, fl
                          (int)(font.chars[index].advanceX*scaleFactor + spacing);
         }
 
-        if (state == MEASURE_STATE)
+        if (state == CURRENT_LINE)
         {
 
             if ((textOffsetX + glyphWidth + 1) >= rec.width)
                 state = !state;
             else if (letter == '\n')
                 state = !state;
-            if (state == NEW_STATE)
+            if (state == NEW_LINE)
             {
                 textOffsetX = 0;
                 glyphWidth = 0;
