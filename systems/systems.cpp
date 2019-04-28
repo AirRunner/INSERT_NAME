@@ -34,7 +34,7 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
             }
             DrawRectangleRounded(button.rect, 0.3, 10, color);
             // DrawTextRec(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color);
-            systems::drawTextRecPro(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color, 0, 0, WHITE, WHITE, 1, 1);
+            systems::drawTextRecPro(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color, 0, 0, WHITE, WHITE, 2, 1);
         }
     );
 }
@@ -64,9 +64,9 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
     // it will be pushed to the bottom. The calculation is done through the measurement of the gap
     // between the total height of the text and the height of the rectangle.
 
-    if(valign != 0)
+    if(valign != 0 && wordWrap)
         textOffsetY = rec.height - MeasureHeightTextRec(font, text, rec, fontSize, spacing);
-    if(valign == 1)
+    if(valign == 1 && wordWrap)
         textOffsetY /= 2;
 
     for (int i = 0, k = 0; i < length; i++, k++)
@@ -120,23 +120,14 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
 
             if (state == DRAW_STATE)
             {
-                textOffsetX = 0;
+                if(halign == 0)
+                    textOffsetX = 0;
                 // NOTE ; valign is used to set the horizontal alignement of the text. When it is set at 0,
                 // the text will be pushed to the left. When set to 1, the text will be centered. When set to 2,
                 // it will be pushed to the right. The calculation is done through the measurement of the gap
                 // between the total width of the Line and the width of the rectangle.
                 if(halign != 0)
-                {
-                    char *cptext = new char[endLine - startLine + 2];
-                    for(int j = startLine+1; j <= endLine; j++)
-                        cptext[j - startLine + 1] = text[j];
-                    if(letter == '\n')
-                        cptext[endLine - startLine] = '\0';
-                    else
-                        cptext[endLine - startLine + 1] = '\0';
-                    textOffsetX = (int)rec.width - (int)MeasureTextEx(font, cptext, fontSize, spacing).x;
-                    delete[] cptext;
-                }
+                    textOffsetX = (int)rec.width - (textOffsetX + glyphWidth);
                 if(halign == 1)
                     textOffsetX /= 2;
 
@@ -196,7 +187,6 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
                 state = !state;
             }
         }
-
         textOffsetX += glyphWidth;
     }
 }
