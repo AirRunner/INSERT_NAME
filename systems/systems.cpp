@@ -129,7 +129,7 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
                 {
                     char *cptext = new char[endLine - startLine];
                     for(int j = startLine+1; j <= endLine; j++)
-                        cptext[j - startLine + 1] = text[j];
+                        cptext[j - startLine - 1] = text[j];
                     if(letter == '\n')
                         cptext[endLine - startLine - 1] = '\0';
                     else 
