@@ -126,16 +126,18 @@ void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float f
                 // it will be pushed to the right. The calculation is done through the measurement of the gap
                 // between the total width of the Line and the width of the rectangle.
                 if(halign != 0)
-                {                     
-                    char *cptext = new char[endLine - startLine + 2];                     
-                    for(int j = startLine+1; j <= endLine; j++)                         
-                        cptext[j - startLine + 1] = text[j];                     
-                    if(letter == '\n')                         
-                        cptext[endLine - startLine] = '\0';                     
-                    else                         
-                        cptext[endLine - startLine + 1] = '\0';                     
-                    textOffsetX = (int)rec.width - (int)MeasureTextEx(font, cptext, fontSize, spacing).x;                     
-                    delete[] cptext;                 
+                {
+                    char *cptext = new char[endLine - startLine];
+                    for(int j = startLine+1; j <= endLine; j++)
+                        cptext[j - startLine + 1] = text[j];
+                    if(letter == '\n')
+                        cptext[endLine - startLine - 1] = '\0';
+                    else 
+                        cptext[endLine - startLine] = '\0';
+
+                    textOffsetX = (int)rec.width - (int)MeasureTextEx(font, cptext, fontSize, spacing).x;
+
+                    delete[] cptext;
                 }
                 if(halign == 1)
                     textOffsetX /= 2;
