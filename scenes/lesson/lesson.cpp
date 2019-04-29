@@ -4,7 +4,19 @@
 Lesson::Lesson(std::string path)
 {
     systems::loadJson(doc, path.c_str());
-    nextEvent = parser.parseLesson();
+    parser.parseLesson(*this);
+    font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    text = "";
+    float width = 1280;
+    float height = 720;
+    float padding = 50;
+    rect =
+    {
+        padding,
+        height-(height)/3+padding,
+        width-2*padding,
+        height/3 - 2*padding
+    };
 }
 
 Scene* Lesson::handleEvents(float deltaTime)
@@ -21,22 +33,22 @@ Scene* Lesson::handleEvents(float deltaTime)
 
     if(nextEvent == Null)
     {
-        nextEvent = parser.parseLesson();
+        parser.parseLesson(*this);
     }
 
     if(nextEvent == Continue)
     {
         if(IsKeyPressed(KEY_ENTER))
         {
-            nextEvent = parser.parseLesson();
+            parser.parseLesson(*this);
         }
         else if(IsKeyPressed(KEY_SPACE))
         {
-            nextEvent = parser.parseLesson();
+            parser.parseLesson(*this);
         }
         else if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
-            nextEvent = parser.parseLesson();
+            parser.parseLesson(*this);
         }
     }
 
@@ -58,6 +70,9 @@ void Lesson::render() const
     DrawFPS(0,0);
 
     systems::drawEntities(registry);
+    DrawRectangleRounded(rect, 0.5, 10, GRAY);
+    DrawRectangleRoundedLines(rect, 0.5, 10, 5, DARKGRAY);
+    systems::drawTextRecPro(font, text.c_str(), rect, 40, 0, true, WHITE, 0, 0, WHITE, WHITE, 0, 0);
 
     EndDrawing();
 }
