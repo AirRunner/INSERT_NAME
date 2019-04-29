@@ -96,7 +96,7 @@
         "event": "continue"
     },
     {
-        "text": "...",
+        "text": "Darkness...\nDarkness everywhere...",
         "cache": null,
         "entities": null,
         "animation": [
@@ -127,6 +127,6 @@
             "path": "../data/lessons/world_1/1_variables.json",
             "duration": 800
         },
-        "event": null
+        "event": "block"
     }
 ]
