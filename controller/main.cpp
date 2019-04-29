@@ -1,6 +1,32 @@
 #include "../scenes/include_scenes.hpp"
 #include "../components/components.hpp"
 
+#ifdef HOTRELOAD
+#include <jet/live/Live.hpp>
+#include <jet/live/Utility.hpp>
+#include <jet/live/ILiveListener.hpp>
+
+class ExampleListener : public jet::ILiveListener
+{
+public:
+    void onLog(jet::LogSeverity severity, const std::string& message) override;
+    void onCodePreLoad() override {};
+    void onCodePostLoad() override {};
+};
+
+void ExampleListener::onLog(jet::LogSeverity severity, const std::string& message)
+{
+    std::string severityString;
+    switch (severity) {
+        case jet::LogSeverity::kInfo: severityString.append("[I]"); break;
+        case jet::LogSeverity::kWarning: severityString.append("[W]"); break;
+        case jet::LogSeverity::kError: severityString.append("[E]"); break;
+        default: return;  // Skipping debug messages, they are too verbose
+    }
+    std::cout << severityString << ": " << message << std::endl;
+}
+#endif
+
 int main(int argc, char* argv[])
 {
     int screenWidth = 1280;
@@ -25,6 +51,16 @@ int main(int argc, char* argv[])
 
     Scene* scene = new LevelSelect();
 
+#ifdef HOTRELOAD
+    auto listener = jet::make_unique<ExampleListener>();
+    auto live = jet::make_unique<jet::Live>(std::move(listener));
+
+    while (!live->isInitialized()) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(10));
+        live->update();
+    }
+    live->update();
+#endif
 
     while(scene)
     {
@@ -42,7 +78,16 @@ int main(int argc, char* argv[])
                 deltaTime = 0;
             }
 
+#ifdef HOTRELOAD
+            live->update();
+
+            if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_R))
+            {
+                live->tryReload();
+            }
+#endif
             scene = scene->handleEvents(deltaTime);
+
             if(scene)
             {
                 scene = scene->update(deltaTime);

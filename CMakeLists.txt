@@ -34,8 +34,17 @@ IF(APPLE)
   find_library(COREVIDEO_LIBRARY CoreVideo)
 ENDIF()
 
+IF((APPLE OR UNIX) AND CMAKE_BUILD_TYPE MATCHES HotReload) #$<CONFIG:HotReload>)
+  message("Hot Reload configuration...")
+  include(build/jet-live/cmake/jet_live_setup.cmake) # setup needed compiler and linker flags, include this file in your root CMakeLists.txt
+  set(JET_LIVE_BUILD_EXAMPLE OFF)
+  set(JET_LIVE_SHARED ON) # if you want to
+  add_subdirectory(build/jet-live)
+ENDIF()
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPT}")
+set(CMAKE_CXX_FLAGS_HOTRELOAD "${CMAKE_CXX_FLAGS_HOTRELOAD} ${OPT} -O0 -DHOTRELOAD")
 
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
@@ -64,4 +73,8 @@ target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES})
 
 IF(APPLE)
   target_link_libraries(${OUTPUT} ${COCOA_LIBRARY} ${OPENGL_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY})
+ENDIF()
+
+IF((APPLE OR UNIX) AND CMAKE_BUILD_TYPE MATCHES HotReload) #$<CONFIG:HotReload>)
+  target_link_libraries(project jet-live)
 ENDIF()
