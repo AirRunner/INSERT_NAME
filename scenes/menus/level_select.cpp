@@ -8,6 +8,11 @@ LevelSelect::LevelSelect()
 
     font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
+
+    camera.target = {1280/2,720/2};
+    camera.offset = {0,0};
+    camera.rotation = 0.f;
+    camera.zoom = 1.f;
     
     resetButtons(false);
 }
@@ -43,6 +48,8 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     {
         mouseActive = false;
     }
+
+    camera.offset.y += GetMouseWheelMove()*50;
 
     if(IsKeyPressed(KEY_ESCAPE))
     {
@@ -93,7 +100,10 @@ void LevelSelect::render() const
     ClearBackground(BLACK);
 
     systems::drawEntities(registry);
-    systems::drawButtons(registry, font, fontSize, spacing);
+
+    BeginMode2D(camera);
+        systems::drawButtons(registry, font, fontSize, spacing);
+    EndMode2D();
 
     EndDrawing();
 }
@@ -120,14 +130,17 @@ void LevelSelect::resetButtons(bool level)
         size = doc.Size();
     }
 
+    int width = 1280;
+    int widthBox = 500;
+    int heightBox = 120;
     for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
         auto& btn = registry->assign<button>(entity);
-        btn.rect.x = 50;
-        btn.rect.y = 150*i + 50;
-        btn.rect.width = 500;
-        btn.rect.height = 120;
+        btn.rect.x = width/2 - widthBox/2;
+        btn.rect.y = (heightBox+30)*i + 50;
+        btn.rect.width = widthBox;
+        btn.rect.height = heightBox;
         if(level)
         {
             btn.text = doc["levels"][i]["name"].GetString();
