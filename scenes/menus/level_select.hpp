@@ -16,6 +16,7 @@ class LevelSelect: public Scene {
         rj::Document doc;
         rj::SizeType size;
         int levelSelect;
+        Camera2D camera;
         Vector2 mousePos;
         bool mouseActive;
 };
