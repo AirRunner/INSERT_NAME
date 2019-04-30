@@ -3,10 +3,16 @@
 
 #include <entt.hpp>
 #include <raylib.h>
+#include "resources.hpp"
 
 struct sprite
 {
-    Texture2D texture;
+    entt::ResourceHandle<texture> tex;
+};
+
+struct anim
+{
+    entt::ResourceHandle<animation> anim;
 };
 
 struct position
