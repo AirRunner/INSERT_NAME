@@ -69,7 +69,7 @@ set_property(TARGET ${OUTPUT} PROPERTY CXX_STANDARD 17)
 
 target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS} ${RJSON_INCLUDE_DIRS})
 
-target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES})
+target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES} stdc++fs)
 
 IF(APPLE)
   target_link_libraries(${OUTPUT} ${COCOA_LIBRARY} ${OPENGL_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY})
