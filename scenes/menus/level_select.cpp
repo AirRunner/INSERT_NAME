@@ -51,13 +51,19 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     camera.offset.y += GetMouseWheelMove()*50;
 
-    if(camera.offset.y > 0)
+    int height = 720;
+    int heightBox = 50;
+    int padding = 30;
+    if(-(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
     {
-        camera.offset.y = 0;
-    }
-    else if(camera.offset.y < -(((int)size-1)*150 + 30) - 150 + 720)
-    {
-        camera.offset.y = -(((int)size-1)*150 + 30) - 150 + 720;
+        if(camera.offset.y > 0)
+        {
+            camera.offset.y = 0;
+        }
+        else if(camera.offset.y < -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height)
+        {
+            camera.offset.y = -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height;
+        }
     }
 
     if(IsKeyPressed(KEY_ESCAPE))
@@ -89,11 +95,11 @@ Scene* LevelSelect::update(float deltaTime)
 {
     if(levelSelect < 0)
     {
-        levelSelect = 0;
+        levelSelect = (int) size -1;
     }
     else if(levelSelect >= (int) size)
     {
-        levelSelect = (int) size -1;
+        levelSelect = 0;
     }
     systems::updatePos(registry, deltaTime);
     levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
@@ -141,13 +147,14 @@ void LevelSelect::resetButtons(bool level)
 
     int width = 1280;
     int widthBox = 500;
-    int heightBox = 120;
+    int heightBox = 50;
+    int padding = 30;
     for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
         auto& btn = registry->assign<button>(entity);
         btn.rect.x = width/2 - widthBox/2;
-        btn.rect.y = (heightBox+30)*i + 30;
+        btn.rect.y = (heightBox+padding)*i + padding;
         btn.rect.width = widthBox;
         btn.rect.height = heightBox;
         if(level)
