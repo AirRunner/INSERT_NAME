@@ -5,7 +5,7 @@ Lesson::Lesson(std::string path)
 {
     systems::loadJson(doc, path.c_str());
     parser.parseLesson(*this);
-    font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     text = "";
     float width = 1280;
     float height = 720;

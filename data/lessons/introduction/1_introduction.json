@@ -5,13 +5,13 @@
             "texture": [
                 {
                     "id": "button_inactive",
-                    "path": "../data/assets/buttons/button_inactive.png"
+                    "path": "data/assets/buttons/button_inactive.png"
                 }
             ],
             "animation": [
                 {
                     "id": "button_active",
-                    "path": "../data/assets/buttons/button_active",
+                    "path": "data/assets/buttons/button_active",
                     "animTime": 1000
                 }
             ],
