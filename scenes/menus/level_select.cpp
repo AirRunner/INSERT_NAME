@@ -4,9 +4,9 @@ class Lesson;
 
 LevelSelect::LevelSelect()
 {
-    systems::loadJson(doc, "../data/lessons/index.json");
+    systems::loadJson(doc, "data/lessons/index.json");
 
-    font = LoadFontEx("../data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
 
     camera.target = {1280/2,720/2};

@@ -1,4 +1,7 @@
 #include "../scenes/include_scenes.hpp"
+#include <filesystem>
+
+namespace fs = std::filesystem;
 
 #ifdef HOTRELOAD
 #include <jet/live/Live.hpp>
@@ -47,6 +50,8 @@ int main(int argc, char* argv[])
     SetTraceLogLevel(LOG_INFO);
     SetTraceLogExit(LOG_WARNING);
     SetExitKey(0);
+
+    fs::current_path("..");
 
     Scene* scene = new LevelSelect();
 

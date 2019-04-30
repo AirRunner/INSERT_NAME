@@ -6,7 +6,7 @@
     "levels": [
         {
             "name": "introduction",
-            "path": "../data/lessons/introduction/1_introduction.json"
+            "path": "data/lessons/introduction/1_introduction.json"
         }
     ]
 }
