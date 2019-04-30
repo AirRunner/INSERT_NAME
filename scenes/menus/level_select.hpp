@@ -11,7 +11,7 @@ class LevelSelect: public Scene {
         ~LevelSelect();
     private:
         void resetButtons(bool level);
-    private:
+
         Font font;
         rj::Document doc;
         rj::SizeType size;
