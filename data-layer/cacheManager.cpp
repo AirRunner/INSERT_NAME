@@ -57,8 +57,10 @@ std::shared_ptr<animation> animationLoader::load(const std::string path, float a
 
     for(const fs::directory_entry& entry : fs::directory_iterator(path))
     {
-        paths.push_back(path + entry.path().string());
+        paths.push_back(entry.path().string());
     }
+
+    std::sort(paths.begin(), paths.end());
 
     Texture2D* anim = new Texture2D[paths.size()];
 

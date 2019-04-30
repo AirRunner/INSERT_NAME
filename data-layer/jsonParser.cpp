@@ -33,7 +33,45 @@ void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the 
 
 void JsonParser::loadRessources(rj::Document& doc, CacheManager& cacheManager) //load the ressources into the cache
 {
-
+    if(doc[counter].IsObject())
+    {
+        if(doc[counter]["cache"].IsObject())
+        {
+            const rj::Value& cache = doc[counter]["cache"];
+            if(cache["texture"].IsArray())
+            {
+                const rj::Value& texture = cache["texture"];
+                for(rj::SizeType i = 0; i < texture.Size(); ++i)
+                {
+                    cacheManager.textures.load<textureLoader>(entt::HashedString{texture[i]["id"].GetString()}, texture[i]["path"].GetString());
+                }
+            }
+            if(cache["animation"].IsArray())
+            {
+                const rj::Value& animation = cache["animation"];
+                for(rj::SizeType i = 0; i < animation.Size(); ++i)
+                {
+                    cacheManager.animations.load<animationLoader>(entt::HashedString{animation[i]["id"].GetString()}, animation[i]["path"].GetString(), animation[i]["animTime"].GetFloat());
+                }
+            }
+            if(cache["music"].IsArray())
+            {
+                const rj::Value& music = cache["music"];
+                for(rj::SizeType i = 0; i < music.Size(); ++i)
+                {
+                    cacheManager.musics.load<musicLoader>(entt::HashedString{music[i]["id"].GetString()}, music[i]["path"].GetString());
+                }
+            }
+            if(cache["soundFX"].IsArray())
+            {
+                const rj::Value& soundFX = cache["soundFX"];
+                for(rj::SizeType i = 0; i < soundFX.Size(); ++i)
+                {
+                    cacheManager.audios.load<soundFXLoader>(entt::HashedString{soundFX[i]["id"].GetString()}, soundFX[i]["path"].GetString());
+                }
+            }
+        }
+    }
 }
 
 void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* registry) //creates the appropiate entities

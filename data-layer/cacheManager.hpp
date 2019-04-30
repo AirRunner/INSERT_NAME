@@ -7,6 +7,7 @@
 #include <fstream>
 #include <map>
 #include <filesystem>
+#include <algorithm>
 
 #include <raylib.h>
 #include <raymath.h>
@@ -64,23 +65,23 @@ class soundFX
         Sound audio;
 };
 
-//The loader for the resources
-class textureLoader final: entt::ResourceLoader<textureLoader, texture>
+//The loader for the resources must be structs to expose load function
+struct textureLoader final: entt::ResourceLoader<textureLoader, texture>
 {
     std::shared_ptr<texture> load(const char* path) const;
 };
 
-class animationLoader final: entt::ResourceLoader<animationLoader, animation>
+struct animationLoader final: entt::ResourceLoader<animationLoader, animation>
 {
     std::shared_ptr<animation> load(const std::string path, float animTime) const;
 };
 
-class musicLoader final: entt::ResourceLoader<musicLoader, music>
+struct musicLoader final: entt::ResourceLoader<musicLoader, music>
 {
     std::shared_ptr<music> load(const char* path) const;
 };
 
-class soundFXLoader final: entt::ResourceLoader<soundFXLoader, soundFX>
+struct soundFXLoader final: entt::ResourceLoader<soundFXLoader, soundFX>
 {
     std::shared_ptr<soundFX> load(const char* path) const;
 };
