@@ -5,6 +5,7 @@
 class Lesson: public Scene {
     public:
         Lesson(std::string path);
+        Lesson(std::string path, CacheManager* cacheManager);
         Scene* handleEvents(float deltaTime) override;
         Scene* update(float deltaTime) override;
         void render() const override;
@@ -18,6 +19,6 @@ class Lesson: public Scene {
         Rectangle rect;
         rj::Document doc;
         JsonParser parser;
-        CacheManager cacheManager;
+        CacheManager* cacheManager;
         Event nextEvent;
 };

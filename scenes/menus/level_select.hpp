@@ -5,6 +5,7 @@
 class LevelSelect: public Scene {
     public:
         LevelSelect();
+        LevelSelect(CacheManager* cacheManager);
         Scene* handleEvents(float deltaTime) override;
         Scene* update(float deltaTime) override;
         void render() const override;
@@ -15,6 +16,7 @@ class LevelSelect: public Scene {
         Font font;
         rj::Document doc;
         rj::SizeType size;
+        CacheManager* cacheManager;
         int levelSelect;
         Camera2D camera;
         Vector2 mousePos;

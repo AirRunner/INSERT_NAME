@@ -31,7 +31,7 @@ void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the 
     }
 }
 
-void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //load the ressources into the cache
+void JsonParser::loadResources(rj::Document& doc, CacheManager* cacheManager) //load the ressources into the cache
 {
     if(doc[counter].IsObject())
     {
@@ -43,7 +43,7 @@ void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //
                 const rj::Value& texture = cache["texture"];
                 for(rj::SizeType i = 0; i < texture.Size(); ++i)
                 {
-                    cacheManager.textures.load<textureLoader>(entt::HashedString{texture[i]["id"].GetString()}, texture[i]["path"].GetString());
+                    cacheManager->textures.load<textureLoader>(entt::HashedString{texture[i]["id"].GetString()}, texture[i]["path"].GetString());
                 }
             }
             if(cache["animation"].IsArray())
@@ -51,7 +51,7 @@ void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //
                 const rj::Value& animation = cache["animation"];
                 for(rj::SizeType i = 0; i < animation.Size(); ++i)
                 {
-                    cacheManager.animations.load<animationLoader>(entt::HashedString{animation[i]["id"].GetString()}, animation[i]["path"].GetString(), animation[i]["animTime"].GetFloat());
+                    cacheManager->animations.load<animationLoader>(entt::HashedString{animation[i]["id"].GetString()}, animation[i]["path"].GetString(), animation[i]["animTime"].GetFloat());
                 }
             }
             if(cache["music"].IsArray())
@@ -59,7 +59,7 @@ void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //
                 const rj::Value& music = cache["music"];
                 for(rj::SizeType i = 0; i < music.Size(); ++i)
                 {
-                    cacheManager.musics.load<musicLoader>(entt::HashedString{music[i]["id"].GetString()}, music[i]["path"].GetString());
+                    cacheManager->musics.load<musicLoader>(entt::HashedString{music[i]["id"].GetString()}, music[i]["path"].GetString());
                 }
             }
             if(cache["soundFX"].IsArray())
@@ -67,14 +67,14 @@ void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //
                 const rj::Value& soundFX = cache["soundFX"];
                 for(rj::SizeType i = 0; i < soundFX.Size(); ++i)
                 {
-                    cacheManager.audios.load<soundFXLoader>(entt::HashedString{soundFX[i]["id"].GetString()}, soundFX[i]["path"].GetString());
+                    cacheManager->audios.load<soundFXLoader>(entt::HashedString{soundFX[i]["id"].GetString()}, soundFX[i]["path"].GetString());
                 }
             }
         }
     }
 }
 
-void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager& cacheManager) //creates the appropiate entities
+void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager* cacheManager) //creates the appropiate entities
 {
     if(doc[counter].IsObject())
     {
@@ -92,7 +92,7 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     component = entities[i][j]["component"].GetString();
                     if(component == "sprite")
                     {
-                        registry->assign<sprite>(entity, cacheManager.textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                        registry->assign<sprite>(entity, cacheManager->textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
                     }
                     else if(component == "position")
                     {
@@ -104,7 +104,7 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     }
                     else if(component == "animation")
                     {
-                        registry->assign<animation>(entity, cacheManager.animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                        registry->assign<animation>(entity, cacheManager->animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
                     }
                 }
             }

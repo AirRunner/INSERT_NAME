@@ -4,6 +4,21 @@ class Lesson;
 
 LevelSelect::LevelSelect()
 {
+    cacheManager = new CacheManager;
+    systems::loadJson(doc, "data/lessons/index.json");
+
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    levelSelect = 0;
+
+    camera.target = {1280/2,720/2};
+    camera.offset = {0,0};
+    camera.rotation = 0.f;
+    camera.zoom = 1.f;
+    
+    resetButtons(false);
+}
+LevelSelect::LevelSelect(CacheManager* cacheManager): cacheManager(cacheManager)
+{
     systems::loadJson(doc, "data/lessons/index.json");
 
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);

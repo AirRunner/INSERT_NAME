@@ -3,6 +3,25 @@
 
 Lesson::Lesson(std::string path)
 {
+    cacheManager = new CacheManager;
+    systems::loadJson(doc, path.c_str());
+    parser.parseLesson(*this);
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    text = "";
+    float width = 1280;
+    float height = 720;
+    float padding = 50;
+    rect =
+    {
+        padding,
+        height-(height)/3+padding,
+        width-2*padding,
+        height/3 - 2*padding
+    };
+}
+
+Lesson::Lesson(std::string path, CacheManager* cacheManager): cacheManager(cacheManager)
+{
     systems::loadJson(doc, path.c_str());
     parser.parseLesson(*this);
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
