@@ -3,3 +3,4 @@ tags
 SOURCES
 compile_commands.json
 cmake/FindSDL*
+tests/*
