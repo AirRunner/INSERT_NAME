@@ -4,7 +4,7 @@
         "cache": {
             "texture": [
                 {
-                    "id": "button_inative",
+                    "id": "button_inactive",
                     "path": "../data/assets/buttons/button_inactive.png"
                 }
             ],
@@ -33,7 +33,7 @@
             [
                 {
                     "component": "sprite",
-                    "id": "player"
+                    "id": "button_inactive"
                 },
                 {
                     "component": "position",
@@ -49,7 +49,7 @@
             [
                 {
                     "component": "sprite",
-                    "id": "guide"
+                    "id": "button_inactive"
                 },
                 {
                     "component": "position",
