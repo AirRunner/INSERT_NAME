@@ -8,7 +8,7 @@ JsonParser::JsonParser()
 
 void JsonParser::parseLesson(Lesson& lesson) //returns the continue key
 {
-    createEntities(lesson.doc, lesson.registry);
+    createEntities(lesson.doc, lesson.registry, lesson.cacheManager);
     loadResources(lesson.doc, lesson.cacheManager);
     parseAnim(lesson.doc, lesson.registry);
     updateText(lesson.doc, lesson.text);
@@ -74,9 +74,42 @@ void JsonParser::loadResources(rj::Document& doc, CacheManager& cacheManager) //
     }
 }
 
-void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* registry) //creates the appropiate entities
+void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager& cacheManager) //creates the appropiate entities
 {
-
+    if(doc[counter].IsObject())
+    {
+        if(doc[counter]["entities"].IsArray())
+        {
+            const rj::Value& entities = doc[counter]["entities"];
+            std::uint32_t entity;
+            std::string component;
+            for(rj::SizeType i = 0; i < entities.Size(); ++i)
+            {
+                entity = registry->create();
+                std::cout << "creating entity" << std::endl;
+                for(rj::SizeType j = 0; j < entities[i].Size(); ++j)
+                {
+                    component = entities[i][j]["component"].GetString();
+                    if(component == "sprite")
+                    {
+                        registry->assign<sprite>(entity, cacheManager.textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                    }
+                    else if(component == "position")
+                    {
+                        registry->assign<position>(entity, entities[i][j]["x"].GetInt(),entities[i][j]["y"].GetInt());
+                    }
+                    else if(component == "velocity")
+                    {
+                        registry->assign<velocity>(entity, entities[i][j]["x"].GetFloat(),entities[i][j]["y"].GetFloat());
+                    }
+                    else if(component == "animation")
+                    {
+                        registry->assign<animation>(entity, cacheManager.animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                    }
+                }
+            }
+        }
+    }
 }
 
 void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry) //parses and executes the animations

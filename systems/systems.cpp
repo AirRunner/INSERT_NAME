@@ -17,7 +17,7 @@ void systems::drawEntities(entt::DefaultRegistry* registry)
     registry->view<sprite, position>().each(
         [](auto entity, auto& sprite, auto& position)
         {
-            DrawTexture(sprite.texture, position.x, position.y, WHITE);
+            DrawTexture(sprite.tex->tex, position.x, position.y, WHITE);
         }
     );
 }

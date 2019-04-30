@@ -1,4 +1,4 @@
-#include "cacheManager.hpp"
+#include "resources.hpp"
 
 //constructor and destructor of resources
 texture::texture(const char* path)
