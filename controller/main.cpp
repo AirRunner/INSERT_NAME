@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
 
     SetTargetFPS(maxFPS);
     SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
-    SetTraceLogLevel(LOG_DEBUG);
+    SetTraceLogLevel(LOG_INFO);
     SetTraceLogExit(LOG_WARNING);
     SetExitKey(0);
 
