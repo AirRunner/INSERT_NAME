@@ -9,7 +9,7 @@ JsonParser::JsonParser()
 void JsonParser::parseLesson(Lesson& lesson) //returns the continue key
 {
     createEntities(lesson.doc, lesson.registry);
-    loadRessources(lesson);
+    loadRessources(lesson.doc, lesson.cacheManager);
     parseAnim(lesson.doc, lesson.registry);
     updateText(lesson.doc, lesson.text);
     parseTransition(lesson);
@@ -31,7 +31,7 @@ void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the 
     }
 }
 
-void JsonParser::loadRessources(Lesson& lesson) //load the ressources into the cache
+void JsonParser::loadRessources(rj::Document& doc, CacheManager& cacheManager) //load the ressources into the cache
 {
 
 }

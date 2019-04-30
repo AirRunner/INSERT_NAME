@@ -18,5 +18,6 @@ class Lesson: public Scene {
         Rectangle rect;
         rj::Document doc;
         JsonParser parser;
+        CacheManager cacheManager;
         Event nextEvent;
 };
