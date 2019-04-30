@@ -8,10 +8,10 @@ JsonParser::JsonParser()
 
 void JsonParser::parseLesson(Lesson& lesson) //returns the continue key
 {
-    createEntities(lesson.doc, lesson.registry, lesson.cacheManager);
-    loadResources(lesson.doc, lesson.cacheManager);
-    parseAnim(lesson.doc, lesson.registry);
     updateText(lesson.doc, lesson.text);
+    loadResources(lesson.doc, lesson.cacheManager);
+    createEntities(lesson.doc, lesson.registry, lesson.cacheManager);
+    parseAnim(lesson.doc, lesson.registry);
     parseTransition(lesson);
     parseEvent(lesson.doc, lesson.nextEvent);
 }
