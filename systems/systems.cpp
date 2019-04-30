@@ -39,6 +39,20 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
     );
 }
 
+    bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos)
+{
+    bool res = false;
+    registry->view<button>().each(
+            [mousePos, &res](auto entity, auto& button)
+            {
+                if(CheckCollisionPointRec(mousePos, button.rect))
+                {
+                    res = true;
+                }
+            }
+            );
+    return res;
+}
 
 void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack, int halign, int valign)
 {
