@@ -1,5 +1,4 @@
 #include "../scenes/include_scenes.hpp"
-#include "../components/components.hpp"
 
 #ifdef HOTRELOAD
 #include <jet/live/Live.hpp>
