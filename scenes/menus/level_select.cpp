@@ -51,6 +51,15 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     camera.offset.y += GetMouseWheelMove()*50;
 
+    if(camera.offset.y > 0)
+    {
+        camera.offset.y = 0;
+    }
+    else if(camera.offset.y < -(((int)size-1)*150 + 30) - 150 + 720)
+    {
+        camera.offset.y = -(((int)size-1)*150 + 30) - 150 + 720;
+    }
+
     if(IsKeyPressed(KEY_ESCAPE))
     {
         systems::loadJson(doc, "../data/lessons/index.json");
@@ -138,7 +147,7 @@ void LevelSelect::resetButtons(bool level)
         auto entity = registry->create();
         auto& btn = registry->assign<button>(entity);
         btn.rect.x = width/2 - widthBox/2;
-        btn.rect.y = (heightBox+30)*i + 50;
+        btn.rect.y = (heightBox+30)*i + 30;
         btn.rect.width = widthBox;
         btn.rect.height = heightBox;
         if(level)
