@@ -44,6 +44,7 @@ find_path(RAYLIB_INCLUDE_DIR raylib.h
     ENV RAYLIBDIR
     ${RAYLIB_DIR}
     C:/libraries/raylib/mingw/release/
+    C:/libraries/raylib/mingw/src/
 )
 
 if(CMAKE_SIZEOF_VOID_P EQUAL 8)
@@ -59,6 +60,7 @@ find_library(RAYLIB_LIBRARY
     ENV RAYLIBDIR
     ${RAYLIBDIR}
     C:/libraries/raylib/mingw/release/
+    C:/libraries/raylib/mingw/src/
   PATH_SUFFIXES lib ${VC_LIB_PATH_SUFFIX}
 )
 
