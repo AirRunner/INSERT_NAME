@@ -5,17 +5,18 @@
             "texture": [
                 {
                     "id": "button_inative",
-                    "path": "../data/assets/buttons/button_inactive"
+                    "path": "../data/assets/buttons/button_inactive.png"
                 }
             ],
-            "animations": [
+            "animation": [
                 {
                     "id": "button_active",
-                    "path": "../data/assets/buttons/button_active"
+                    "path": "../data/assets/buttons/button_active",
+                    "animTime": 1000
                 }
             ],
             "music": null,
-            "audio_fx": null
+            "soundFX": null
         },
         "entities": [
             [
