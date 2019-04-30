@@ -73,7 +73,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
         resetButtons(false);
     }
     
-    if(IsKeyPressed(KEY_ENTER) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+    if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && systems::checkCollisionMouseButtons(registry, mousePos)))
     {
         if(doc.IsArray()) //the world select part
         {
