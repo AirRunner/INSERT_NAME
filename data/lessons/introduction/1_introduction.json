@@ -21,43 +21,43 @@
         "entities": [
             [
                 {
-                    "Component": "sprite",
+                    "component": "sprite",
                     "id": "button_inactive"
                 },
                 {
-                    "Component": "position",
+                    "component": "position",
                     "x": 0,
                     "y": 0
                 }
             ],
             [
                 {
-                    "Component": "sprite",
+                    "component": "sprite",
                     "id": "player"
                 },
                 {
-                    "Component": "position",
+                    "component": "position",
                     "x": 0,
                     "y": 250
                 },
                 {
-                    "Component": "velocity",
+                    "component": "velocity",
                     "x": 0,
                     "y": 0
                 }
             ],
             [
                 {
-                    "Component": "sprite",
+                    "component": "sprite",
                     "id": "guide"
                 },
                 {
-                    "Component": "position",
+                    "component": "position",
                     "x": 1000,
                     "y": 250
                 },
                 {
-                    "Component": "velocity",
+                    "component": "velocity",
                     "x": 0,
                     "y": 0
                 }
