@@ -44,6 +44,10 @@
                     "component": "velocity",
                     "x": 0,
                     "y": 0
+                },
+                {
+                    "component": "tag",
+                    "tag": "player"
                 }
             ],
             [
@@ -60,6 +64,10 @@
                     "component": "velocity",
                     "x": 0,
                     "y": 0
+                },
+                {
+                    "component": "tag",
+                    "tag": "guide"
                 }
             ]
         ],
@@ -74,19 +82,21 @@
         "animation": [
             [
                 {
-                    "fade-type": "in",
                     "type": "linear",
-                    "id": "player",
-                    "attribute": "movement.position.x",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
                     "start": 0,
                     "end": 10,
                     "duration": 800
                 },
                 {
-                    "fade-type": "in",
                     "type": "linear",
-                    "id": "guide",
-                    "attribute": "movement.position.x",
+                    "option": "in",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
                     "start": 1000,
                     "end": 990,
                     "duration": 800
@@ -103,19 +113,21 @@
         "animation": [
             [
                 {
-                    "fade-type": "in",
                     "type": "linear",
-                    "id": "player",
-                    "attribute": "movement.position.x",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
                     "start": 10,
                     "end": 0,
                     "duration": 800
                 },
                 {
-                    "fade-type": "in",
                     "type": "linear",
-                    "id": "guide",
-                    "attribute": "movement.position.x",
+                    "option": "in",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
                     "start": 9900,
                     "end": 1000,
                     "duration": 800
