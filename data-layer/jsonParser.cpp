@@ -11,7 +11,7 @@ void JsonParser::parseLesson(Lesson& lesson) //returns the continue key
     updateText(lesson.doc, lesson.text);
     loadResources(lesson.doc, lesson.cacheManager);
     createEntities(lesson.doc, lesson.registry, lesson.cacheManager);
-    parseAnim(lesson.doc, lesson.registry);
+    parseAnim(lesson.doc, lesson.registry, lesson.animManager);
     parseTransition(lesson);
     parseEvent(lesson.doc, lesson.nextEvent);
 }
@@ -106,15 +106,76 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     {
                         registry->assign<animation>(entity, cacheManager->animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
                     }
+                    else if(component == "tag")
+                    {
+                        std::string tag = entities[i][j]["tag"].GetString();
+                        if(tag == "player")
+                        {
+                            registry->assign<player>(entity);
+                        }
+                        else if(tag == "guide")
+                        {
+                            registry->assign<guide>(entity);
+                        }
+                        else if(tag == "nemesis")
+                        {
+                            registry->assign<nemesis>(entity);
+                        }
+                    }
                 }
             }
         }
     }
 }
 
-void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry) //parses and executes the animations
+void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager animManager) //parses and stores the animations in the lesson
 {
-
+    if(doc[counter].IsObject())
+    {
+        if(doc[counter]["animation"].IsArray())
+        {
+            const rj::Value& animations = doc[counter]["animation"];
+            for(rj::SizeType i = 0; i < animations.Size(); ++i)
+            {
+                std::vector<AnimInfo> animInfos;
+                std::uint32_t entity;
+                std::string tag;
+                std::string component;
+                std::string attribute;
+                for(rj::SizeType j = 0; j < animations[i].Size(); ++j)
+                {
+                    tag = animations[i][j]["tag"].GetString();
+                    if(tag == "player")
+                    {
+                        entity = registry->attachee<player>();
+                    }
+                    else if(tag == "guide")
+                    {
+                        entity = registry->attachee<guide>();
+                    }
+                    else if(tag == "nemesis")
+                    {
+                        entity = registry->attachee<nemesis>();
+                    }
+                    component = animations[i][j]["component"].GetString();
+                    attribute = animations[i][j]["attribute"].GetString();
+                    if(component == "position")
+                    {
+                        if(attribute == "x")
+                        {
+                            auto& pos = registry->get<position>(entity);
+                            AnimInfo animInfo(animations[i][j]["type"].GetString(), animations[i][j]["type"].GetString(), pos.x, animations[i][j]["start"].GetFloat(), animations[i][j]["end"].GetFloat(), animations[i][j]["duration"].GetFloat());
+                            animInfos.push_back(animInfo);
+                        }
+                    }
+                    else if(component == "velocity")
+                    {
+                    }
+                }
+                animManager.AnimInfos.push_back(animInfos);
+            }
+        }
+    }
 }
 
 void JsonParser::parseTransition(Lesson& lesson) //parses and execute the transition between two screens
