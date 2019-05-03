@@ -36,4 +36,8 @@ struct button
     int id;
 };
 
+struct player;
+struct guide;
+struct nemesis;
+
 #endif /* ifndef COMPONENTS_HPP */
