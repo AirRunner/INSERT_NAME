@@ -1,6 +1,7 @@
 #pragma once
 #include "../scene.hpp"
 #include "../../data-layer/jsonParser.hpp"
+#include "../../systems/animManager.hpp"
 
 class Lesson: public Scene {
     public:
@@ -19,6 +20,7 @@ class Lesson: public Scene {
         Rectangle rect;
         rj::Document doc;
         JsonParser parser;
+        AnimManager animManager;
         CacheManager* cacheManager;
         Event nextEvent;
 };
