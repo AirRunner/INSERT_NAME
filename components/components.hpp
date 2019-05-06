@@ -7,7 +7,9 @@
 
 struct sprite
 {
-    entt::ResourceHandle<texture> tex;
+    entt::ResourceHandle<texture> texHandle;
+    float width;
+    float height;
 };
 
 struct anim
