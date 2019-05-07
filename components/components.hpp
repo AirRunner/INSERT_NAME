@@ -17,8 +17,8 @@ struct anim
 
 struct position
 {
-    int x;
-    int y;
+    float x;
+    float y;
 };
 
 struct velocity
@@ -36,8 +36,17 @@ struct button
     int id;
 };
 
-struct player;
-struct guide;
-struct nemesis;
+struct player
+{
+
+};
+struct guide
+{
+
+};
+struct nemesis
+{
+
+};
 
 #endif /* ifndef COMPONENTS_HPP */
