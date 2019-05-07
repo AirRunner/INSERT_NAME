@@ -294,3 +294,18 @@ void systems::loadJson(rj::Document& doc, const char* path)
     rj::IStreamWrapper isw(ifs);
     doc.ParseStream(isw);
 }
+
+Rectangle systems::createRectangleForPadding(Rectangle rec, float top, float left, float right, float bottom)
+{
+    if(top + bottom > rec.height)
+    {
+        printf("The sum of the left and right padding %f %f superior to the width of the original rectangle %f", left, right, rec.width);
+        return rec;
+    }
+    if(left + right > rec.width)
+    {
+        printf("The sum of the left and right padding %f and %f are superior to the width of the original rectangle %f", left, right, rec.width);
+        return rec;
+    }
+    return {rec.x + left, rec.y + right, rec.width - (left + right), rec.height - (top + bottom)};
+}
