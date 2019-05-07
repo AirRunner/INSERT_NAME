@@ -22,7 +22,9 @@
             [
                 {
                     "component": "sprite",
-                    "id": "button_inactive"
+                    "id": "button_inactive",
+                    "width": 280,
+                    "height": 80
                 },
                 {
                     "component": "position",
@@ -33,7 +35,9 @@
             [
                 {
                     "component": "sprite",
-                    "id": "button_inactive"
+                    "id": "button_inactive",
+                    "width": 280,
+                    "height": 80
                 },
                 {
                     "component": "position",
@@ -53,7 +57,9 @@
             [
                 {
                     "component": "sprite",
-                    "id": "button_inactive"
+                    "id": "button_inactive",
+                    "width": 280,
+                    "height": 80
                 },
                 {
                     "component": "position",

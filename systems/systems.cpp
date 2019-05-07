@@ -17,7 +17,12 @@ void systems::drawEntities(entt::DefaultRegistry* registry)
     registry->view<sprite, position>().each(
         [](auto entity, auto& sprite, auto& position)
         {
-            DrawTexture(sprite.tex->tex, position.x, position.y, WHITE);
+            float rotation = 0;
+            Rectangle sourceRect, destRect;
+            sourceRect = {0, 0, (float) sprite.texHandle->tex.width, (float) sprite.texHandle->tex.height};
+            destRect = {(float) position.x, (float) position.y, sprite.width, sprite.height};
+            Vector2 origin = {0, 0};
+            DrawTexturePro(sprite.texHandle->tex, sourceRect, destRect, origin, rotation, WHITE);
         }
     );
 }
