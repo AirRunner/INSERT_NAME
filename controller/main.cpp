@@ -39,6 +39,7 @@ int main(int argc, char* argv[])
     const int maxFPS = 500;
     float deltaTime = 1; //init to 1 so that it can draw the first frame
 
+    SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
     InitWindow(screenWidth, screenHeight, "[INSERT GAME NAME]");
     if(!IsWindowReady())
     {
@@ -46,7 +47,6 @@ int main(int argc, char* argv[])
     }
 
     SetTargetFPS(maxFPS);
-    SetConfigFlags(FLAG_SHOW_LOGO | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
     SetTraceLogLevel(LOG_INFO);
     SetTraceLogExit(LOG_WARNING);
     SetExitKey(0);
