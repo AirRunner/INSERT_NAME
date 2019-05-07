@@ -33,7 +33,7 @@ class JsonParser
         void updateText(rj::Document& doc, std::string& text); //updates the text of the scene
         void loadResources(rj::Document& doc, CacheManager* cacheManager); //load the ressources into the cache
         void createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager* cacheManager); //creates the appropiate entities
-        void parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager animManager); //parses and executes the animations
+        void parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager& animManager); //parses and executes the animations
         void parseTransition(Lesson& lesson); //parses and execute the transition between two screens
         void parseEvent(rj::Document& doc, Event& nextEvent); //parses and returns the continue key
 
