@@ -37,13 +37,17 @@
                 },
                 {
                     "component": "position",
-                    "x": 0,
+                    "x": -500,
                     "y": 250
                 },
                 {
                     "component": "velocity",
                     "x": 0,
                     "y": 0
+                },
+                {
+                    "component": "tag",
+                    "tag": "player"
                 }
             ],
             [
@@ -53,13 +57,17 @@
                 },
                 {
                     "component": "position",
-                    "x": 1000,
+                    "x": 1500,
                     "y": 250
                 },
                 {
                     "component": "velocity",
                     "x": 0,
                     "y": 0
+                },
+                {
+                    "component": "tag",
+                    "tag": "guide"
                 }
             ]
         ],
@@ -71,25 +79,27 @@
         "text": "...",
         "cache": null,
         "entities": null,
-        "animation": [
+        "animations": [
             [
                 {
-                    "fade-type": "in",
-                    "type": "linear",
-                    "id": "player",
-                    "attribute": "movement.position.x",
-                    "start": 0,
-                    "end": 10,
-                    "duration": 800
+                    "type": "back",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": -500,
+                    "end": 100,
+                    "duration": 1500
                 },
                 {
-                    "fade-type": "in",
-                    "type": "linear",
-                    "id": "guide",
-                    "attribute": "movement.position.x",
-                    "start": 1000,
-                    "end": 990,
-                    "duration": 800
+                    "type": "sine",
+                    "option": "in",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 1500,
+                    "end": 900,
+                    "duration": 1500
                 }
             ]
         ],
@@ -100,25 +110,27 @@
         "text": "Darkness...\nDarkness everywhere...",
         "cache": null,
         "entities": null,
-        "animation": [
+        "animations": [
             [
                 {
-                    "fade-type": "in",
-                    "type": "linear",
-                    "id": "player",
-                    "attribute": "movement.position.x",
-                    "start": 10,
-                    "end": 0,
-                    "duration": 800
+                    "type": "cubic",
+                    "option": "out",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 100,
+                    "end": -500,
+                    "duration": 1500
                 },
                 {
-                    "fade-type": "in",
-                    "type": "linear",
-                    "id": "guide",
-                    "attribute": "movement.position.x",
-                    "start": 9900,
-                    "end": 1000,
-                    "duration": 800
+                    "type": "quad",
+                    "option": "out",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 900,
+                    "end": 1500,
+                    "duration": 1500
                 }
             ]
         ],

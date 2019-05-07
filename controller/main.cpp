@@ -35,7 +35,7 @@ int main(int argc, char* argv[])
     int screenHeight = 720;
 
     const int minimalFPS = 6;
-    const int minimalFrameDelay = 1000/minimalFPS;
+    const int maxFrameDelay = 1000/minimalFPS;
     const int maxFPS = 500;
     float deltaTime = 1; //init to 1 so that it can draw the first frame
 
@@ -72,14 +72,10 @@ int main(int argc, char* argv[])
 
         if(deltaTime > 0)
         {
-            if(deltaTime > minimalFPS)
+            if(deltaTime > maxFrameDelay)
             {
-                deltaTime = minimalFrameDelay; //it's the maximum delta time possible
-                //so, if the game is uder the minimal FPS, then, the game slows down
-            }
-            else
-            {
-                deltaTime = 0;
+                deltaTime = maxFrameDelay; //it's the maximum delta time possible
+                //so, if the game is under the minimal FPS, then, the game slows down
             }
 
 #ifdef HOTRELOAD
@@ -100,10 +96,11 @@ int main(int argc, char* argv[])
                     scene->render();
                 }
             }
+            deltaTime = 0;
         }
         else
         {
-            std::this_thread::sleep_for(std::chrono::milliseconds(1)); //here, if we have a deltaTime of 0, we wait a bit
+            std::this_thread::sleep_for(std::chrono::milliseconds(10)); //here, if we have a deltaTime of 0, we wait a bit
         }
     }
 
