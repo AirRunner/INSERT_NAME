@@ -96,7 +96,7 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     }
                     else if(component == "position")
                     {
-                        registry->assign<position>(entity, entities[i][j]["x"].GetInt(),entities[i][j]["y"].GetInt());
+                        registry->assign<position>(entity, entities[i][j]["x"].GetFloat(),entities[i][j]["y"].GetFloat());
                     }
                     else if(component == "velocity")
                     {
@@ -128,13 +128,13 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
     }
 }
 
-void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager animManager) //parses and stores the animations in the lesson
+void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager& animManager) //parses and stores the animations in the lesson
 {
     if(doc[counter].IsObject())
     {
-        if(doc[counter]["animation"].IsArray())
+        if(doc[counter]["animations"].IsArray())
         {
-            const rj::Value& animations = doc[counter]["animation"];
+            const rj::Value& animations = doc[counter]["animations"];
             for(rj::SizeType i = 0; i < animations.Size(); ++i)
             {
                 std::vector<AnimInfo> animInfos;
@@ -147,32 +147,71 @@ void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, A
                     tag = animations[i][j]["tag"].GetString();
                     if(tag == "player")
                     {
-                        entity = registry->attachee<player>();
+                        const auto& view = registry->view<player>();
+                        entity = view[0];
                     }
                     else if(tag == "guide")
                     {
-                        entity = registry->attachee<guide>();
+                        const auto& view = registry->view<guide>();
+                        entity = view[0];
                     }
                     else if(tag == "nemesis")
                     {
-                        entity = registry->attachee<nemesis>();
+                        const auto& view = registry->view<nemesis>();
+                        entity = view[0];
                     }
                     component = animations[i][j]["component"].GetString();
                     attribute = animations[i][j]["attribute"].GetString();
                     if(component == "position")
                     {
+                        auto& pos = registry->get<position>(entity);
                         if(attribute == "x")
                         {
-                            auto& pos = registry->get<position>(entity);
-                            AnimInfo animInfo(animations[i][j]["type"].GetString(), animations[i][j]["type"].GetString(), pos.x, animations[i][j]["start"].GetFloat(), animations[i][j]["end"].GetFloat(), animations[i][j]["duration"].GetFloat());
+                            AnimInfo animInfo(animations[i][j]["type"].GetString(),
+                                    animations[i][j]["option"].GetString(),
+                                    pos.x,
+                                    animations[i][j]["start"].GetFloat(),
+                                    animations[i][j]["end"].GetFloat(),
+                                    animations[i][j]["duration"].GetFloat());
+                            animInfos.push_back(animInfo);
+                        }
+                        else if(attribute == "y")
+                        {
+                            AnimInfo animInfo(animations[i][j]["type"].GetString(),
+                                    animations[i][j]["option"].GetString(),
+                                    pos.y,
+                                    animations[i][j]["start"].GetFloat(),
+                                    animations[i][j]["end"].GetFloat(),
+                                    animations[i][j]["duration"].GetFloat());
                             animInfos.push_back(animInfo);
                         }
                     }
                     else if(component == "velocity")
                     {
+                        auto& vel = registry->get<velocity>(entity);
+                        if(attribute == "x")
+                        {
+                            AnimInfo animInfo(animations[i][j]["type"].GetString(),
+                                    animations[i][j]["option"].GetString(),
+                                    vel.x,
+                                    animations[i][j]["start"].GetFloat(),
+                                    animations[i][j]["end"].GetFloat(),
+                                    animations[i][j]["duration"].GetFloat());
+                            animInfos.push_back(animInfo);
+                        }
+                        else if(attribute == "y")
+                        {
+                            AnimInfo animInfo(animations[i][j]["type"].GetString(),
+                                    animations[i][j]["option"].GetString(),
+                                    vel.y,
+                                    animations[i][j]["start"].GetFloat(),
+                                    animations[i][j]["end"].GetFloat(),
+                                    animations[i][j]["duration"].GetFloat());
+                            animInfos.push_back(animInfo);
+                        }
                     }
                 }
-                animManager.AnimInfos.push_back(animInfos);
+                animManager.animInfos.push_back(animInfos);
             }
         }
     }
