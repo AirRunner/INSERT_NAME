@@ -3,18 +3,20 @@
 #include <iostream>
 #include <vector>
 #include "easings.h"
+#include <raylib.h>
 
 class AnimInfo;
 
 class AnimManager
 {
     public:
-        AnimManager() = default;
+        AnimManager();
         ~AnimManager() = default;
         friend class JsonParser;
-        void udpateAnims();
+        void udpateAnims(float deltaTime);
     private:
-        std::vector<std::vector<AnimInfo>> AnimInfos;
+        int counter;
+        std::vector<std::vector<AnimInfo>> animInfos;
 };
 
 class AnimInfo

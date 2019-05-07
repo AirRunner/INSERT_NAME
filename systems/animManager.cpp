@@ -1,13 +1,41 @@
 #include "animManager.hpp"
 
-
-void AnimManager::udpateAnims()
+AnimManager::AnimManager(): counter(0)
 {
 
 }
 
+void AnimManager::udpateAnims(float deltaTime)
+{
+    bool animUpdate = false;
+    if(animInfos.size())
+    {
+        for(auto& animInfo : animInfos[counter])
+        {
+            if(animInfo.currentTime < animInfo.animTime)
+            {
+                animInfo.currentTime += deltaTime;
+                animUpdate = true;
+                if(animInfo.currentTime > animInfo.animTime)
+                {
+                    animInfo.currentTime = animInfo.animTime;
+                }
+                animInfo.param = animInfo.animFunc(animInfo.currentTime, animInfo.paramStart, animInfo.paramChange, animInfo.animTime);
+                TraceLog(LOG_INFO, "param: %f", animInfo.param);
+            }
+        }
+    }
+    if(!animUpdate)
+    {
+        if(counter < (int) animInfos.size() - 1)
+        {
+            counter++;
+        }
+    }
+}
 
-AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, float paramStart, float paramStop, float animTime): param(param), paramStart(paramStart), paramChange(paramStop-paramStart), animTime(animTime)
+
+AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, float paramStart, float paramStop, float animTime): param(param), currentTime(0), paramStart(paramStart), paramChange(paramStop-paramStart), animTime(animTime)
 {
     if(animType == "linear")
     {
@@ -133,4 +161,5 @@ AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, f
             animFunc = EaseElasticInOut;
         }
     }
+    std::cout << "anim created" << std::endl;
 }
