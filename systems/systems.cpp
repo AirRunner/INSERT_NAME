@@ -21,7 +21,7 @@ void systems::drawEntities(entt::DefaultRegistry* registry)
             Rectangle sourceRect, destRect;
             sourceRect = {0, 0, (float) sprite.texHandle->tex.width, (float) sprite.texHandle->tex.height};
             destRect = {(float) position.x, (float) position.y, sprite.width, sprite.height};
-            Vector2 origin = {0, 0};
+            Vector2 origin = {(float) sprite.width/2, (float) sprite.height/2};
             DrawTexturePro(sprite.texHandle->tex, sourceRect, destRect, origin, rotation, WHITE);
         }
     );
