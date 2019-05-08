@@ -140,12 +140,24 @@
                 }
             ]
         ],
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": null,
+        "cache": null,
+        "entities": null,
+        "animations": null,
         "transition": {
-            "type": "left-right",
-            "next": "lesson",
-            "path": "../data/lessons/world_1/1_variables.json",
+            "direction": "left-right",
+            "type": "quad",
+            "option": "in",
+            "next": {
+                "scene": "lesson",
+                "path": "data/lessons/world_1/1_variables.json"
+            },
             "duration": 800
         },
-        "event": "block"
+        "event": "transition"
     }
 ]
