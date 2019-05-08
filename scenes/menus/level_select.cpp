@@ -66,7 +66,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     camera.offset.y += GetMouseWheelMove()*50;
 
-    int height = 720;
+    int height = GetScreenHeight();
     int heightBox = 50;
     int padding = 30;
     if(-(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
@@ -160,7 +160,7 @@ void LevelSelect::resetButtons(bool level)
         size = doc.Size();
     }
 
-    int width = 1280;
+    int width = GetScreenWidth();
     int widthBox = 500;
     int heightBox = 50;
     int padding = 30;
