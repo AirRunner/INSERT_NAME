@@ -25,7 +25,9 @@ class AnimInfo
         AnimInfo(std::string animType, std::string animOption, float& param, float paramStart, float paramStop, float animTime);
         ~AnimInfo() = default;
         friend class AnimManager;
+        friend class Transition;
     private:
+        void setAnimFunc(std::string animType, std::string animOption);
         float (*animFunc)(float currentTime, float paramStart, float paramChange, float animTime);
         float& param;
         float currentTime;

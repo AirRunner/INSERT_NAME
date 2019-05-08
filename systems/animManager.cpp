@@ -34,8 +34,7 @@ void AnimManager::udpateAnims(float deltaTime)
     }
 }
 
-
-AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, float paramStart, float paramStop, float animTime): param(param), currentTime(0), paramStart(paramStart), paramChange(paramStop-paramStart), animTime(animTime)
+void AnimInfo::setAnimFunc(std::string animType, std::string animOption)
 {
     if(animType == "linear")
     {
@@ -162,4 +161,10 @@ AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, f
         }
     }
     std::cout << "anim created" << std::endl;
+
+}
+
+AnimInfo::AnimInfo(std::string animType, std::string animOption, float& param, float paramStart, float paramStop, float animTime): param(param), currentTime(0), paramStart(paramStart), paramChange(paramStop-paramStart), animTime(animTime)
+{
+    setAnimFunc(animType, animOption);
 }
