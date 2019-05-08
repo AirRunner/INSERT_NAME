@@ -57,22 +57,21 @@ Scene* Lesson::handleEvents(float deltaTime)
 
     if(nextEvent == Null)
     {
-        parser.parseLesson(*this);
+        return parser.parseLesson(*this);
     }
-
-    if(nextEvent == Continue)
+    else if(nextEvent == Continue)
     {
         if(IsKeyPressed(KEY_ENTER))
         {
-            parser.parseLesson(*this);
+            return parser.parseLesson(*this);
         }
         else if(IsKeyPressed(KEY_SPACE))
         {
-            parser.parseLesson(*this);
+            return parser.parseLesson(*this);
         }
         else if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
-            parser.parseLesson(*this);
+            return parser.parseLesson(*this);
         }
     }
 

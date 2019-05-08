@@ -18,12 +18,13 @@ typedef enum
 } Event;
 
 class Lesson;
+class Scene;
 
 class JsonParser
 {
     public:
         JsonParser();
-        void parseLesson(Lesson& lesson); //returns the continue key
+        Scene* parseLesson(Lesson& lesson); //returns the transition scene if one is created
 
     private:
         int counter;
@@ -34,8 +35,8 @@ class JsonParser
         void loadResources(rj::Document& doc, CacheManager* cacheManager); //load the ressources into the cache
         void createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager* cacheManager); //creates the appropiate entities
         void parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager& animManager); //parses and executes the animations
-        void parseTransition(Lesson& lesson); //parses and execute the transition between two screens
-        void parseEvent(rj::Document& doc, Event& nextEvent); //parses and returns the continue key
+        void parseEvent(rj::Document& doc, Event& nextEvent); //parses and changes the nextEvent param
+        Scene* parseTransition(Lesson& lesson); //parses and creates transition screen if one is called
 
         //helper functions for parseAnim()
 

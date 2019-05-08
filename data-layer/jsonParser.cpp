@@ -1,19 +1,19 @@
 #include "jsonParser.hpp"
-#include "../scenes/lesson/lesson.hpp"
+#include "../scenes/include_scenes.hpp"
 
 JsonParser::JsonParser()
 {
     counter = 0;
 }
 
-void JsonParser::parseLesson(Lesson& lesson) //returns the continue key
+Scene* JsonParser::parseLesson(Lesson& lesson) //returns the continue key
 {
     updateText(lesson.doc, lesson.text);
     loadResources(lesson.doc, lesson.cacheManager);
     createEntities(lesson.doc, lesson.registry, lesson.cacheManager);
     parseAnim(lesson.doc, lesson.registry, lesson.animManager);
-    parseTransition(lesson);
     parseEvent(lesson.doc, lesson.nextEvent);
+    return parseTransition(lesson);
 }
 
 void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the text of the scene
@@ -214,11 +214,6 @@ void JsonParser::parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, A
     }
 }
 
-void JsonParser::parseTransition(Lesson& lesson) //parses and execute the transition between two screens
-{
-
-}
-
 void JsonParser::parseEvent(rj::Document& doc, Event& nextEvent) //parses and returns the continue key
 {
     if(doc[counter].IsObject())
@@ -240,6 +235,37 @@ void JsonParser::parseEvent(rj::Document& doc, Event& nextEvent) //parses and re
         {
             nextEvent = Null;
         }
-        counter++;
     }
+}
+
+Scene* JsonParser::parseTransition(Lesson& lesson) //parses and execute the transition between two screens
+{
+    rj::Document& doc = lesson.doc;
+    if(doc[counter].IsObject())
+    {
+        if(doc[counter]["transition"].IsObject())
+        {
+            rj::Value& transition = doc[counter]["transition"];
+            Scene* nextScene = nullptr;
+            std::string next = transition["next"]["scene"].GetString();
+            if(next == "lesson")
+            {
+                nextScene = new Lesson(transition["next"]["path"].GetString());
+            }
+            else if(next == "visual")
+            {
+                //TODO When Visual Editor implemented
+            }
+            else if(next == "editor")
+            {
+                //TODO When Editor implemented
+            }
+            return new Transition(&lesson, nextScene, transition["direction"].GetString(), transition["type"].GetString(), transition["option"].GetString(), transition["duration"].GetFloat());
+        }
+        else
+        {
+            counter++;
+        }
+    }
+    return &lesson;
 }
