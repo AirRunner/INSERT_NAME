@@ -8,15 +8,15 @@
     "levels": [
         {
             "name": "variables",
-            "path": "1_variables.json"
+            "path": "data/lessons/world_1/1_variables.json"
         },
         {
             "name": "functions",
-            "path": "2_functions.json"
+            "path": "data/lessons/world_1/2_functions.json"
         },
         {
             "name": "pointers",
-            "path": "3_pointers.json"
+            "path": "data/lessons/world_1/3_pointers.json"
         }
     ]
 }
