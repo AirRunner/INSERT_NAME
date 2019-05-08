@@ -24,10 +24,7 @@ void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the 
         {
             text = doc[counter]["text"].GetString();
         }
-        else
-        {
-            text = "";
-        }
+        //else, it remains the same
     }
 }
 
