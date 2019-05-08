@@ -54,7 +54,7 @@ PauseMenu::PauseMenu(Scene* resumeScene): resumeScene(resumeScene), selected(0),
     cacheManager = new CacheManager;
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
 
-    camera.target = {1280/2,720/2};
+    camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
     camera.zoom = 1.f;
@@ -67,7 +67,7 @@ PauseMenu::PauseMenu(Scene* resumeScene, CacheManager* cacheManager): resumeScen
     registry = new entt::DefaultRegistry{};
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
 
-    camera.target = {1280/2,720/2};
+    camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
     camera.zoom = 1.f;
@@ -86,6 +86,7 @@ Scene* PauseMenu::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+        camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
         initButtons();
     }
 
@@ -187,17 +188,12 @@ void PauseMenu::render() const
 {
     float fontSize = 40;
     float spacing = 0;
-    BeginDrawing();
-
-    ClearBackground(BLACK);
 
     systems::drawEntities(registry);
 
     BeginMode2D(camera);
         systems::drawButtons(registry, font, fontSize, spacing);
     EndMode2D();
-
-    EndDrawing();
 }
 
 PauseMenu::~PauseMenu()

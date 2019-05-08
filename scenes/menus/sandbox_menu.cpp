@@ -29,18 +29,9 @@ Scene* Sandbox::update(float deltaTime)
 
 void Sandbox::render() const
 {
-    BeginDrawing();
-
     systems::drawEntities(registry);
 
-    ClearBackground(WHITE);
-
-    DrawFPS(0,0);
-
     DrawText("TEST", 190, 200, 20, LIGHTGRAY);
-
-    EndDrawing();
-
 }
 
 Sandbox::~Sandbox()

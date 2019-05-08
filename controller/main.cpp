@@ -93,7 +93,14 @@ int main(int argc, char* argv[])
                 scene = scene->update(deltaTime);
                 if(scene)
                 {
+                    BeginDrawing();
+
+                    ClearBackground(BLACK);
+
+                    DrawFPS(0,0);
                     scene->render();
+
+                    EndDrawing();
                 }
             }
             deltaTime = 0;

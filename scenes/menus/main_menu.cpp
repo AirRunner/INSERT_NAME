@@ -20,11 +20,7 @@ Scene* MainMenu::update(float deltaTime)
 
 void MainMenu::render() const
 {
-    BeginDrawing();
-
     systems::drawEntities(registry);
-
-    EndDrawing();
 }
 
 MainMenu::~MainMenu()

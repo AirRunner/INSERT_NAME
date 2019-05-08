@@ -88,19 +88,11 @@ Scene* Lesson::update(float deltaTime)
 
 void Lesson::render() const
 {
-    BeginDrawing();
-
-    ClearBackground(BLACK);
-
-    DrawFPS(0,0);
-
     systems::drawEntities(registry);
     DrawRectangleRounded(rect, 0.5, 10, GRAY);
     DrawRectangleRoundedLines(rect, 0.5, 10, 5, DARKGRAY);
     Rectangle newRec = systems::createRectangleForPadding(rect, 10, 10, 10, 10);
     systems::drawTextRecPro(font, text.c_str(), newRec, 40, 0, true, WHITE, 0, 0, WHITE, WHITE, 0, 0);
-
-    EndDrawing();
 }
 
 Lesson::~Lesson()

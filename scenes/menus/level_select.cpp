@@ -10,7 +10,7 @@ LevelSelect::LevelSelect()
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
 
-    camera.target = {1280/2,720/2};
+    camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
     camera.zoom = 1.f;
@@ -24,7 +24,7 @@ LevelSelect::LevelSelect(CacheManager* cacheManager): cacheManager(cacheManager)
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
 
-    camera.target = {1280/2,720/2};
+    camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
     camera.zoom = 1.f;
@@ -42,6 +42,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+        camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
         if(doc.IsArray()) //the world select part
         {
             resetButtons(false);
@@ -133,17 +134,12 @@ void LevelSelect::render() const
 {
     float fontSize = 40;
     float spacing = 0;
-    BeginDrawing();
-
-    ClearBackground(BLACK);
 
     systems::drawEntities(registry);
 
     BeginMode2D(camera);
         systems::drawButtons(registry, font, fontSize, spacing);
     EndMode2D();
-
-    EndDrawing();
 }
 
 LevelSelect::~LevelSelect()
