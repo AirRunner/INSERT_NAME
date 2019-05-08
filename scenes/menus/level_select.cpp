@@ -91,7 +91,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     if(IsKeyPressed(KEY_ESCAPE))
     {
-        systems::loadJson(doc, "../data/lessons/index.json");
+        systems::loadJson(doc, "²data/lessons/index.json");
         levelSelect = 0;
         resetButtons(false);
     }
