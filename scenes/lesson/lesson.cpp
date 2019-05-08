@@ -1,4 +1,5 @@
 #include "lesson.hpp"
+#include "../menus/pause_menu.hpp"
 
 
 Lesson::Lesson(std::string path)
@@ -48,6 +49,10 @@ Scene* Lesson::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+    }
+    if(IsKeyPressed(KEY_ESCAPE))
+    {
+        return new PauseMenu(this, this->cacheManager);
     }
 
     if(nextEvent == Null)
