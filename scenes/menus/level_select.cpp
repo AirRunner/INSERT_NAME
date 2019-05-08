@@ -42,6 +42,14 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+        if(doc.IsArray()) //the world select part
+        {
+            resetButtons(false);
+        }
+        else //the level select part
+        {
+            resetButtons(true);
+        }
     }
 
     if(IsKeyPressed(KEY_UP))
