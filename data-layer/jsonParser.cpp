@@ -16,14 +16,20 @@ Scene* JsonParser::parseLesson(Lesson& lesson) //returns the continue key
     return parseTransition(lesson);
 }
 
-void JsonParser::updateText(rj::Document& doc, std::string& text) //updates the text of the scene
+void JsonParser::updateText(rj::Document& doc, Text& text) //updates the text of the scene
 {
     if(doc[counter].IsObject())
     {
-        if(doc[counter]["text"].IsString())
+        if(doc[counter]["text"].IsArray())
         {
-            text = doc[counter]["text"].GetString();
-        }
+            text = Text();
+            const rj::Value& textArray = doc[counter]["text"];
+            for(rj::SizeType i = 0; i < textArray.Size(); ++i)
+            {
+                text.addText(textArray[i]["content"].GetString(), textArray[i]["interval"].GetFloat());
+            }
+            text.reservePrintText();
+        } 
         //else, it remains the same
     }
 }

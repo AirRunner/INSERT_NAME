@@ -7,6 +7,7 @@ namespace rj = rapidjson;
 
 #include "cacheManager.hpp"
 #include "../systems/animManager.hpp"
+#include "../systems/text.hpp"
 #include "../components/components.hpp"
 
 
@@ -31,7 +32,7 @@ class JsonParser
 
         //helper functions for parseLesson()
 
-        void updateText(rj::Document& doc, std::string& text); //updates the text of the scene
+        void updateText(rj::Document& doc, Text& text); //updates the text of the scene
         void loadResources(rj::Document& doc, CacheManager* cacheManager); //load the ressources into the cache
         void createEntities(rj::Document& doc, entt::DefaultRegistry* registry, CacheManager* cacheManager); //creates the appropiate entities
         void parseAnim(rj::Document& doc, entt::DefaultRegistry* registry, AnimManager& animManager); //parses and executes the animations

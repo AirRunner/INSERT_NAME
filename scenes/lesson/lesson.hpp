@@ -2,6 +2,7 @@
 #include "../scene.hpp"
 #include "../../data-layer/jsonParser.hpp"
 #include "../../systems/animManager.hpp"
+#include "../../systems/text.hpp"
 
 class Lesson: public Scene {
     public:
@@ -16,7 +17,7 @@ class Lesson: public Scene {
 
     private:
         Font font;
-        std::string text;
+        Text text;
         Rectangle rect;
         rj::Document doc;
         JsonParser parser;
