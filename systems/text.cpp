@@ -51,4 +51,5 @@ void Text::completeText()
     {
         ptext += it->first;
     }
+    text.clear();
 }
