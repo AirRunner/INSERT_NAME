@@ -82,7 +82,13 @@
         "event": null
     },
     {
-        "text": "...",
+        "text": 
+        [
+            {
+                "content" : "...",
+                "interval" : 1000 
+            }
+        ],
         "cache": null,
         "entities": null,
         "animations": [
@@ -113,7 +119,13 @@
         "event": "continue"
     },
     {
-        "text": "Darkness...\nDarkness everywhere...",
+        "text":
+        [
+            {
+                "content" : "Darkness...\nDarkness everywhere...",
+                "interval": 5
+            }
+        ],
         "cache": null,
         "entities": null,
         "animations": [
