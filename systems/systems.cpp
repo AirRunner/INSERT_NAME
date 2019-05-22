@@ -38,7 +38,6 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
                 color = LIGHTGRAY;
             }
             DrawRectangleRounded(button.rect, 0.3, 10, color);
-            // DrawTextRec(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color);
             systems::drawTextRecPro(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color, 0, 0, WHITE, WHITE, 1, 1);
         }
     );
