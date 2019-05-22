@@ -1,8 +1,13 @@
 #include "text_editor.hpp"
 
+// #pragma GCC diagnostic push
+// #pragma GCC diagnostic ignored "-Werror"
+#include "../../../systems/raygui.h"
+// #pragma GCC diagnostic pop
 
 TextEditor::TextEditor()
 {
+	font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
 
 }
 

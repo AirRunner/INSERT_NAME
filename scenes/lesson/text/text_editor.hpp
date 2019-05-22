@@ -9,4 +9,5 @@ class TextEditor: public Scene {
         void render() const override;
         ~TextEditor();
     private:
+    	Font font;
 };
