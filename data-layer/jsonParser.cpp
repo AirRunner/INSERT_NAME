@@ -107,7 +107,7 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     }
                     else if(component == "animation")
                     {
-                        registry->assign<animation>(entity, cacheManager->animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                        registry->assign<anim>(entity, cacheManager->animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}), 0.f, entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
                     }
                     else if(component == "tag")
                     {

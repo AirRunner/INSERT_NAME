@@ -14,8 +14,10 @@ struct sprite
 
 struct anim
 {
-    entt::ResourceHandle<animation> anim;
+    entt::ResourceHandle<animation> animHandle;
     float index;
+    float width;
+    float height;
 };
 
 struct position

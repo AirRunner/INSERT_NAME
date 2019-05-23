@@ -75,6 +75,7 @@ Scene* Lesson::handleEvents(float deltaTime)
 Scene* Lesson::update(float deltaTime)
 {
     systems::updatePos(registry, deltaTime);
+    systems::updateAnims(registry, deltaTime);
     animManager.udpateAnims(deltaTime);
     text.updateText(deltaTime);
     return this;
