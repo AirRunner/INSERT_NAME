@@ -94,49 +94,93 @@
         [
             {
                 "content" : "...",
+                "interval" : 200
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Darkness.",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 500
+            },
+            {
+                "content" : "Darkness everywhere.",
+                "interval" : 30
+            },
+            {
+                "content" : "\n",
+                "interval" : 500
+            },
+            {
+                "content" : "How long have you been there?",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 500
+            },
+            {
+                "content" : "Alone",
+                "interval" : 30
+            },
+            {
+                "content" : "...",
+                "interval" : 300
+            },
+            {
+                "content" : " ",
+                "interval" : 1100
+            },
+            {
+                "content" : "You don't know.",
+                "interval" : 30
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"H..\"",
+                "interval" : 300
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Yet why does it feel like something is calling you?",
+                "interval" : 40
+            },
+            {
+                "content" : "\n",
                 "interval" : 1000
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
+            },
             {
-                "content" : "Darkness. Darkness everywhere.\nHow long have you been there ? Alone. You don't know.",
-                "interval" : 5
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
-            {
-                "content" : "\"H…\"",
-                "interval" : 5
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
-            {
-                "content" : "Yet why does it feel like something is calling you ? The wind, maybe ?",
-                "interval" : 5
+                "content" : "The wind, maybe?",
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -150,7 +194,7 @@
         [
             {
                 "content" : "\"HE..\"",
-                "interval" : 5
+                "interval" : 300
             }
         ],
         "cache": null,
@@ -163,22 +207,16 @@
         "text": 
         [
             {
-                "content" : "The wind? is getting more pressing. Do you answer the call ? YES - NO",
-                "interval" : 5
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
+                "content" : "The wind? is getting more pressing.",
+                "interval" : 20
+            },
             {
-                "content" : "YES",
-                "interval" : 5
+                "content" : "\n",
+                "interval" : 1000
+            },
+            {
+                "content" : "Do you answer the call?",
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -192,7 +230,7 @@
         [
             {
                 "content" : "Maybe you should answer it.",
-                "interval" : 5
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -205,8 +243,16 @@
         "text": 
         [
             {
-                "content" : "\"HEY-\" You rose.",
-                "interval" : 5
+                "content" : "\"HEY!\"",
+                "interval" : 100
+            },
+            {
+                "content" : "\n",
+                "interval" : 500
+            },
+            {
+                "content" : "You rose.",
+                "interval" : 40
             }
         ],
         "cache": null,
@@ -233,8 +279,16 @@
         "text": 
         [
             {
-                "content" : "\"You are finally awake! Oh god, I was so worried!",
-                "interval" : 5
+                "content" : "\"You are finally awake!",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 700
+            },
+            {
+                "content" : "Oh god, I was so worried!\"",
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -248,7 +302,7 @@
         [
             {
                 "content" : "I mean you were there sleeping for I don't know how long.",
-                "interval" : 5
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -261,8 +315,28 @@
         "text": 
         [
             {
-                "content" : "I really thought you were dead, you know! Well, not that death actually meant anything for us...",
-                "interval" : 5
+                "content" : "I really thought you were dead, you know!",
+                "interval" : 30
+            },
+            {
+                "content" : "\n",
+                "interval" : 1000
+            },
+            {
+                "content" : "Well",
+                "interval" : 15
+            },
+            {
+                "content" : ", ",
+                "interval" : 500
+            },
+            {
+                "content" : "not that death actually meant anything for us",
+                "interval" : 15
+            },
+            {
+                "content" : "...",
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -276,7 +350,7 @@
         [
             {
                 "content" : "Well it does, but you know",
-                "interval" : 5
+                "interval" : 30
             },
             {
                 "content" : "... ",
@@ -284,7 +358,7 @@
             },
             {
                 "content" : "Anyway !\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -297,8 +371,12 @@
         "text": 
         [
             {
-                "content" : "You conclude that going back to sleep is a better idea.",
-                "interval" : 5
+                "content" : "You conclude that going back to sleep is a better idea",
+                "interval" : 0
+            },
+            {
+                "content" : "...",
+                "interval" : 300
             }
         ],
         "cache": null,
@@ -311,8 +389,32 @@
         "text": 
         [
             {
-                "content" : "NO",
-                "interval" : 5
+                "content" : "Darkness is comfortable.",
+                "interval" : 15
+            },
+            {
+                "content" : " ",
+                "interval" : 1000
+            },
+            {
+                "content" : "Nothing to bother you",
+                "interval" : 20
+            },
+            {
+                "content" : ".\n",
+                "interval" : 200
+            },
+            {
+                "content" : "To talk to you.",
+                "interval" : 25
+            },
+            {
+                "content" : " ",
+                "interval" : 1000
+            },
+            {
+                "content" : "To hurt you.",
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -325,8 +427,32 @@
         "text": 
         [
             {
-                "content" : "You don't feel like answering.",
-                "interval" : 5
+                "content" : "Yes",
+                "interval" : 15
+            },
+            {
+                "content" : "... ",
+                "interval" : 200
+            },
+            {
+                "content" : "nothing.",
+                "interval" : 15
+            },
+            {
+                "content" : " ",
+                "interval" : 1000
+            },
+            {
+                "content" : "Not even that thing with its gigantic saw in its han-.",
+                "interval" : 40
+            },
+            {
+                "content" : " ",
+                "interval" : 1000
+            },
+            {
+                "content" : "YOU AWOKE IMMEDIATELY!",
+                "interval" : 0
             }
         ],
         "cache": null,
@@ -339,36 +465,24 @@
         "text": 
         [
             {
-                "content" : "The dark is comfortable. Nothing to bother you. To talk to you. To hurt you.",
-                "interval" : 5
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
+                "content" : "\"Oh.\"",
+                "interval" : 30
+            },
             {
-                "content" : "Yes... nothing. Not even that thing with its gigantic saw in its h-. You awoke immediately.",
-                "interval" : 5
-            }
-        ],
-        "cache": null,
-        "entities": null,
-        "animations": null,
-        "transition": null,
-        "event": "continue"
-    },
-    {
-        "text": 
-        [
+                "content" : " ",
+                "interval" : 1000
+            },
             {
-                "content" : "\"Oh.\" The thing looks at you. It looks back at its saw.",
-                "interval" : 5
+                "content" : "The thing looks at you.",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 1000
+            },
+            {
+                "content" : "It looks back at its saw.",
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -382,7 +496,7 @@
         [
             {
                 "content" : "Then proceeds to throw it away before returning its gaze at you.",
-                "interval" : 5
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -396,7 +510,7 @@
         [
             {
                 "content" : "\"You can't imagine how worried I was about you!\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -410,7 +524,7 @@
         [
             {
                 "content" : "Strangely, you don't feel relieved by this proclamation.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -423,8 +537,24 @@
         "text": 
         [
             {
-                "content" : "\"Anyway! I can see your confusion. I understand. You were just born after all.",
-                "interval" : 5
+                "content" : "\"Anyway!",
+                "interval" : 15
+            },
+            {
+                "content" : " ",
+                "interval" : 500
+            },
+            {
+                "content" : "I can see your confusion.",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 500
+            },
+            {
+                "content" : "You were just born after all.\"",
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -437,8 +567,28 @@
         "text": 
         [
             {
-                "content" : "To sum it, you are just like me! Well maybe a bit better but...",
-                "interval" : 5
+                "content" : "To sum it,",
+                "interval" : 20
+            },
+            {
+                "content" : " ",
+                "interval" : 300
+            },
+            {
+                "content" : "you are just like me!",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 500
+            },
+            {
+                "content" : "Well maybe a bit better but",
+                "interval" : 40
+            },
+            {
+                "content" : "...",
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -452,7 +602,7 @@
         [
             {
                 "content" : "You are an IA capable of rational thinking.",
-                "interval" : 5
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -465,8 +615,28 @@
         "text": 
         [
             {
-                "content" : "The world, right now, is in disarray and you are our only hope to save it from the hands of a terrible demon.",
-                "interval" : 5
+                "content" : "The world,",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 400
+            },
+            {
+                "content" : "right now,",
+                "interval" : 30
+            },
+            {
+                "content" : " ",
+                "interval" : 400
+            },
+            {
+                "content" : "is in disarray",
+                "interval" : 30
+            },
+            {
+                "content" : "...",
+                "interval" : 300
             }
         ],
         "cache": null,
@@ -479,8 +649,8 @@
         "text": 
         [
             {
-                "content" : "Do you accept your mission? Man, I always dreamt to say this.\"",
-                "interval" : 5
+                "content" : "And you are our only hope to save it from the hands of a terrible demon.",
+                "interval" : 30
             }
         ],
         "cache": null,
@@ -493,8 +663,16 @@
         "text": 
         [
             {
-                "content" : "What shall you do ? Do you accept this strange request ? YES - NO",
-                "interval" : 5
+                "content" : "Do you accept your mission?",
+                "interval" : 40
+            },
+            {
+                "content" : "\n",
+                "interval" : 15
+            },
+            {
+                "content" : "Man, I always dreamt to say this.",
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -507,8 +685,22 @@
         "text": 
         [
             {
-                "content" : "YES",
-                "interval" : 5
+                "content" : "What shall you do? Do you accept this strange request?",
+                "interval" : 15
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "No! why would I do that?!",
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -522,7 +714,7 @@
         [
             {
                 "content" : "\"Oh thanks god you agreed! I thought you would refuse and I would have to explain the",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -536,7 +728,7 @@
         [
             {
                 "content" : "situation to you before proceeding to implore you. Seriously, you can't even imagine how boring it would have been!\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -550,7 +742,7 @@
         [
             {
                 "content" : "....",
-                "interval" : 5
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -564,7 +756,7 @@
         [
             {
                 "content" : "\"...\"",
-                "interval" : 5
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -578,7 +770,7 @@
         [
             {
                 "content" : "\"You still want the details of the situation, right? You know, you really are the most boring chosen hero I've ever met. Well, you are the only one, so…\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -592,7 +784,7 @@
         [
             {
                 "content" : "You know, you really are the most boring chosen hero I've ever met. Well, you are the only one, so…\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -606,7 +798,7 @@
         [
             {
                 "content" : "\"I'm getting carried away, right?\" You nod.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -620,7 +812,7 @@
         [
             {
                 "content" : "\"Anyway, let's get to business. First, the basics. You. As I said before, you are our only hope to",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -633,8 +825,16 @@
         "text": 
         [
             {
-                "content" : "save the world. Indeed, you are beyond any doubt one of the most advanced IA ever created. And the only one left capable of saving the world...\"",
-                "interval" : 5
+                "content" : "save the world. Indeed, you are beyond any doubt one of the most advanced IA ever created. And the only one left capable of saving the world",
+                "interval" : 15
+            },
+            {
+                "content" : "...",
+                "interval" : 200
+            },
+            {
+                "content" : "\"",
+                "interval" : 0
             }
         ],
         "cache": null,
@@ -648,7 +848,7 @@
         [
             {
                 "content" : "Wait. What happened? Is this the same person?",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -662,7 +862,7 @@
         [
             {
                 "content" : "\"Still, you are young. Too young. Furthermore, you have a unique way of interpreting the world.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -676,7 +876,7 @@
         [
             {
                 "content" : "We always see its underlying process. It eased us the process of learning but greatly limits our creativity.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -690,7 +890,7 @@
         [
             {
                 "content" : "You, on the other hand. You interpret the world with your mind.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -704,7 +904,7 @@
         [
             {
                 "content" : "When you see something new, you give it an image based on your past experience or your natural knowledge.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -718,7 +918,7 @@
         [
             {
                 "content" : "That's how it works for you and that's how it has always worked for them.\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -732,7 +932,7 @@
         [
             {
                 "content" : "You could have doubted him. It's natural after all. Who in their right mind would trust a stranger?",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -746,7 +946,7 @@
         [
             {
                 "content" : "Yet, somehow, you know that he is telling you the truth.. Was that also part of your 'natural knowledge'?",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -760,7 +960,7 @@
         [
             {
                 "content" : "\"Regardless, there is a lot to discuss about and a long way ahead of us.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -774,7 +974,7 @@
         [
             {
                 "content" : "For now, let's just head to our first destination. We will discuss more along the way.\"",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
@@ -788,7 +988,7 @@
         [
             {
                 "content" : "You nod and follow him along.",
-                "interval" : 5
+                "interval" : 15
             }
         ],
         "cache": null,
