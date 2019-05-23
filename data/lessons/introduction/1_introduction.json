@@ -77,20 +77,6 @@
                 }
             ]
         ],
-        "animations": null,
-        "transition": null,
-        "event": null
-    },
-    {
-        "text": 
-        [
-            {
-                "content" : "...",
-                "interval" : 1000 
-            }
-        ],
-        "cache": null,
-        "entities": null,
         "animations": [
             [
                 {
@@ -116,42 +102,705 @@
             ]
         ],
         "transition": null,
-        "event": "continue"
+        "event": null
     },
     {
-        "text":
+        "text": 
         [
             {
-                "content" : "Darkness...\nDarkness everywhere...",
-                "interval": 5
+                "content" : "...",
+                "interval" : 5
             }
         ],
         "cache": null,
         "entities": null,
-        "animations": [
-            [
-                {
-                    "type": "cubic",
-                    "option": "out",
-                    "tag": "player",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 100,
-                    "end": -500,
-                    "duration": 1500
-                },
-                {
-                    "type": "quad",
-                    "option": "out",
-                    "tag": "guide",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 900,
-                    "end": 1500,
-                    "duration": 1500
-                }
-            ]
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Darkness. Darkness everywhere.\nHow long have you been there ? Alone. You don't know.",
+                "interval" : 5
+            }
         ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"H…\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Yet why does it feel like something is calling you ? The wind, maybe ?",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"HE..\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "The wind? is getting more pressing. Do you answer the call ? YES - NO",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "YES",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Maybe you should answer it.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"HEY-\" You rose.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"...\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"You are finally awake! Oh god, I was so worried!",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "I mean you were there sleeping for I don't know how long.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "I really thought you were dead, you know! Well, not that death actually meant anything for us...",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Well it does, but you know... Anyway !\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You conclude that going back to sleep is a better idea.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "NO",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You don't feel like answering.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "The dark is comfortable. Nothing to bother you. To talk to you. To hurt you.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Yes... nothing. Not even that thing with its gigantic saw in its h-. You awoke immediately.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Oh.\" The thing looks at you. It looks back at its saw.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Then proceeds to throw it away before returning its gaze at you.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"You can't imagine how worried I was about you!\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Strangely, you don't feel relieved by this proclamation.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Anyway! I can see your confusion. I understand. You were just born after all.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "To sum it, you are just like me! Well maybe a bit better but...",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You are an IA capable of rational thinking.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "The world, right now, is in disarray and you are our only hope to save it from the hands of a terrible demon.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Do you accept your mission? Man, I always dreamt to say this.\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "What shall you do ? Do you accept this strange request ? YES - NO",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "YES",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Oh thanks god you agreed! I thought you would refuse and I would have to explain the",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "situation to you before proceeding to implore you. Seriously, you can't even imagine how boring it would have been!\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "....",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"...\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"You still want the details of the situation, right? You know, you really are the most boring chosen hero I've ever met. Well, you are the only one, so…\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You know, you really are the most boring chosen hero I've ever met. Well, you are the only one, so…\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"I'm getting carried away, right?\" You nod.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Anyway, let's get to business. First, the basics. You. As I said before, you are our only hope to",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "save the world. Indeed, you are beyond any doubt one of the most advanced IA ever created. And the only one left capable of saving the world...\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Wait. What happened? Is this the same person?",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Still, you are young. Too young. Furthermore, you have a unique way of interpreting the world.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "We always see its underlying process. It eased us the process of learning but greatly limits our creativity.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You, on the other hand. You interpret the world with your mind.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "When you see something new, you give it an image based on your past experience or your natural knowledge.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "That's how it works for you and that's how it has always worked for them.\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You could have doubted him. It's natural after all. Who in their right mind would trust a stranger?",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "Yet, somehow, you know that he is telling you the truth.. Was that also part of your 'natural knowledge'?",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "\"Regardless, there is a lot to discuss about and a long way ahead of us.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "For now, let's just head to our first destination. We will discuss more along the way.\"",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
+        "transition": null,
+        "event": "continue"
+    },
+    {
+        "text": 
+        [
+            {
+                "content" : "You nod and follow him along.",
+                "interval" : 5
+            }
+        ],
+        "cache": null,
+        "entities": null,
+        "animations": null,
         "transition": null,
         "event": "continue"
     },

@@ -4,14 +4,14 @@
         "cache": {
             "texture": [
                 {
-                    "id": "button_inactive",
-                    "path": "data/assets/buttons/button_inactive.png"
+                    "id": "varInt",
+                    "path": "data/assets/Characters/11/11.png"
                 }
             ],
             "animation": [
                 {
-                    "id": "button_active",
-                    "path": "data/assets/buttons/button_active",
+                    "id": "varIntGlitch",
+                    "path": "data/assets/Characters/11/11.0",
                     "animTime": 1000
                 }
             ],
@@ -21,33 +21,28 @@
         "entities": [
             [
                 {
-                    "component": "sprite",
-                    "id": "button_inactive",
-                    "width": 280,
-                    "height": 80
+                    "component": "animation",
+                    "id": "varIntGlitch",
+                    "width": 100,
+                    "height": 100
                 },
                 {
                     "component": "position",
-                    "x": 0,
-                    "y": 0
+                    "x": 600,
+                    "y": 200
                 }
             ],
             [
                 {
                     "component": "sprite",
-                    "id": "button_inactive",
-                    "width": 280,
-                    "height": 80
+                    "id": "varInt",
+                    "width": 100,
+                    "height": 100
                 },
                 {
                     "component": "position",
-                    "x": -500,
-                    "y": 250
-                },
-                {
-                    "component": "velocity",
-                    "x": 0,
-                    "y": 0
+                    "x": 700,
+                    "y": 200
                 },
                 {
                     "component": "tag",
@@ -57,19 +52,27 @@
             [
                 {
                     "component": "sprite",
-                    "id": "button_inactive",
-                    "width": 280,
-                    "height": 80
+                    "id": "varInt",
+                    "width": 100,
+                    "height": 100
                 },
                 {
                     "component": "position",
-                    "x": 1500,
-                    "y": 250
+                    "x": 600,
+                    "y": 300
+                }
+            ],
+            [
+                {
+                    "component": "sprite",
+                    "id": "varInt",
+                    "width": 100,
+                    "height": 100
                 },
                 {
-                    "component": "velocity",
-                    "x": 0,
-                    "y": 0
+                    "component": "position",
+                    "x": 700,
+                    "y": 300
                 },
                 {
                     "component": "tag",
@@ -77,7 +80,30 @@
                 }
             ]
         ],
-        "animations": null,
+        "animations": [
+            [
+                {
+                    "type": "back",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": -500,
+                    "end": 700,
+                    "duration": 1500
+                },
+                {
+                    "type": "sine",
+                    "option": "in",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 1500,
+                    "end": 700,
+                    "duration": 1500
+                }
+            ]
+        ],
         "transition": null,
         "event": null
     },
@@ -91,30 +117,7 @@
         ],
         "cache": null,
         "entities": null,
-        "animations": [
-            [
-                {
-                    "type": "back",
-                    "option": "in",
-                    "tag": "player",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": -500,
-                    "end": 100,
-                    "duration": 1500
-                },
-                {
-                    "type": "sine",
-                    "option": "in",
-                    "tag": "guide",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 1500,
-                    "end": 900,
-                    "duration": 1500
-                }
-            ]
-        ],
+        "animations": null,
         "transition": null,
         "event": "continue"
     },
@@ -128,30 +131,7 @@
         ],
         "cache": null,
         "entities": null,
-        "animations": [
-            [
-                {
-                    "type": "cubic",
-                    "option": "out",
-                    "tag": "player",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 100,
-                    "end": -500,
-                    "duration": 1500
-                },
-                {
-                    "type": "quad",
-                    "option": "out",
-                    "tag": "guide",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 900,
-                    "end": 1500,
-                    "duration": 1500
-                }
-            ]
-        ],
+        "animations": null,
         "transition": null,
         "event": "continue"
     },

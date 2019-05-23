@@ -15,6 +15,7 @@ struct sprite
 struct anim
 {
     entt::ResourceHandle<animation> anim;
+    float index;
 };
 
 struct position
