@@ -53,5 +53,10 @@
         "name": "DLC",
         "unlocked": false,
         "index": "data/lessons/dlc/index.json"
+    },
+    {
+        "name": "Visual Editor",
+        "unlocked": true,
+        "index": "data/lessons/visual/index.json"
     }
 ]

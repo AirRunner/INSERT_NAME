@@ -52,6 +52,17 @@ Scene* Lesson::handleEvents(float deltaTime)
     {
         return new PauseMenu(this, this->cacheManager);
     }
+    
+    Vector2 mousePos = GetMousePosition();
+    if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
+        registry->view<position, velocity>().each(
+            [mousePos](auto entity, auto& position, auto& velocity)
+            {
+                position.x = mousePos.x;
+                position.y = mousePos.y;
+            }
+        );
+    }
 
     if(nextEvent == Null)
     {
@@ -59,21 +70,9 @@ Scene* Lesson::handleEvents(float deltaTime)
     }
     else if(nextEvent == Continue)
     {
-        if(IsKeyPressed(KEY_ENTER))
-        {
-            if(!text.isUpdateComplete())
-                text.completeText();
-            else
-                return parser.parseLesson(*this);
-        }
-        else if(IsKeyPressed(KEY_SPACE))
-        {
-            if(!text.isUpdateComplete())
-                text.completeText();
-            else
-                return parser.parseLesson(*this);
-        }
-        else if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        if(IsKeyPressed(KEY_ENTER) ||
+            IsKeyPressed(KEY_SPACE) ||
+            IsKeyPressed(KEY_RIGHT))
         {
             if(!text.isUpdateComplete())
                 text.completeText();

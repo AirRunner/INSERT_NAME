@@ -2,8 +2,7 @@
 
 void systems::updatePos(entt::DefaultRegistry* registry, float deltaTime)
 {
-    registry->view<position, velocity>().each
-    (
+    registry->view<position, velocity>().each(
         [deltaTime](auto entity, auto& position, auto& velocity)
         {
             position.x += velocity.x * deltaTime;
@@ -43,18 +42,34 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
     );
 }
 
-    bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos)
+bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos)
 {
     bool res = false;
     registry->view<button>().each(
-            [mousePos, &res](auto entity, auto& button)
+        [mousePos, &res](auto entity, auto& button)
+        {
+            if(CheckCollisionPointRec(mousePos, button.rect))
             {
-                if(CheckCollisionPointRec(mousePos, button.rect))
-                {
-                    res = true;
-                }
+                res = true;
             }
-            );
+        }
+    );
+    return res;
+}
+
+bool systems::checkCollisionMouseSprite(entt::DefaultRegistry* registry, Vector2 mousePos)
+{
+    bool res = false;
+    registry->view<sprite, position>().each(
+        [mousePos, &res](auto entity, auto& sprite, auto& position)
+        {
+            if((mousePos.x > position.x - sprite.width/2 && mousePos.x < position.x + sprite.width/2) &&
+                (mousePos.y > position.y - sprite.height/2 && mousePos.y < position.y + sprite.height/2))
+            {
+                res = true;
+            }
+        }
+    );
     return res;
 }
 

@@ -16,6 +16,13 @@ Scene* JsonParser::parseLesson(Lesson& lesson) //returns the continue key
     return parseTransition(lesson);
 }
 
+Scene* JsonParser::parseVisual(VisualEditor& visualEditor)
+{
+    loadResources(visualEditor.doc, visualEditor.cacheManager);
+    createEntities(visualEditor.doc, visualEditor.registry, visualEditor.cacheManager);
+    return &visualEditor;
+}
+
 void JsonParser::updateText(rj::Document& doc, Text& text) //updates the text of the scene
 {
     if(doc[counter].IsObject())

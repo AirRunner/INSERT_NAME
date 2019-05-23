@@ -1,5 +1,6 @@
 #pragma once
 #include "../../scene.hpp"
+#include "../../data-layer/jsonParser.hpp"
 
 class VisualEditor: public Scene {
     public:
@@ -8,5 +9,10 @@ class VisualEditor: public Scene {
         Scene* update(float deltaTime) override;
         void render() const override;
         ~VisualEditor();
+        
+        friend class JsonParser;
     private:
+        rj::Document doc;
+        CacheManager* cacheManager;
+        JsonParser parser;
 };

@@ -1,0 +1,10 @@
+{
+    "name": "Visual Editor",
+    "unlocks": null,
+    "levels": [
+        {
+            "name": "visual",
+            "path": "data/lessons/introduction/visual.json"
+        }
+    ]
+}

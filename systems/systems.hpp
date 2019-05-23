@@ -25,6 +25,7 @@ namespace systems
     void drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing);
     int updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected);
     bool checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos);
+    bool checkCollisionMouseSprite(entt::DefaultRegistry* registry, Vector2 mousePos);
     void loadJson(rj::Document& doc, const char* path);
     void drawTextRecPro(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack, int halign, int valign);
     int MeasureHeightTextRec(Font font, const char *text, Rectangle rec, float fontSize, float spacing);
