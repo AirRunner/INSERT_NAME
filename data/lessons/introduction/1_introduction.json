@@ -109,7 +109,7 @@
         [
             {
                 "content" : "...",
-                "interval" : 5
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -235,7 +235,7 @@
         [
             {
                 "content" : "\"...\"",
-                "interval" : 5
+                "interval" : 200
             }
         ],
         "cache": null,
@@ -290,7 +290,15 @@
         "text": 
         [
             {
-                "content" : "Well it does, but you know... Anyway !\"",
+                "content" : "Well it does, but you know",
+                "interval" : 5
+            },
+            {
+                "content" : "... ",
+                "interval" : 500
+            },
+            {
+                "content" : "Anyway !\"",
                 "interval" : 5
             }
         ],
