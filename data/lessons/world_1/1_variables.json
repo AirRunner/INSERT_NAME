@@ -5,13 +5,13 @@
             "texture": [
                 {
                     "id": "varInt",
-                    "path": "data/assets/Characters/11/11.png"
+                    "path": "data/assets/characters/11/11.png"
                 }
             ],
             "animation": [
                 {
                     "id": "varIntGlitch",
-                    "path": "data/assets/Characters/11/11.0",
+                    "path": "data/assets/characters/11/11.0",
                     "animTime": 1000
                 }
             ],
