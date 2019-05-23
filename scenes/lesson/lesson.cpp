@@ -59,21 +59,7 @@ Scene* Lesson::handleEvents(float deltaTime)
     }
     else if(nextEvent == Continue)
     {
-        if(IsKeyPressed(KEY_ENTER))
-        {
-            if(!text.isUpdateComplete())
-                text.completeText();
-            else
-                return parser.parseLesson(*this);
-        }
-        else if(IsKeyPressed(KEY_SPACE))
-        {
-            if(!text.isUpdateComplete())
-                text.completeText();
-            else
-                return parser.parseLesson(*this);
-        }
-        else if(IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
+        if(IsKeyPressed(KEY_ENTER) || IsKeyPressed(KEY_SPACE) || IsMouseButtonPressed(MOUSE_LEFT_BUTTON) || IsKeyPressed(KEY_RIGHT))
         {
             if(!text.isUpdateComplete())
                 text.completeText();
