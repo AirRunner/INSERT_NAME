@@ -23,8 +23,8 @@
                 {
                     "component": "animation",
                     "id": "varIntGlitch",
-                    "width": 100,
-                    "height": 100
+                    "width": 132,
+                    "height": 132
                 },
                 {
                     "component": "position",
