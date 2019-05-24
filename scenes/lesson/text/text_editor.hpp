@@ -10,4 +10,6 @@ class TextEditor: public Scene {
         ~TextEditor();
     private:
     	Font font;
+    	Rectangle rect;
+    	char* text;
 };
