@@ -1,5 +1,6 @@
 #include "../scenes/include_scenes.hpp"
 #include <filesystem>
+#include <algorithm>
 
 namespace fs = std::filesystem;
 
@@ -33,6 +34,8 @@ int main(int argc, char* argv[])
 {
     int screenWidth = 1280;
     int screenHeight = 720;
+    int windowWidth = 1280;
+    int windowHeight = 720;
 
     const int minimalFPS = 6;
     const int maxFrameDelay = 1000/minimalFPS;
@@ -40,8 +43,8 @@ int main(int argc, char* argv[])
     float deltaTime = 1; //init to 1 so that it can draw the first frame
     srand(time(NULL));
 
-    SetConfigFlags(FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
-    InitWindow(screenWidth, screenHeight, "[INSERT GAME NAME]");
+    SetConfigFlags(FLAG_WINDOW_RESIZABLE | FLAG_MSAA_4X_HINT | FLAG_VSYNC_HINT);
+    InitWindow(windowWidth, windowHeight, "[INSERT GAME NAME]");
     if(!IsWindowReady())
     {
         return 1;
@@ -56,7 +59,7 @@ int main(int argc, char* argv[])
 
     Scene* scene = new LevelSelect();
 
-#ifdef HOTRELOAD
+    #ifdef HOTRELOAD
     auto listener = jet::make_unique<ExampleListener>();
     auto live = jet::make_unique<jet::Live>(std::move(listener));
 
@@ -65,10 +68,14 @@ int main(int argc, char* argv[])
         live->update();
     }
     live->update();
-#endif
+    #endif
+
+    RenderTexture2D target = LoadRenderTexture(screenWidth, screenHeight);
+    SetTextureFilter(target.texture, FILTER_BILINEAR);
 
     while(scene)
     {
+        float scale = std::min((float)GetScreenWidth()/screenWidth, (float)GetScreenHeight()/screenHeight);
         deltaTime += GetFrameTime()*1000; // times 1000 so that it's in milliseconds
 
         if(deltaTime > 0)
@@ -79,14 +86,15 @@ int main(int argc, char* argv[])
                 //so, if the game is under the minimal FPS, then, the game slows down
             }
 
-#ifdef HOTRELOAD
+            #ifdef HOTRELOAD
             live->update();
 
             if(IsKeyDown(KEY_LEFT_CONTROL) && IsKeyPressed(KEY_R))
             {
                 live->tryReload();
             }
-#endif
+            #endif
+
             scene = scene->handleEvents(deltaTime);
 
             if(scene)
@@ -96,10 +104,20 @@ int main(int argc, char* argv[])
                 {
                     BeginDrawing();
 
-                    ClearBackground(BLACK);
+                        ClearBackground(BLACK);
 
-                    DrawFPS(0,0);
-                    scene->render();
+                        BeginTextureMode(target);
+
+                            ClearBackground(BLACK);
+
+                            DrawFPS(0,0);
+                            scene->render();
+
+                        EndTextureMode();
+
+                        DrawTexturePro(target.texture, (Rectangle){ 0.0f, 0.0f, (float)target.texture.width, (float)-target.texture.height },
+                           (Rectangle){ (float)((GetScreenWidth() - ((float)screenWidth*scale))*0.5), (float)((GetScreenHeight() - ((float)screenHeight*scale))*0.5),
+                           (float)screenWidth*scale, (float)screenHeight*scale }, (Vector2){ 0, 0 }, 0.0f, WHITE);
 
                     EndDrawing();
                 }
@@ -111,7 +129,8 @@ int main(int argc, char* argv[])
             std::this_thread::sleep_for(std::chrono::milliseconds(10)); //here, if we have a deltaTime of 0, we wait a bit
         }
     }
-
+    
+    UnloadRenderTexture(target);
     CloseWindow();
 
     return 0;
