@@ -1,12 +1,5 @@
-[
-    {
-        "name": "Introduction",
-        "unlocked": true,
-        "index": "data/lessons/introduction/index.json"
-    },
-    {
-        "name": "World I",
-        "unlocked": true,
-        "index": "data/lessons/world_1/index.json"
-    }
-]
+{
+    "name": "Visual Editor",
+    "unlocks": null,
+    "levels": null
+}

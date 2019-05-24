@@ -79,10 +79,5 @@
         "animations": null,
         "transition": null,
         "event": null
-    },
-    {
-        "name": "Introduction",
-        "unlocked": true,
-        "index": "data/lessons/introduction/index.json"
     }
 ]

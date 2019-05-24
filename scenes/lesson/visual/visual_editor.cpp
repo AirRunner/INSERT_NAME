@@ -5,7 +5,6 @@ VisualEditor::VisualEditor()
 {
     cacheManager = new CacheManager;
     systems::loadJson(doc, "data/lessons/visual/visual.json");
-    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     parser.parseVisual(*this);
 }
 
@@ -47,7 +46,6 @@ void VisualEditor::render() const
 {
     DrawRectangle(1030, 0, 250, 720, DARKGRAY);
     systems::drawEntities(registry);
-    systems::drawButtons(registry, font, 40, 0);
 }
 
 VisualEditor::~VisualEditor()

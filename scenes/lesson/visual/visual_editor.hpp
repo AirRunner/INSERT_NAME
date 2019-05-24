@@ -17,5 +17,4 @@ class VisualEditor: public Scene {
         JsonParser parser;
         uint32_t selectedEntity = -1;
         Vector2 mousePos;
-        Font font;
 };
