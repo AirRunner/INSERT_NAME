@@ -1,12 +1,8 @@
 #include "text_editor.hpp"
 
-// #pragma GCC diagnostic push
-// #pragma GCC diagnostic ignored "-Werror"
-// #pragma GCC diagnostic pop
-
 TextEditor::TextEditor()
 {
-	font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+	font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 30, NULL, 600);
 
 	float width = 1280;
     float height = 720;
@@ -19,7 +15,8 @@ TextEditor::TextEditor()
         height/3 - 2*padding
     };
 
-    text = new char[10000];
+    file = 0;
+    droppedFiles = { 0 };
 }
 
 Scene* TextEditor::handleEvents(float deltaTime)
@@ -32,6 +29,10 @@ Scene* TextEditor::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_F10))
     {
         ToggleFullscreen();
+    }
+    if (IsFileDropped() && !file)
+    {
+        droppedFiles = GetDroppedFiles(&file);
     }
 
     return this;
@@ -46,10 +47,22 @@ Scene* TextEditor::update(float deltaTime)
 void TextEditor::render() const
 {
     systems::drawEntities(registry);
-    DrawText("TEST", 190, 200, 20, LIGHTGRAY);
+
+    if (!file) DrawTextEx(font, "Drop your file to this window!", {100,40}, 30, 0, LIGHTGRAY);
+    else
+    {
+    	DrawTextEx(font, "Dropped file:", {100,40}, 30, 0, LIGHTGRAY);
+
+        if(file)
+        {
+            DrawRectangle(0, 85, 1280, 60, Fade(LIGHTGRAY, 0.5f));
+
+            DrawTextEx(font, droppedFiles[0], {120,100}, 30, 0, LIGHTGRAY);
+        }
+    }
 }
 
 TextEditor::~TextEditor()
 {
-	delete text;
+	ClearDroppedFiles();
 }

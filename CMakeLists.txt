@@ -15,7 +15,7 @@ file(GLOB_RECURSE HEADERS "*.hpp")
 
 set(OUTPUT "project")
 
-set(OPT "-Wall -std=c++17 -g -DRAYGUI_IMPLEMENTATION")
+set(OPT "-Wall -Werror -std=c++17 -g")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 

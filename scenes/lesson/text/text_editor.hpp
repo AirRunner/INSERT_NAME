@@ -11,5 +11,6 @@ class TextEditor: public Scene {
     private:
     	Font font;
     	Rectangle rect;
-    	char* text;
+    	int file;
+    	char** droppedFiles;
 };
