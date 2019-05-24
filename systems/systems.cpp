@@ -12,16 +12,36 @@ void systems::updatePos(entt::DefaultRegistry* registry, float deltaTime)
     );
 }
 
-void systems::updateAnims(entt::DefaultRegistry* registry, float deltaTime)
+void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float deltaTime)
 {
     registry->view<anim>().each
     (
-        [deltaTime](auto entity, auto& anim)
+        [mode, deltaTime](auto entity, auto& anim)
         {
             anim.index += deltaTime/(anim.animHandle->animTime/anim.animHandle->size);
-            if(anim.index > anim.animHandle->size)
+            if(anim.index > anim.animHandle->size - 1)
             {
-                anim.index = 0;
+                switch(mode)
+                {
+                    case 1: // Loop mode
+                            anim.index = 0;
+                        break;
+                    case 2: // One Shot mode
+                            anim.index = anim.animHandle->size - 1;
+                        break;
+                    case 3: // Random mode
+                            if(rand()%(int)(3000/deltaTime) == 1)
+                            {
+                                anim.index = 0;
+                            }
+                            else
+                            {
+                                anim.index = anim.animHandle->size - 1;
+                            }
+                        break;
+                    default:
+                        break;
+                }
             }
         }
     );
