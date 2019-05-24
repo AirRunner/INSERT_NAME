@@ -15,4 +15,7 @@ class VisualEditor: public Scene {
         rj::Document doc;
         CacheManager* cacheManager;
         JsonParser parser;
+        uint32_t selectedEntity = -1;
+        Vector2 mousePos;
+        Font font;
 };

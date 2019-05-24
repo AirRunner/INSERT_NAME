@@ -57,16 +57,16 @@ bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector
     return res;
 }
 
-bool systems::checkCollisionMouseSprite(entt::DefaultRegistry* registry, Vector2 mousePos)
+std::uint32_t systems::checkCollisionMouseSprite(entt::DefaultRegistry* registry, Vector2 mousePos)
 {
-    bool res = false;
+    std::uint32_t res = -1;
     registry->view<sprite, position>().each(
         [mousePos, &res](auto entity, auto& sprite, auto& position)
         {
-            if((mousePos.x > position.x - sprite.width/2 && mousePos.x < position.x + sprite.width/2) &&
-                (mousePos.y > position.y - sprite.height/2 && mousePos.y < position.y + sprite.height/2))
+            Vector2 pos = {position.x, position.y};
+            if(CheckCollisionPointCircle(mousePos, pos, sprite.width/2))
             {
-                res = true;
+                res = entity;
             }
         }
     );

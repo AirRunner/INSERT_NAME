@@ -1,10 +1,12 @@
-{
-    "name": "Visual Editor",
-    "unlocks": null,
-    "levels": [
-        {
-            "name": "visual",
-            "path": "data/lessons/introduction/visual.json"
-        }
-    ]
-}
+[
+    {
+        "name": "Introduction",
+        "unlocked": true,
+        "index": "data/lessons/introduction/index.json"
+    },
+    {
+        "name": "World I",
+        "unlocked": true,
+        "index": "data/lessons/world_1/index.json"
+    }
+]

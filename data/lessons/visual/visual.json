@@ -4,8 +4,16 @@
         "cache": {
             "texture": [
                 {
-                    "id": "player",
+                    "id": "variableTool",
+                    "path": "data/assets/characters/0/0.png"
+                },
+                {
+                    "id": "guide",
                     "path": "data/assets/characters/1/1.png"
+                },
+                {
+                    "id": "player",
+                    "path": "data/assets/characters/11/11.png"
                 }
             ],
             "animation": null,
@@ -22,8 +30,8 @@
                 },
                 {
                     "component": "position",
-                    "x": 500,
-                    "y": 250
+                    "x": 400,
+                    "y": 300
                 },
                 {
                     "component": "velocity",
@@ -34,14 +42,32 @@
             [
                 {
                     "component": "sprite",
-                    "id": "player",
+                    "id": "guide",
                     "width": 200,
                     "height": 200
                 },
                 {
                     "component": "position",
-                    "x": 800,
-                    "y": 250
+                    "x": 700,
+                    "y": 300
+                },
+                {
+                    "component": "velocity",
+                    "x": 0,
+                    "y": 0
+                }
+            ],
+            [
+                {
+                    "component": "sprite",
+                    "id": "variableTool",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 100
                 },
                 {
                     "component": "velocity",
@@ -53,5 +79,10 @@
         "animations": null,
         "transition": null,
         "event": null
+    },
+    {
+        "name": "Introduction",
+        "unlocked": true,
+        "index": "data/lessons/introduction/index.json"
     }
 ]
