@@ -41,6 +41,13 @@ struct button
     int id;
 };
 
+struct tool
+{
+    entt::ResourceHandle<texture> texHandle;
+    float width;
+    float height;
+};
+
 struct player
 {
 

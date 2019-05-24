@@ -11,10 +11,12 @@ class VisualEditor: public Scene {
         ~VisualEditor();
         
         friend class JsonParser;
+        
     private:
         rj::Document doc;
         CacheManager* cacheManager;
         JsonParser parser;
-        uint32_t selectedEntity = -1;
+        uint32_t selectedSprite = -1;
+        uint32_t selectedTool = -1;
         Vector2 mousePos;
 };

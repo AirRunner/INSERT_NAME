@@ -70,6 +70,17 @@ void systems::drawEntities(entt::DefaultRegistry* registry)
             DrawTexturePro(anim.animHandle->anim[(int) anim.index], sourceRect, destRect, origin, rotation, WHITE);
         }
     );
+    registry->view<tool, position>().each(
+        [](auto entity, auto& tool, auto& position)
+        {
+            float rotation = 0;
+            Rectangle sourceRect, destRect;
+            sourceRect = {0, 0, (float) tool.texHandle->tex.width, (float) tool.texHandle->tex.height};
+            destRect = {(float) position.x, (float) position.y, tool.width, tool.height};
+            Vector2 origin = {(float) tool.width/2, (float) tool.height/2};
+            DrawTexturePro(tool.texHandle->tex, sourceRect, destRect, origin, rotation, WHITE);
+        }
+    );
 }
 
 void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing)
@@ -111,6 +122,22 @@ std::uint32_t systems::checkCollisionMouseSprite(entt::DefaultRegistry* registry
         {
             Vector2 pos = {position.x, position.y};
             if(CheckCollisionPointCircle(mousePos, pos, sprite.width/2))
+            {
+                res = entity;
+            }
+        }
+    );
+    return res;
+}
+
+std::uint32_t systems::checkCollisionMouseTool(entt::DefaultRegistry* registry, Vector2 mousePos)
+{
+    std::uint32_t res = -1;
+    registry->view<tool, position>().each(
+        [mousePos, &res](auto entity, auto& tool, auto& position)
+        {
+            Vector2 pos = {position.x, position.y};
+            if(CheckCollisionPointCircle(mousePos, pos, tool.width/2))
             {
                 res = entity;
             }

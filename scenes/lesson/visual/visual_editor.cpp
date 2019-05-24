@@ -1,4 +1,5 @@
 #include "visual_editor.hpp"
+#include "../menus/pause_menu.hpp"
 
 
 VisualEditor::VisualEditor()
@@ -19,16 +20,26 @@ Scene* VisualEditor::handleEvents(float deltaTime)
     {
         ToggleFullscreen();
     }
+    if(IsKeyPressed(KEY_ESCAPE))
+    {
+        return new PauseMenu(this, this->cacheManager);
+    }
     
-    Vector2 newMousePos = GetMousePosition();
     if (IsMouseButtonPressed(MOUSE_LEFT_BUTTON)) {
-        selectedEntity = systems::checkCollisionMouseSprite(registry, mousePos);
+        selectedSprite = systems::checkCollisionMouseSprite(registry, mousePos);
+        selectedTool = systems::checkCollisionMouseTool(registry, mousePos);
+        if (registry->valid(selectedTool)) {
+            // For the moment it can only load variables
+            systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
+            parser.parseVisual(*this);
+            systems::drawEntities(registry);
+        }
     }
     if (IsMouseButtonDown(MOUSE_LEFT_BUTTON)) {
-        Vector2 distance = Vector2Subtract(mousePos, newMousePos);
-        if (registry->valid(selectedEntity)) {
-            auto currPos = registry->get<position>(selectedEntity);
-            registry->replace<position>(selectedEntity, currPos.x -= distance.x, currPos.y -= distance.y);
+        if (registry->valid(selectedSprite)) {
+            Vector2 distance = Vector2Subtract(mousePos, GetMousePosition());
+            auto currPos = registry->get<position>(selectedSprite);
+            registry->replace<position>(selectedSprite, currPos.x -= distance.x, currPos.y -= distance.y);
         }
     }
 

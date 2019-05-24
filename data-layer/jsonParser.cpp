@@ -104,6 +104,10 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     {
                         registry->assign<sprite>(entity, cacheManager->textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}), entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
                     }
+                    else if(component == "tool")
+                    {
+                        registry->assign<tool>(entity, cacheManager->textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}), entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
+                    }
                     else if(component == "position")
                     {
                         registry->assign<position>(entity, entities[i][j]["x"].GetFloat(),entities[i][j]["y"].GetFloat());

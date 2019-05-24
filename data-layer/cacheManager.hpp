@@ -13,6 +13,7 @@ class CacheManager
 {
     public:
         friend class JsonParser;
+        friend class VisualEditor;
 
     private:
         //The resource caches
