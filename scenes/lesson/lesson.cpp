@@ -72,7 +72,8 @@ Scene* Lesson::handleEvents(float deltaTime)
     {
         if(IsKeyPressed(KEY_ENTER) ||
             IsKeyPressed(KEY_SPACE) ||
-            IsKeyPressed(KEY_RIGHT))
+            IsKeyPressed(KEY_RIGHT) ||
+            IsMouseButtonPressed(MOUSE_LEFT_BUTTON))
         {
             if(!text.isUpdateComplete())
                 text.completeText();
@@ -88,6 +89,7 @@ Scene* Lesson::handleEvents(float deltaTime)
 Scene* Lesson::update(float deltaTime)
 {
     systems::updatePos(registry, deltaTime);
+    systems::updateAnims(registry, 3, deltaTime);
     animManager.udpateAnims(deltaTime);
     text.updateText(deltaTime);
     return this;

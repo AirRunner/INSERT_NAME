@@ -21,6 +21,7 @@ namespace rj = rapidjson;
 namespace systems
 {
     void updatePos(entt::DefaultRegistry* registry, float deltaTime);
+    void updateAnims(entt::DefaultRegistry* registry, int mode, float deltaTime);
     void drawEntities(entt::DefaultRegistry* registry);
     void drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing);
     int updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected);

@@ -11,6 +11,41 @@ void systems::updatePos(entt::DefaultRegistry* registry, float deltaTime)
     );
 }
 
+void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float deltaTime)
+{
+    registry->view<anim>().each
+    (
+        [mode, deltaTime](auto entity, auto& anim)
+        {
+            anim.index += deltaTime/(anim.animHandle->animTime/anim.animHandle->size);
+            if(anim.index > anim.animHandle->size - 1)
+            {
+                switch(mode)
+                {
+                    case 1: // Loop mode
+                            anim.index = 0;
+                        break;
+                    case 2: // One Shot mode
+                            anim.index = anim.animHandle->size - 1;
+                        break;
+                    case 3: // Random mode
+                            if(rand()%(int)(3000/deltaTime) == 1)
+                            {
+                                anim.index = 0;
+                            }
+                            else
+                            {
+                                anim.index = anim.animHandle->size - 1;
+                            }
+                        break;
+                    default:
+                        break;
+                }
+            }
+        }
+    );
+}
+
 void systems::drawEntities(entt::DefaultRegistry* registry)
 {
     registry->view<sprite, position>().each(
@@ -22,6 +57,17 @@ void systems::drawEntities(entt::DefaultRegistry* registry)
             destRect = {(float) position.x, (float) position.y, sprite.width, sprite.height};
             Vector2 origin = {(float) sprite.width/2, (float) sprite.height/2};
             DrawTexturePro(sprite.texHandle->tex, sourceRect, destRect, origin, rotation, WHITE);
+        }
+    );
+    registry->view<anim, position>().each(
+        [](auto entity, auto& anim, auto& position)
+        {
+            float rotation = 0;
+            Rectangle sourceRect, destRect;
+            sourceRect = {0, 0, (float) anim.animHandle->anim[(int) anim.index].width, (float) anim.animHandle->anim[(int) anim.index].height};
+            destRect = {(float) position.x, (float) position.y, anim.width, anim.height};
+            Vector2 origin = {(float) anim.width/2, (float) anim.height/2};
+            DrawTexturePro(anim.animHandle->anim[(int) anim.index], sourceRect, destRect, origin, rotation, WHITE);
         }
     );
 }
