@@ -50,6 +50,8 @@ Scene* VisualEditor::update(float deltaTime)
 {
     mousePos = GetMousePosition();
     systems::updatePos(registry, deltaTime);
+    /*systems::updateAnims(registry, 3, deltaTime);
+    animManager.udpateAnims(deltaTime);*/
     return this;
 }
 
