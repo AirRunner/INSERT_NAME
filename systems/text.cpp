@@ -2,6 +2,7 @@
 
 Text::Text(){
     text = std::list<std::pair<std::string, float>>();
+    // currentText = std::pair<std::string, float>("", 0);
     currentTime = 0;
     currentIndice = 0;
     maximumSize = 0;
