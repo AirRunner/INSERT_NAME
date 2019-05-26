@@ -89,13 +89,22 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
     );
 }
 
-    bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos)
+bool systems::checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos)
 {
     bool res = false;
     registry->view<button>().each(
             [mousePos, &res](auto entity, auto& button)
             {
-                if(CheckCollisionPointRec(mousePos, button.rect))
+                Rectangle rect = button.rect;
+                Vector2 padding = getScreenPadding();
+                float scale = getScreenScale();
+                rect.x *= scale;
+                rect.y *= scale;
+                rect.x += padding.x;
+                rect.y += padding.y;
+                rect.width *= scale;
+                rect.height *= scale;
+                if(CheckCollisionPointRec(mousePos, rect))
                 {
                     res = true;
                 }
@@ -347,7 +356,16 @@ int systems::updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bo
     registry->view<button>().each(
         [mousePos, mouseActive, &id](auto entity, auto& button)
         {
-            if((mouseActive && CheckCollisionPointRec(mousePos, button.rect)) || id == button.id)
+            Rectangle rect = button.rect;
+            Vector2 padding = getScreenPadding();
+            float scale = getScreenScale();
+            rect.x *= scale;
+            rect.y *= scale;
+            rect.x += padding.x;
+            rect.y += padding.y;
+            rect.width *= scale;
+            rect.height *= scale;
+            if((mouseActive && CheckCollisionPointRec(mousePos, rect)) || id == button.id)
             {
                 button.selected = 1;
                 id = button.id;
