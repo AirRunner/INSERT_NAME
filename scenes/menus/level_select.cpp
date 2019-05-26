@@ -10,6 +10,9 @@ LevelSelect::LevelSelect()
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
 
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
+
     camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
@@ -23,6 +26,9 @@ LevelSelect::LevelSelect(CacheManager* cacheManager): cacheManager(cacheManager)
 
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     levelSelect = 0;
+
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
 
     camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
@@ -56,10 +62,12 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_UP))
     {
         levelSelect--;
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"select"})->audio);
     }
     if(IsKeyPressed(KEY_DOWN))
     {
         levelSelect++;
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"select"})->audio);
     }
 
     Vector2 newMousePos = GetMousePosition();
@@ -92,6 +100,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
 
     if(IsKeyPressed(KEY_ESCAPE))
     {
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"back"})->audio);
         systems::loadJson(doc, "data/lessons/index.json");
         levelSelect = 0;
         resetButtons(false);
@@ -99,6 +108,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     
     if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && systems::checkCollisionMouseButtons(registry, mousePos)))
     {
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"select"})->audio);
         if(doc.IsArray()) //the world select part
         {
             systems::loadJson(doc, doc[levelSelect]["index"].GetString());

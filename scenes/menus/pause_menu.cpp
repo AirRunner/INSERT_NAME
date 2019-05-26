@@ -53,6 +53,8 @@ PauseMenu::PauseMenu(Scene* resumeScene): resumeScene(resumeScene), selected(0),
     registry = new entt::DefaultRegistry{};
     cacheManager = new CacheManager;
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
 
     camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
@@ -66,6 +68,8 @@ PauseMenu::PauseMenu(Scene* resumeScene, CacheManager* cacheManager): resumeScen
 {
     registry = new entt::DefaultRegistry{};
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
+    cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
 
     camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
@@ -130,6 +134,7 @@ Scene* PauseMenu::handleEvents(float deltaTime)
     Scene* tmp;
     if(IsKeyPressed(KEY_ESCAPE))
     {
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"back"})->audio);
         tmp = resumeScene;
         delete this;
         return tmp;
@@ -137,6 +142,7 @@ Scene* PauseMenu::handleEvents(float deltaTime)
     
     if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && systems::checkCollisionMouseButtons(registry, mousePos)))
     {
+        PlaySound(cacheManager->audios.handle(entt::HashedString{"select"})->audio);
         switch(selected)
         {
             case 0:
