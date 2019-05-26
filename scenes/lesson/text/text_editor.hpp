@@ -1,5 +1,10 @@
 #pragma once
 #include "../../scene.hpp"
+#include <cling/Interpreter/Interpreter.h>
+#include <cling/Interpreter/Value.h>
+#include <cling/Utils/Casting.h>
+
+// namespace ci = cling::Interpreter;
 
 class TextEditor: public Scene {
     public:
@@ -13,4 +18,5 @@ class TextEditor: public Scene {
     	Rectangle rect;
     	int file;
     	char** droppedFiles;
+    	// cling::Interpreter* interp;
 };

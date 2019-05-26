@@ -17,6 +17,8 @@ TextEditor::TextEditor()
 
     file = 0;
     droppedFiles = { 0 };
+
+    // interp = new cling::Interpreter(0, nullptr, LLVMDIR);
 }
 
 Scene* TextEditor::handleEvents(float deltaTime)
@@ -33,6 +35,7 @@ Scene* TextEditor::handleEvents(float deltaTime)
     if (IsFileDropped() && !file)
     {
         droppedFiles = GetDroppedFiles(&file);
+        // cling::Interpreter::loadHeader(droppedFiles[0], Transaction **T=0);
     }
 
     return this;

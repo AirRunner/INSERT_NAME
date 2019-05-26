@@ -15,17 +15,21 @@ file(GLOB_RECURSE HEADERS "*.hpp")
 
 set(OUTPUT "project")
 
-set(OPT "-Wall -Werror -std=c++17 -g")
+set(OPT "-Wall -Werror -std=c++17 -g -DLLVMDIR='\"/usr/include/llvm/\"'")
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
-
-set(SDL2_BUILDING_LIBRARY)
 
 project(project)
 
 find_package(EnTT REQUIRED)
 find_package(Raylib REQUIRED)
 find_package(RJson REQUIRED)
+find_package(Cling REQUIRED)
+find_package(LLVM REQUIRED CONFIG)
+message(STATUS "Found LLVM ${LLVM_PACKAGE_VERSION}")
+message(STATUS "Using LLVMConfig.cmake in: ${LLVM_DIR}")
+message("LLVM_INCLUDE_DIRS=${LLVM_INCLUDE_DIRS}")
+message("LLVM_DEFINITIONS=${LLVM_DEFINITIONS}")
 
 IF(APPLE)
   find_library(COCOA_LIBRARY Cocoa)
@@ -67,9 +71,16 @@ list(REMOVE_DUPLICATES INCLUDE_DIRS)
 add_executable(${OUTPUT} ${SOURCES} ${HEADERS})
 set_property(TARGET ${OUTPUT} PROPERTY CXX_STANDARD 17)
 
-target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS} ${RJSON_INCLUDE_DIRS})
+target_include_directories(${OUTPUT} PRIVATE ${INCLUDE_DIRS} ${ENTT_INCLUDE_DIRS} ${RAYLIB_INCLUDE_DIRS} ${RJSON_INCLUDE_DIRS} ${CLING_INCLUDE_DIRS})
 
-target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES} stdc++fs)
+include_directories(${LLVM_INCLUDE_DIRS})
+add_definitions(${LLVM_DEFINITIONS})
+
+# Find the libraries that correspond to the LLVM components
+# that we wish to use
+llvm_map_components_to_libnames(llvm_libs support core irreader)
+
+target_link_libraries(${OUTPUT} ${RAYLIB_LIBRARIES} ${CLING_LIBRARIES} LLVM stdc++fs)
 
 IF(APPLE)
   target_link_libraries(${OUTPUT} ${COCOA_LIBRARY} ${OPENGL_LIBRARY} ${IOKIT_LIBRARY} ${COREVIDEO_LIBRARY})
