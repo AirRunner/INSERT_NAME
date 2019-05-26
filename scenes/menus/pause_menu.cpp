@@ -9,9 +9,9 @@ void PauseMenu::initButtons()
         registry->destroy(entity);
     }
 
-    int width = GetScreenWidth();
+    int width = screenWidth;
     int widthBox = 500;
-    int heightBox = 50;
+    int heightBox = 65;
     int padding = 30;
     for(int i = 0; i < size; ++i)
     {
@@ -110,22 +110,22 @@ Scene* PauseMenu::handleEvents(float deltaTime)
         mouseActive = false;
     }
 
-    camera.offset.y += GetMouseWheelMove()*50;
+    //camera.offset.y += GetMouseWheelMove()*50;
 
-    int height = GetScreenHeight();
-    int heightBox = 50;
-    int padding = 30;
-    if(-((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
-    {
-        if(camera.offset.y > 0)
-        {
-            camera.offset.y = 0;
-        }
-        else if(camera.offset.y < -((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height)
-        {
-            camera.offset.y = -((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height;
-        }
-    }
+    //int height = GetScreenHeight();
+    //int heightBox = 50;
+    //int padding = 30;
+    //if(-((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
+    //{
+    //    if(camera.offset.y > 0)
+    //    {
+    //        camera.offset.y = 0;
+    //    }
+    //    else if(camera.offset.y < -((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height)
+    //    {
+    //        camera.offset.y = -((size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height;
+    //    }
+    //}
 
     Scene* tmp;
     if(IsKeyPressed(KEY_ESCAPE))

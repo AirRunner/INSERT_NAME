@@ -73,22 +73,22 @@ Scene* LevelSelect::handleEvents(float deltaTime)
         mouseActive = false;
     }
 
-    camera.offset.y += GetMouseWheelMove()*50;
+    //camera.offset.y += GetMouseWheelMove()*50;
 
-    int height = GetScreenHeight();
-    int heightBox = 50;
-    int padding = 30;
-    if(-(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
-    {
-        if(camera.offset.y > 0)
-        {
-            camera.offset.y = 0;
-        }
-        else if(camera.offset.y < -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height)
-        {
-            camera.offset.y = -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height;
-        }
-    }
+    //int height = GetScreenHeight();
+    //int heightBox = 50;
+    //int padding = 30;
+    //if(-(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height < 0)
+    //{
+    //    if(camera.offset.y > 0)
+    //    {
+    //        camera.offset.y = 0;
+    //    }
+    //    else if(camera.offset.y < -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height)
+    //    {
+    //        camera.offset.y = -(((int)size-1)*(heightBox+padding)+ padding) - (heightBox + padding)+ height;
+    //    }
+    //}
 
     if(IsKeyPressed(KEY_ESCAPE))
     {
@@ -166,7 +166,7 @@ void LevelSelect::resetButtons(bool level)
 
     int width = screenWidth;
     int widthBox = 500;
-    int heightBox = 50;
+    int heightBox = 65;
     int padding = 30;
     for(rj::SizeType i = 0; i < size; ++i)
     {
