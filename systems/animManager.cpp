@@ -21,7 +21,7 @@ void AnimManager::udpateAnims(float deltaTime)
                     animInfo.currentTime = animInfo.animTime;
                 }
                 animInfo.param = animInfo.animFunc(animInfo.currentTime, animInfo.paramStart, animInfo.paramChange, animInfo.animTime);
-                TraceLog(LOG_INFO, "param: %f", animInfo.param);
+                TraceLog(LOG_DEBUG, "param: %f", animInfo.param);
             }
         }
     }
