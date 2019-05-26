@@ -19,7 +19,7 @@ void Text::reservePrintText()
     ptext = "";
 }
 
-void Text::updateText(float deltaTime) //update ptext at regular interval
+void Text::updateText(float deltaTime, Sound soundFX) //update ptext at regular interval
 {
     if(text.size() > 0 && currentIndice == 0)
         currentText = text.front();
@@ -30,6 +30,7 @@ void Text::updateText(float deltaTime) //update ptext at regular interval
         {
             ptext += currentText.first[currentIndice++];
             currentTime = currentTime - currentText.second;
+            PlaySound(soundFX);
         }
         if(currentIndice >= (int)currentText.first.size()){
             currentIndice = 0;

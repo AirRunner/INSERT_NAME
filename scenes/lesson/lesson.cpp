@@ -1,5 +1,6 @@
 #include "lesson.hpp"
 #include "../menus/pause_menu.hpp"
+#include "../../data-layer/cacheManager.hpp"
 
 
 Lesson::Lesson(std::string path)
@@ -78,7 +79,7 @@ Scene* Lesson::update(float deltaTime)
     systems::updateAnims(registry, 3, deltaTime);
     systems::updateMusic(registry);
     animManager.udpateAnims(deltaTime);
-    text.updateText(deltaTime);
+    text.updateText(deltaTime, cacheManager->audios.handle(entt::HashedString{"text"})->audio);
     return this;
 }
 

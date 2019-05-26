@@ -11,7 +11,7 @@ class Text
         Text();
         ~Text() = default;
         void addText(std::string value, float interval);
-        void updateText(float deltaTime);
+        void updateText(float deltaTime, Sound soundFX);
         bool isUpdateComplete();
         void completeText();
         void reservePrintText();
