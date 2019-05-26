@@ -118,6 +118,23 @@ float systems::getScreenScale()
     return std::min((float)GetScreenWidth()/screenWidth, (float)GetScreenHeight()/screenHeight);
 }
 
+void systems::toggleFullscreen()
+{
+    if(GetScreenWidth() == GetMonitorWidth(0) && GetScreenHeight() == GetMonitorHeight(0))
+    {
+        Vector2 padding;
+        padding.x = 100;
+        padding.y = padding.x*(9.f/16.f);
+        SetWindowPosition(padding.x, padding.y);
+        SetWindowSize(GetMonitorWidth(0)-2*padding.x, GetMonitorHeight(0)-2*padding.y);
+    }
+    else
+    {
+        SetWindowPosition(0,0);
+        SetWindowSize(GetMonitorWidth(0), GetMonitorHeight(0));
+    }
+}
+
 Vector2 systems::getScreenPadding()
 {
     Vector2 res;

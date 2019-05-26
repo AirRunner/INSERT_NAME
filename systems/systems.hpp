@@ -30,8 +30,11 @@ namespace systems
     void drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing);
 
     bool checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos);
+
     float getScreenScale();
     Vector2 getScreenPadding();
+
+    void toggleFullscreen();
 
     void loadJson(rj::Document& doc, const char* path);
 

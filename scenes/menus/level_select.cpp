@@ -41,19 +41,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     }
     if(IsKeyPressed(KEY_F11))
     {
-        if(GetScreenWidth() == GetMonitorWidth(0) && GetScreenHeight() == GetMonitorHeight(0))
-        {
-            Vector2 padding;
-            padding.x = 100;
-            padding.y = padding.x*(9.f/16.f);
-            SetWindowPosition(padding.x, padding.y);
-            SetWindowSize(GetMonitorWidth(0)-2*padding.x, GetMonitorHeight(0)-2*padding.y);
-        }
-        else
-        {
-            SetWindowPosition(0,0);
-            SetWindowSize(GetMonitorWidth(0), GetMonitorHeight(0));
-        }
+        systems::toggleFullscreen();
         camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
         if(doc.IsArray()) //the world select part
         {
