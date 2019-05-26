@@ -51,6 +51,8 @@ int main(int argc, char* argv[])
         return 1;
     }
 
+    InitAudioDevice();
+
     SetTargetFPS(maxFPS);
     SetTraceLogLevel(LOG_INFO);
     SetTraceLogExit(LOG_WARNING);

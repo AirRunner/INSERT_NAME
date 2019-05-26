@@ -41,6 +41,11 @@ struct button
     int id;
 };
 
+struct bMusic
+{
+    entt::ResourceHandle<music> musicHandle;
+};
+
 struct player
 {
 

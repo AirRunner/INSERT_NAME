@@ -109,6 +109,11 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     {
                         registry->assign<anim>(entity, cacheManager->animations.handle(entt::HashedString{entities[i][j]["id"].GetString()}), 0.f, entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
                     }
+                    else if(component == "music")
+                    {
+                        registry->assign<bMusic>(entity, cacheManager->musics.handle(entt::HashedString{entities[i][j]["id"].GetString()}));
+                        systems::playMusic(registry);
+                    }
                     else if(component == "tag")
                     {
                         std::string tag = entities[i][j]["tag"].GetString();

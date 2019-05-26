@@ -13,8 +13,18 @@
                 }
             ],
             "animation": null,
-            "music": null,
-            "soundFX": null
+            "music": [
+                {
+                    "id": "background_music",
+                    "path": "data/sound/Synthwave.mp3"
+                }
+            ],
+            "soundFX": [
+                {
+                    "id": "text",
+                    "path": "data/sound/text.wav"
+                }
+            ]
         },
         "entities": [
             [
@@ -270,7 +280,14 @@
             }
         ],
         "cache": null,
-        "entities": null,
+        "entities": [
+            [
+                {
+                    "component": "music",
+                    "id": "background_music"
+                }
+            ]
+        ],
         "animations": null,
         "transition": null,
         "event": "continue"
