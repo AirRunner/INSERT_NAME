@@ -104,6 +104,29 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
     return res;
 }
 
+float systems::getScreenScale()
+{
+    return std::min((float)GetScreenWidth()/screenWidth, (float)GetScreenHeight()/screenHeight);
+}
+
+Vector2 systems::getScreenPadding()
+{
+    Vector2 res;
+    if((float)GetScreenWidth()/(float)GetScreenHeight() > 16.f/9.f)
+    {
+        res.y = 0; // In this case, the sceenHeight is the one that didn't change
+        res.x = GetScreenWidth() - GetScreenHeight()*(16.f/9.f); //Getting all of the non used space
+        res.x /= 2; //Dividing by two to get the padding
+    }
+    else
+    {
+        res.x = 0; // In this case, the sceenWidth is the one that didn't change
+        res.y = GetScreenHeight() - GetScreenWidth()/(16.f/9.f); //Getting all of the non used space
+        res.y /= 2; //Dividing by two to get the padding
+    }
+    return res;
+}
+
 void systems::drawTextRecPro(Font font, const char *text, Rectangle rec, float fontSize, float spacing, bool wordWrap, Color tint, int selectStart, int selectLength, Color selectText, Color selectBack, int halign, int valign)
 {
     int length = strlen(text);
