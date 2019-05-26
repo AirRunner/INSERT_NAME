@@ -25,9 +25,13 @@ namespace systems
     void updatePos(entt::DefaultRegistry* registry, float deltaTime);
     void updateAnims(entt::DefaultRegistry* registry, int mode, float deltaTime);
     int updateButtons(entt::DefaultRegistry* registry, Vector2 mousePos, bool mouseActive, int selected);
+    void updateMusic(entt::DefaultRegistry* registry);
 
     void drawEntities(entt::DefaultRegistry* registry);
     void drawButtons(entt::DefaultRegistry* registry, const Font& font, float fontSize, float spacing);
+
+    void playMusic(entt::DefaultRegistry* registry);
+    void pauseMusic(entt::DefaultRegistry* registry);
 
     bool checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos);
 

@@ -47,6 +47,36 @@ void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float delta
     );
 }
 
+void systems::updateMusic(entt::DefaultRegistry* registry)
+{
+    registry->view<bMusic>().each(
+        [](auto entity, auto& music)
+        {
+            UpdateMusicStream(music.musicHandle->audio);
+        }
+    );
+}
+
+void systems::playMusic(entt::DefaultRegistry* registry)
+{
+    registry->view<bMusic>().each(
+        [](auto entity, auto& music)
+        {
+            PlayMusicStream(music.musicHandle->audio);
+        }
+    );
+}
+
+void systems::pauseMusic(entt::DefaultRegistry* registry)
+{
+    registry->view<bMusic>().each(
+        [](auto entity, auto& music)
+        {
+            PauseMusicStream(music.musicHandle->audio);
+        }
+    );
+}
+
 void systems::drawEntities(entt::DefaultRegistry* registry)
 {
     registry->view<sprite, position>().each(

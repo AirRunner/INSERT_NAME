@@ -13,11 +13,11 @@ class CacheManager
 {
     public:
         friend class JsonParser;
+        musicCache musics;
+        soundFXCache audios;
 
     private:
         //The resource caches
         textureCache textures;
         animationCache animations;
-        musicCache musics;
-        soundFXCache audios;
 };
