@@ -30,10 +30,11 @@ void ExampleListener::onLog(jet::LogSeverity severity, const std::string& messag
 }
 #endif
 
+
+
+
 int main(int argc, char* argv[])
 {
-    int screenWidth = 1280;
-    int screenHeight = 720;
     int windowWidth = 1280;
     int windowHeight = 720;
 
@@ -108,7 +109,7 @@ int main(int argc, char* argv[])
 
                         BeginTextureMode(target);
 
-                            ClearBackground(BLACK);
+                            ClearBackground((Color){ 30, 30, 30, 255 });
 
                             DrawFPS(0,0);
                             scene->render();

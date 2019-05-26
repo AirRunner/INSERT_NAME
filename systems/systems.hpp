@@ -17,6 +17,8 @@ namespace rj = rapidjson;
 
 #include "../components/components.hpp"
 
+#define screenWidth (int)1920
+#define screenHeight (int)1080
 
 namespace systems
 {

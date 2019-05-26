@@ -164,7 +164,7 @@ void LevelSelect::resetButtons(bool level)
         size = doc.Size();
     }
 
-    int width = GetScreenWidth();
+    int width = screenWidth;
     int widthBox = 500;
     int heightBox = 50;
     int padding = 30;

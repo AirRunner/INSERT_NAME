@@ -7,9 +7,9 @@ Lesson::Lesson(std::string path)
     cacheManager = new CacheManager;
     systems::loadJson(doc, path.c_str());
     parser.parseLesson(*this);
-    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
-    float width = 1280;
-    float height = 720;
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 60, NULL, 600);
+    float width = screenWidth;
+    float height = screenHeight;
     float padding = 50;
     rect =
     {
@@ -24,9 +24,9 @@ Lesson::Lesson(std::string path, CacheManager* cacheManager): cacheManager(cache
 {
     systems::loadJson(doc, path.c_str());
     parser.parseLesson(*this);
-    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
-    float width = 1280;
-    float height = 720;
+    font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 60, NULL, 600);
+    float width = screenWidth;
+    float height = screenHeight;
     float padding = 50;
     rect =
     {
@@ -86,8 +86,8 @@ void Lesson::render() const
     systems::drawEntities(registry);
     DrawRectangleRounded(rect, 0.5, 10, GRAY);
     DrawRectangleRoundedLines(rect, 0.5, 10, 5, DARKGRAY);
-    Rectangle newRec = systems::createRectangleForPadding(rect, 10, 10, 10, 10);
-    systems::drawTextRecPro(font, text.ptext.c_str(), newRec, 40, 0, true, WHITE, 0, 0, WHITE, WHITE, 0, 0);
+    Rectangle newRec = systems::createRectangleForPadding(rect, 40, 40, 40, 40);
+    systems::drawTextRecPro(font, text.ptext.c_str(), newRec, 60, 0, true, WHITE, 0, 0, WHITE, WHITE, 0, 0);
 }
 
 Lesson::~Lesson()
