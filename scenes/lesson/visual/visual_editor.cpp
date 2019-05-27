@@ -29,9 +29,8 @@ Scene* VisualEditor::handleEvents(float deltaTime)
         selectedSprite = systems::checkCollisionMouseSprite(registry, mousePos);
         selectedTool = systems::checkCollisionMouseTool(registry, mousePos);
         if (registry->valid(selectedTool)) {
-//            auto newTool = registry->get<tool>(selectedTool);
             int posY = registry->get<position>(selectedTool).y;
-            switch (posY) {
+            switch (posY) {    // Positions of the 6 buttons on the y axis
                 case 135:
                     systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
                     break;
