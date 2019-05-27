@@ -11,4 +11,5 @@ class StartScreen: public Scene {
         ~StartScreen();
     private:
     	CacheManager* cacheManager;
+    	Scene* nextScene;
 };
