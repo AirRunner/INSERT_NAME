@@ -16,7 +16,12 @@
                 }
             ],
             "music": null,
-            "soundFX": null
+            "soundFX": [
+                {
+                    "id": "text",
+                    "path": "data/sound/text.wav"
+                }
+            ]
         },
         "entities": [
             [

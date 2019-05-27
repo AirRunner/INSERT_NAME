@@ -50,8 +50,8 @@
                 },
                 {
                     "component": "position",
-                    "x": 400,
-                    "y": 300
+                    "x": 600,
+                    "y": 450
                 }
             ],
             [
@@ -63,86 +63,86 @@
                 },
                 {
                     "component": "position",
-                    "x": 700,
-                    "y": 300
+                    "x": 1050,
+                    "y": 450
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addVariable",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 90
+                    "x": 1725,
+                    "y": 135
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addPointer",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 200
+                    "x": 1725,
+                    "y": 300
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addChar2",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 310
+                    "x": 1725,
+                    "y": 465
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addChar3",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 420
+                    "x": 1725,
+                    "y": 630
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addChar4",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 530
+                    "x": 1725,
+                    "y": 795
                 }
             ],
             [
                 {
                     "component": "tool",
                     "id": "addChar7",
-                    "width": 100,
-                    "height": 100
+                    "width": 150,
+                    "height": 150
                 },
                 {
                     "component": "position",
-                    "x": 1150,
-                    "y": 640
+                    "x": 1725,
+                    "y": 960
                 }
             ]
         ],

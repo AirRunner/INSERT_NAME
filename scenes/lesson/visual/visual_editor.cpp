@@ -32,22 +32,22 @@ Scene* VisualEditor::handleEvents(float deltaTime)
 //            auto newTool = registry->get<tool>(selectedTool);
             int posY = registry->get<position>(selectedTool).y;
             switch (posY) {
-                case 90:
+                case 135:
                     systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
                     break;
-                case 200:
+                case 300:
                     systems::loadJson(doc, "data/lessons/visual/tools/pointer.json");
                     break;
-                case 310:
+                case 465:
                     systems::loadJson(doc, "data/lessons/visual/tools/char2.json");
                     break;
-                case 420:
+                case 630:
                     systems::loadJson(doc, "data/lessons/visual/tools/char3.json");
                     break;
-                case 530:
+                case 795:
                     systems::loadJson(doc, "data/lessons/visual/tools/char4.json");
                     break;
-                case 640:
+                case 960:
                     systems::loadJson(doc, "data/lessons/visual/tools/char7.json");
                     break;
                 default:
@@ -81,7 +81,7 @@ Scene* VisualEditor::update(float deltaTime)
 
 void VisualEditor::render() const
 {
-    DrawRectangle(1030, 0, 250, 720, DARKGRAY);
+    DrawRectangle(1545, 0, 375, 1080, DARKGRAY);
     systems::drawEntities(registry);
 }
 
