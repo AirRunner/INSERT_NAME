@@ -12,7 +12,18 @@
                     "path": "data/assets/characters/3/3.png"
                 }
             ],
-            "animation": null,
+            "animation": [
+                {
+                    "id": "player",
+                    "path": "data/assets/characters/0/0.0",
+                    "animTime": 1000
+                },
+                {
+                    "id": "guide",
+                    "path": "data/assets/characters/3/3.0",
+                    "animTime": 1000
+                }
+            ],
             "music": [
                 {
                     "id": "background_music",
@@ -29,15 +40,15 @@
         "entities": [
             [
                 {
-                    "component": "sprite",
+                    "component": "animation",
                     "id": "player",
-                    "width": 200,
-                    "height": 200
+                    "width": 400,
+                    "height": 400
                 },
                 {
                     "component": "position",
-                    "x": 300,
-                    "y": 250
+                    "x": -500,
+                    "y": 500
                 },
                 {
                     "component": "velocity",
@@ -51,15 +62,15 @@
             ],
             [
                 {
-                    "component": "sprite",
+                    "component": "animation",
                     "id": "guide",
-                    "width": 200,
-                    "height": 200
+                    "width": 400,
+                    "height": 400
                 },
                 {
                     "component": "position",
-                    "x": 900,
-                    "y": 250
+                    "x": 2200,
+                    "y": 500
                 },
                 {
                     "component": "velocity",
@@ -72,30 +83,7 @@
                 }
             ]
         ],
-        "animations": [
-            [
-                {
-                    "type": "expo",
-                    "option": "out",
-                    "tag": "player",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": -500,
-                    "end": 400,
-                    "duration": 1500
-                },
-                {
-                    "type": "expo",
-                    "option": "out",
-                    "tag": "guide",
-                    "component": "position",
-                    "attribute": "x",
-                    "start": 1500,
-                    "end": 900,
-                    "duration": 1500
-                }
-            ]
-        ],
+        "animations": null,
         "transition": null,
         "event": null
     },
@@ -150,7 +138,7 @@
             },
             {
                 "content" : " ",
-                "interval" : 1100
+                "interval" : 700
             },
             {
                 "content" : "You don't know.",
@@ -267,7 +255,32 @@
         ],
         "cache": null,
         "entities": null,
-        "animations": null,
+        "animations": [
+            [
+                {
+                    "type": "expo",
+                    "option": "out",
+                    "tag": "guide",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 2200,
+                    "end": 1580,
+                    "duration": 1500
+                }
+            ],
+            [
+                {
+                    "type": "expo",
+                    "option": "out",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": -500,
+                    "end": 400,
+                    "duration": 1500
+                }
+            ]
+        ],
         "transition": null,
         "event": "continue"
     },
@@ -398,7 +411,20 @@
         ],
         "cache": null,
         "entities": null,
-        "animations": null,
+        "animations": [
+            [
+                {
+                    "type": "expo",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": 400,
+                    "end": -500,
+                    "duration": 1500
+                }
+            ]
+        ],
         "transition": null,
         "event": "continue"
     },
@@ -474,7 +500,20 @@
         ],
         "cache": null,
         "entities": null,
-        "animations": null,
+        "animations": [
+            [
+                {
+                    "type": "expo",
+                    "option": "in",
+                    "tag": "player",
+                    "component": "position",
+                    "attribute": "x",
+                    "start": -4500,
+                    "end": 400,
+                    "duration": 5500
+                }
+            ]
+        ],
         "transition": null,
         "event": "continue"
     },
@@ -685,7 +724,7 @@
             },
             {
                 "content" : "\n",
-                "interval" : 15
+                "interval" : 1000
             },
             {
                 "content" : "Man, I always dreamt to say this.",
