@@ -4,8 +4,8 @@
         "cache": {
             "texture": [
                 {
-                    "id": "variable",
-                    "path": "data/assets/characters/11/11.png"
+                    "id": "pointer",
+                    "path": "data/assets/characters/12/12.png"
                 }
             ],
             "animation": null,
@@ -16,7 +16,7 @@
             [
                 {
                     "component": "sprite",
-                    "id": "variable",
+                    "id": "pointer",
                     "width": 200,
                     "height": 200
                 },

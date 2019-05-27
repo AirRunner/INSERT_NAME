@@ -5,7 +5,27 @@
             "texture": [
                 {
                     "id": "addVariable",
-                    "path": "data/assets/characters/0/0.png"
+                    "path": "data/assets/characters/11/11.png"
+                },
+                {
+                    "id": "addPointer",
+                    "path": "data/assets/characters/12/12.png"
+                },
+                {
+                    "id": "addChar2",
+                    "path": "data/assets/characters/2/2.png"
+                },
+                {
+                    "id": "addChar3",
+                    "path": "data/assets/characters/3/3.png"
+                },
+                {
+                    "id": "addChar4",
+                    "path": "data/assets/characters/4/4.png"
+                },
+                {
+                    "id": "addChar7",
+                    "path": "data/assets/characters/7/7.png"
                 },
                 {
                     "id": "guide",
@@ -13,7 +33,7 @@
                 },
                 {
                     "id": "player",
-                    "path": "data/assets/characters/11/11.png"
+                    "path": "data/assets/characters/0/0.png"
                 }
             ],
             "animation": null,
@@ -57,7 +77,72 @@
                 {
                     "component": "position",
                     "x": 1150,
-                    "y": 100
+                    "y": 90
+                }
+            ],
+            [
+                {
+                    "component": "tool",
+                    "id": "addPointer",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 200
+                }
+            ],
+            [
+                {
+                    "component": "tool",
+                    "id": "addChar2",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 310
+                }
+            ],
+            [
+                {
+                    "component": "tool",
+                    "id": "addChar3",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 420
+                }
+            ],
+            [
+                {
+                    "component": "tool",
+                    "id": "addChar4",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 530
+                }
+            ],
+            [
+                {
+                    "component": "tool",
+                    "id": "addChar7",
+                    "width": 100,
+                    "height": 100
+                },
+                {
+                    "component": "position",
+                    "x": 1150,
+                    "y": 640
                 }
             ]
         ],

@@ -271,7 +271,7 @@ Scene* JsonParser::parseTransition(Lesson& lesson) //parses and execute the tran
             }
             else if(next == "visual")
             {
-                //TODO When Visual Editor implemented
+                nextScene = new VisualEditor();
             }
             else if(next == "editor")
             {

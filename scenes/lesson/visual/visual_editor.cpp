@@ -29,8 +29,32 @@ Scene* VisualEditor::handleEvents(float deltaTime)
         selectedSprite = systems::checkCollisionMouseSprite(registry, mousePos);
         selectedTool = systems::checkCollisionMouseTool(registry, mousePos);
         if (registry->valid(selectedTool)) {
-            // For the moment it can only load variables
-            systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
+//            auto newTool = registry->get<tool>(selectedTool);
+            int posY = registry->get<position>(selectedTool).y;
+            switch (posY) {
+                case 90:
+                    systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
+                    break;
+                case 200:
+                    systems::loadJson(doc, "data/lessons/visual/tools/pointer.json");
+                    break;
+                case 310:
+                    systems::loadJson(doc, "data/lessons/visual/tools/char2.json");
+                    break;
+                case 420:
+                    systems::loadJson(doc, "data/lessons/visual/tools/char3.json");
+                    break;
+                case 530:
+                    systems::loadJson(doc, "data/lessons/visual/tools/char4.json");
+                    break;
+                case 640:
+                    systems::loadJson(doc, "data/lessons/visual/tools/char7.json");
+                    break;
+                default:
+                    systems::loadJson(doc, "data/lessons/visual/tools/variable.json");
+                    std::cout << posY << " : default" << std::endl;
+                    break;
+            }
             parser.parseVisual(*this);
             systems::drawEntities(registry);
         }
