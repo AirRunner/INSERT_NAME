@@ -1,6 +1,14 @@
 [
     {
+        "texture": "data/assets/buttons/button_inactive.png",
+        "anim" : 
+        {
+            "path" : "data/assets/buttons/button_active",
+            "animTime": 1000
+
+        },
         "name": "Introduction",
+        "sprite" : "data/assets/buttons/button_inative.png",
         "unlocked": true,
         "index": "data/lessons/introduction/index.json"
     },

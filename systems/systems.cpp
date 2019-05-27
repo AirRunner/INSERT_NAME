@@ -45,6 +45,7 @@ void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float delta
             }
         }
     );
+    
 }
 
 void systems::updateMusic(entt::DefaultRegistry* registry)

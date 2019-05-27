@@ -34,9 +34,12 @@ struct velocity
 
 struct button
 {
+    animation* anim;
     Rectangle rect;
+    float index;
     std::string text;
     Color color;
+    Texture2D* tex;
     bool selected;
     int id;
 };

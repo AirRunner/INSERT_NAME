@@ -178,14 +178,42 @@ void LevelSelect::resetButtons(bool level)
     int widthBox = 500;
     int heightBox = 65;
     int padding = 30;
+    Texture2D text = LoadTexture(doc[0]["texture"].GetString());
+    Texture2D *anim;
+    std::vector<std::string> paths;
+    std::string path = doc[0]["anim"]["path"].GetString();
+    for(const fs::directory_entry& entry : fs::directory_iterator(path))
+    {
+        paths.push_back(entry.path().string());
+    }
+
+    std::sort(paths.begin(), paths.end());
+
+    anim = new Texture2D[paths.size()];
+
+    for(int i = 0; i < (int) paths.size(); ++i)
+    {
+        anim[i] = LoadTexture(paths[i].c_str());
+    }
+    animation animationLoader = animation{(int)paths.size(), doc[0]["anim"]["animTime"].GetFloat(), anim};
+    
+
     for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
         auto& btn = registry->assign<button>(entity);
+        if(i == 1)
+        {
+
+        }
+        btn.anim = &animationLoader;
+        btn.tex = &text;
         btn.rect.x = width/2 - widthBox/2;
         btn.rect.y = (heightBox+padding)*i + padding;
         btn.rect.width = widthBox;
         btn.rect.height = heightBox;
+
+        
         if(level)
         {
             btn.text = doc["levels"][i]["name"].GetString();
