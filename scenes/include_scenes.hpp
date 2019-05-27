@@ -1,6 +1,7 @@
 #pragma once
 #include "transition.hpp"
 #include "menus/level_select.hpp"
+#include "menus/start_screen.hpp"
 #include "menus/main_menu.hpp"
 #include "menus/pause_menu.hpp"
 #include "menus/sandbox_menu.hpp"
