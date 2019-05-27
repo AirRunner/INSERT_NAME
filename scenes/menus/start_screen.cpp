@@ -7,7 +7,7 @@ class LevelSelect;
 StartScreen::StartScreen()
 {
 	cacheManager = new CacheManager;
-    cacheManager->animations.load<animationLoader>(entt::HashedString{"credits"}, "data/assets/intro", 3000);
+    cacheManager->animations.load<animationLoader>(entt::HashedString{"credits"}, "data/assets/intro", 960);
 
     std::uint32_t entity = registry->create();
     registry->assign<position>(entity, (float) screenWidth/2, (float) screenHeight/2);
