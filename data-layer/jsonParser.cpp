@@ -16,6 +16,13 @@ Scene* JsonParser::parseLesson(Lesson& lesson) //returns the continue key
     return parseTransition(lesson);
 }
 
+Scene* JsonParser::parseVisual(VisualEditor& visualEditor)
+{
+    loadResources(visualEditor.doc, visualEditor.cacheManager);
+    createEntities(visualEditor.doc, visualEditor.registry, visualEditor.cacheManager);
+    return &visualEditor;
+}
+
 void JsonParser::updateText(rj::Document& doc, Text& text) //updates the text of the scene
 {
     if(doc[counter].IsObject())
@@ -96,6 +103,10 @@ void JsonParser::createEntities(rj::Document& doc, entt::DefaultRegistry* regist
                     if(component == "sprite")
                     {
                         registry->assign<sprite>(entity, cacheManager->textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}), entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
+                    }
+                    else if(component == "tool")
+                    {
+                        registry->assign<tool>(entity, cacheManager->textures.handle(entt::HashedString{entities[i][j]["id"].GetString()}), entities[i][j]["width"].GetFloat(), entities[i][j]["height"].GetFloat());
                     }
                     else if(component == "position")
                     {
@@ -265,7 +276,7 @@ Scene* JsonParser::parseTransition(Lesson& lesson) //parses and execute the tran
             }
             else if(next == "visual")
             {
-                //TODO When Visual Editor implemented
+                nextScene = new VisualEditor();
             }
             else if(next == "editor")
             {

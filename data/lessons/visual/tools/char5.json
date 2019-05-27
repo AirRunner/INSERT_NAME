@@ -1,0 +1,34 @@
+[
+    {
+        "text": null,
+        "cache": {
+            "texture": [
+                {
+                    "id": "char5",
+                    "path": "data/assets/characters/5/5.png"
+                }
+            ],
+            "animation": null,
+            "music": null,
+            "soundFX": null
+        },
+        "entities": [
+            [
+                {
+                    "component": "sprite",
+                    "id": "char5",
+                    "width": 200,
+                    "height": 200
+                },
+                {
+                    "component": "position",
+                    "x": 515,
+                    "y": 360
+                }
+            ]
+        ],
+        "animations": null,
+        "transition": null,
+        "event": null
+    }
+]

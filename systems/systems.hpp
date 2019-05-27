@@ -34,6 +34,8 @@ namespace systems
     void pauseMusic(entt::DefaultRegistry* registry);
 
     bool checkCollisionMouseButtons(entt::DefaultRegistry* registry, Vector2 mousePos);
+    std::uint32_t checkCollisionMouseSprite(entt::DefaultRegistry* registry, Vector2 mousePos);
+    std::uint32_t checkCollisionMouseTool(entt::DefaultRegistry* registry, Vector2 mousePos);
 
     float getScreenScale();
     Vector2 getScreenPadding();

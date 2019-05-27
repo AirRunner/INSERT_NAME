@@ -20,12 +20,14 @@ typedef enum
 
 class Lesson;
 class Scene;
+class VisualEditor;
 
 class JsonParser
 {
     public:
         JsonParser();
         Scene* parseLesson(Lesson& lesson); //returns the transition scene if one is created
+        Scene* parseVisual(VisualEditor& visualEditor);
 
     private:
         int counter;

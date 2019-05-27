@@ -145,8 +145,8 @@
             "type": "quad",
             "option": "in",
             "next": {
-                "scene": "lesson",
-                "path": "data/lessons/world_1/1_variables.json"
+                "scene": "visual",
+                "path": "data/lessons/visual/visual.json"
             },
             "duration": 800
         },

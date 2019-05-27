@@ -13,6 +13,7 @@ class CacheManager
 {
     public:
         friend class JsonParser;
+        friend class VisualEditor;
         musicCache musics;
         soundFXCache audios;
 
