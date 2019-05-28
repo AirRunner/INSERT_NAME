@@ -15,6 +15,8 @@ class CacheManager
         friend class JsonParser;
         friend class StartScreen;
         friend class VisualEditor;
+        friend class LevelSelect;
+        friend class PauseMenu;
         musicCache musics;
         soundFXCache audios;
 

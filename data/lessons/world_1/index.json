@@ -1,22 +1,29 @@
 {
-    "name": "World I",
-    "unlocks": [
-        "World II",
-        "World Bonus I",
-        "World Bonus II"
-    ],
-    "levels": [
-        {
-            "name": "variables",
-            "path": "data/lessons/world_1/1_variables.json"
-        },
-        {
-            "name": "functions",
-            "path": "data/lessons/world_1/2_functions.json"
-        },
-        {
-            "name": "pointers",
-            "path": "data/lessons/world_1/3_pointers.json"
-        }
-    ]
+    "menu" : {
+        "name": "World I",
+        "unlocks": [
+            "World II",
+            "World Bonus I",
+            "World Bonus II"
+        ],
+        "levels": 
+        [
+            {
+                "id": "buttons",
+                "name": "variables",
+                "path": "data/lessons/world_1/1_variables.json"
+            },
+            {
+                "id": "buttons",
+                "name": "functions",
+                "path": "data/lessons/world_1/2_functions.json"
+            },
+            {
+                "id": "buttons",
+                "name": "pointers",
+                "path": "data/lessons/world_1/3_pointers.json"
+            }
+        ]
+    }
+
 }

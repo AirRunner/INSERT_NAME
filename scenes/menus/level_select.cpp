@@ -13,6 +13,21 @@ LevelSelect::LevelSelect()
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
 
+    const rj::Value& animations = doc["cache"]["animation"];
+    const rj::Value& textures = doc["cache"]["texture"];
+
+    for(rj::SizeType j = 0; j < animations.Size(); ++j)
+    {
+        cacheManager->animations.load<animationLoader>(entt::HashedString
+            {animations[j]["id"].GetString()}, animations[j]["path"].GetString(), animations[j]["animTime"].GetFloat());
+
+    }
+    for(rj::SizeType j = 0; j < textures.Size(); ++j)
+    {
+        cacheManager->textures.load<textureLoader>(entt::HashedString{textures[j]["id"].GetString()}, textures[j]["path"].GetString());
+    }
+    
+
     camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
     camera.offset = {0,0};
     camera.rotation = 0.f;
@@ -49,7 +64,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     {
         systems::toggleFullscreen();
         camera.target = {(float) GetScreenWidth()/2,(float) GetScreenHeight()/2};
-        if(doc.IsArray()) //the world select part
+        if(doc["menu"].IsArray()) //the world select part
         {
             resetButtons(false);
         }
@@ -109,16 +124,16 @@ Scene* LevelSelect::handleEvents(float deltaTime)
     if(IsKeyPressed(KEY_ENTER) || (IsMouseButtonPressed(MOUSE_LEFT_BUTTON) && systems::checkCollisionMouseButtons(registry, mousePos)))
     {
         PlaySound(cacheManager->audios.handle(entt::HashedString{"select"})->audio);
-        if(doc.IsArray()) //the world select part
+        if(doc["menu"].IsArray()) //the world select part
         {
-            systems::loadJson(doc, doc[levelSelect]["index"].GetString());
+            systems::loadJson(doc, doc["menu"][levelSelect]["index"].GetString());
             levelSelect = 0;
             resetButtons(true);
         }
         else //the level select part
         {
             delete this;
-            return new Lesson(doc["levels"][levelSelect]["path"].GetString());
+            return new Lesson(doc["menu"]["levels"][levelSelect]["path"].GetString());
         }
     }
 
@@ -137,6 +152,7 @@ Scene* LevelSelect::update(float deltaTime)
     }
     systems::updatePos(registry, deltaTime);
     levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
+    systems::updateAnims(registry, 0, deltaTime);
     return this;
 }
 
@@ -165,14 +181,14 @@ void LevelSelect::resetButtons(bool level)
         registry->destroy(entity);
     }
 
+    rj::Value& buttons = doc["menu"];
+
     if(level)
     {
-        size = doc["levels"].Size();
+        buttons = buttons["levels"];
     }
-    else
-    {
-        size = doc.Size();
-    }
+
+    size = buttons.Size();
 
     int width = screenWidth;
     int widthBox = 500;
@@ -181,21 +197,16 @@ void LevelSelect::resetButtons(bool level)
     for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
-        auto& btn = registry->assign<button>(entity);
+        auto& btn = registry->assign<button>(entity, cacheManager->textures.handle(entt::HashedString{buttons[i]["id"].GetString()}), cacheManager->animations.handle(entt::HashedString{buttons[i]["id"].GetString()}));
+
         btn.rect.x = width/2 - widthBox/2;
         btn.rect.y = (heightBox+padding)*i + padding;
         btn.rect.width = widthBox;
         btn.rect.height = heightBox;
-        if(level)
-        {
-            btn.text = doc["levels"][i]["name"].GetString();
-        }
-        else
-        {
-            btn.text = doc[i]["name"].GetString();
-        }
+        btn.text = buttons[i]["name"].GetString();
+
         btn.selected = false;
-        btn.color = BLACK;
+        btn.color = WHITE;
         btn.id = i;
     }
 }

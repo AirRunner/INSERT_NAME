@@ -1,57 +1,86 @@
-[
+{
+    "cache" : 
     {
-        "name": "Introduction",
-        "unlocked": true,
-        "index": "data/lessons/introduction/index.json"
+        "texture" :
+        [{
+            "id":"buttons",
+            "path" : "data/assets/buttons/button_inactive.png"
+
+        }],
+        "animation" :
+        [{
+            "id": "buttons",
+            "path" : "data/assets/buttons/button_active",
+            "animTime" : 1000
+        }]
     },
-    {
-        "name": "World I",
-        "unlocked": true,
-        "index": "data/lessons/world_1/index.json"
-    },
-    {
-        "name": "World II",
-        "unlocked": true,
-        "index": "data/lessons/world_2/index.json"
-    },
-    {
-        "name": "World III",
-        "unlocked": true,
-        "index": "data/lessons/world_3/index.json"
-    },
-    {
-        "name": "World IV",
-        "unlocked": true,
-        "index": "data/lessons/world_4/index.json"
-    },
-    {
-        "name": "World V",
-        "unlocked": true,
-        "index": "data/lessons/world_5/index.json"
-    },
-    {
-        "name": "World VI",
-        "unlocked": true,
-        "index": "data/lessons/world_6/index.json"
-    },
-    {
-        "name": "World bonus I",
-        "unlocked": true,
-        "index": "data/lessons/world_bonus_1/index.json"
-    },
-    {
-        "name": "World bonus II",
-        "unlocked": true,
-        "index": "data/lessons/world_bonus_2/index.json"
-    },
-    {
-        "name": "World bonus III",
-        "unlocked": true,
-        "index": "data/lessons/world_bonus_3/index.json"
-    },
-    {
-        "name": "DLC",
-        "unlocked": false,
-        "index": "data/lessons/dlc/index.json"
-    }
-]
+    "menu" : 
+    [
+        {
+            "id" : "buttons",
+            "name": "Introduction",
+            "unlocked": true,
+            "index": "data/lessons/introduction/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World I",
+            "unlocked": true,
+            "index": "data/lessons/world_1/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World II",
+            "unlocked": true,
+            "index": "data/lessons/world_2/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World III",
+            "unlocked": true,
+            "index": "data/lessons/world_3/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World IV",
+            "unlocked": true,
+            "index": "data/lessons/world_4/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World V",
+            "unlocked": true,
+            "index": "data/lessons/world_5/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World VI",
+            "unlocked": true,
+            "index": "data/lessons/world_6/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World bonus I",
+            "unlocked": true,
+            "index": "data/lessons/world_bonus_1/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World bonus II",
+            "unlocked": true,
+            "index": "data/lessons/world_bonus_2/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "World bonus III",
+            "unlocked": true,
+            "index": "data/lessons/world_bonus_3/index.json"
+        },
+        {
+            "id" : "buttons",
+            "name": "DLC",
+            "unlocked": false,
+            "index": "data/lessons/dlc/index.json"
+        }
+    ]
+}

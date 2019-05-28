@@ -1,12 +1,15 @@
 {
-    "name": "Introduction",
-    "unlocks": [
-        "World I"
-    ],
-    "levels": [
-        {
-            "name": "introduction",
-            "path": "data/lessons/introduction/1_introduction.json"
-        }
-    ]
+    "menu" : {
+        "name": "Introduction",
+        "unlocks": [
+            "World I"
+        ],
+        "levels": [
+            {
+                "id": "buttons",
+                "name": "introduction",
+                "path": "data/lessons/introduction/1_introduction.json"
+            }
+        ]
+    }
 }

@@ -34,6 +34,9 @@ struct velocity
 
 struct button
 {
+    entt::ResourceHandle<texture> texHandle;
+    entt::ResourceHandle<animation> animHandle;
+    float index;
     Rectangle rect;
     std::string text;
     Color color;
