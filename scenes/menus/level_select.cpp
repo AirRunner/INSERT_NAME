@@ -129,6 +129,7 @@ Scene* LevelSelect::handleEvents(float deltaTime)
             systems::loadJson(doc, doc["menu"][levelSelect]["index"].GetString());
             levelSelect = 0;
             resetButtons(true);
+            printf("TEST %d \n",doc["menu"].IsArray());
         }
         else //the level select part
         {
@@ -181,12 +182,7 @@ void LevelSelect::resetButtons(bool level)
         registry->destroy(entity);
     }
 
-    rj::Value& buttons = doc["menu"];
-
-    if(level)
-    {
-        buttons = buttons["levels"];
-    }
+    const rj::Value& buttons = level ? doc["menu"]["levels"] : doc["menu"];
 
     size = buttons.Size();
 
