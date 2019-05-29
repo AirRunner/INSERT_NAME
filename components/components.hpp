@@ -36,10 +36,11 @@ struct button
 {
     entt::ResourceHandle<texture> texHandle;
     entt::ResourceHandle<animation> animHandle;
-    float index;
     Rectangle rect;
+    float index;
     std::string text;
     Color color;
+    Texture2D* tex;
     bool selected;
     int id;
 };

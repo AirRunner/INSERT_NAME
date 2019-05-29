@@ -190,6 +190,7 @@ void LevelSelect::resetButtons(bool level)
     int widthBox = 500;
     int heightBox = 65;
     int padding = 30;
+
     for(rj::SizeType i = 0; i < size; ++i)
     {
         auto entity = registry->create();
@@ -200,7 +201,6 @@ void LevelSelect::resetButtons(bool level)
         btn.rect.width = widthBox;
         btn.rect.height = heightBox;
         btn.text = buttons[i]["name"].GetString();
-
         btn.selected = false;
         btn.color = WHITE;
         btn.id = i;
