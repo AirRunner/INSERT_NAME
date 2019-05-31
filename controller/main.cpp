@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
 
     fs::current_path("..");
 
-    Scene* scene = new LevelSelect();
+    Scene* scene = new VisualEditor();
 
 #ifdef HOTRELOAD
     auto listener = jet::make_unique<ExampleListener>();
