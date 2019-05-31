@@ -44,6 +44,17 @@ void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float delta
             }
         }
     );
+    registry->view<button>().each
+    (
+     [deltaTime](auto entity, auto& button)
+     {
+        button.index += deltaTime/(button.animHandle->animTime/button.animHandle->size);
+        if(button.index > button.animHandle->size - 1)
+            button.index = 0;
+        if(button.selected == 0)
+            button.index = 0;
+     }
+    );
 }
 
 void systems::updateMusic(entt::DefaultRegistry* registry)
@@ -118,12 +129,18 @@ void systems::drawButtons(entt::DefaultRegistry* registry, const Font& font, flo
     registry->view<button>().each(
         [font, fontSize, spacing](auto entity, auto& button)
         {
-            Color color = GRAY;
+            float rotation = 0;
+            Rectangle sourceRect;
             if(button.selected)
             {
-                color = LIGHTGRAY;
+                sourceRect = {0, 0, (float) button.animHandle->anim[(int)button.index].width, (float) button.animHandle->anim[(int)button.index].height};
+                DrawTexturePro(button.animHandle->anim[(int)button.index], sourceRect, button.rect, {0, 0}, rotation, WHITE);
             }
-            DrawRectangleRounded(button.rect, 0.3, 10, color);
+            else
+            {
+                sourceRect = {0, 0, (float) button.texHandle->tex.width, (float) button.texHandle->tex.height};
+                DrawTexturePro(button.texHandle->tex, sourceRect, button.rect, {0, 0}, rotation, WHITE);
+            }
             systems::drawTextRecPro(font, button.text.c_str(), button.rect, fontSize, spacing, true, button.color, 0, 0, WHITE, WHITE, 1, 1);
         }
     );
@@ -482,12 +499,10 @@ Rectangle systems::createRectangleForPadding(Rectangle rec, float top, float lef
 {
     if(top + bottom > rec.height)
     {
-        printf("The sum of the left and right padding %f %f superior to the width of the original rectangle %f", left, right, rec.width);
         return rec;
     }
     if(left + right > rec.width)
     {
-        printf("The sum of the left and right padding %f and %f are superior to the width of the original rectangle %f", left, right, rec.width);
         return rec;
     }
     return {rec.x + left, rec.y + right, rec.width - (left + right), rec.height - (top + bottom)};

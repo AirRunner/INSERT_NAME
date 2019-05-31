@@ -16,7 +16,9 @@ void PauseMenu::initButtons()
     for(int i = 0; i < size; ++i)
     {
         auto entity = registry->create();
-        auto& btn = registry->assign<button>(entity);
+
+        auto& btn = registry->assign<button>(entity, cacheManager->textures.handle(entt::HashedString{"buttons"}), cacheManager->animations.handle(entt::HashedString{"buttons"}));
+
         btn.rect.x = width/2 - widthBox/2;
         btn.rect.y = (heightBox+padding)*i + padding;
         btn.rect.width = widthBox;
