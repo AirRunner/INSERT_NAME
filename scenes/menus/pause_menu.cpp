@@ -18,7 +18,6 @@ void PauseMenu::initButtons()
         auto entity = registry->create();
 
         auto& btn = registry->assign<button>(entity, cacheManager->textures.handle(entt::HashedString{"buttons"}), cacheManager->animations.handle(entt::HashedString{"buttons"}));
-
         btn.rect.x = width/2 - widthBox/2;
         btn.rect.y = (heightBox+padding)*i + padding;
         btn.rect.width = widthBox;
@@ -44,7 +43,7 @@ void PauseMenu::initButtons()
             btn.text = "Help";
         }
         btn.selected = false;
-        btn.color = BLACK;
+        btn.color = WHITE;
         btn.id = i;
     }
     std::cout << "number of entities: " << registry->size() << std::endl;
@@ -55,6 +54,8 @@ PauseMenu::PauseMenu(Scene* resumeScene): resumeScene(resumeScene), selected(0),
     registry = new entt::DefaultRegistry{};
     cacheManager = new CacheManager;
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
+    cacheManager->animations.load<animationLoader>(entt::HashedString{"buttons"}, "data/assets/buttons/button_active", 1000);
+    cacheManager->textures.load<textureLoader>(entt::HashedString{"buttons"}, "data/assets/buttons/button_inactive.png");
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
 
@@ -69,6 +70,8 @@ PauseMenu::PauseMenu(Scene* resumeScene): resumeScene(resumeScene), selected(0),
 PauseMenu::PauseMenu(Scene* resumeScene, CacheManager* cacheManager): resumeScene(resumeScene), cacheManager(cacheManager), selected(0), size(5)
 {
     registry = new entt::DefaultRegistry{};
+    cacheManager->animations.load<animationLoader>(entt::HashedString{"buttons"}, "data/assets/buttons/button_active", 1000);
+    cacheManager->textures.load<textureLoader>(entt::HashedString{"buttons"}, "data/assets/buttons/button_inactive.png");
     font = LoadFontEx("data/fonts/Anonymous Pro.ttf", 40, NULL, 600);
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"select"}, "data/sound/select.wav");
     cacheManager->audios.load<soundFXLoader>(entt::HashedString{"back"}, "data/sound/back.wav");
@@ -187,6 +190,7 @@ Scene* PauseMenu::update(float deltaTime)
     {
         selected = 0;
     }
+    systems::updateAnims(registry, 0, deltaTime);
     systems::updatePos(registry, deltaTime);
     selected = systems::updateButtons(registry, mousePos, mouseActive, selected );
     return this;

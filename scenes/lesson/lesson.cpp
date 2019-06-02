@@ -51,7 +51,7 @@ Scene* Lesson::handleEvents(float deltaTime)
     }
     if(IsKeyPressed(KEY_ESCAPE))
     {
-        return new PauseMenu(this, this->cacheManager);
+        return new PauseMenu(this);
     }
     
     if(nextEvent == Null)

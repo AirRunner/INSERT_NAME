@@ -3,31 +3,31 @@
         "text": null,
         "cache": {
             "texture": [
-                {
-                    "id": "player",
-                    "path": "data/assets/characters/0/0.png"
-                },
-                {
-                    "id": "guide",
-                    "path": "data/assets/characters/3/3.png"
-                }
-            ],
-            "animation": [
-                {
-                    "id": "player",
-                    "path": "data/assets/characters/0/0.0",
-                    "animTime": 1000
-                },
-                {
-                    "id": "guide",
-                    "path": "data/assets/characters/3/3.0",
-                    "animTime": 1000
-                }
-            ],
-            "music": [
-                {
-                    "id": "background_music",
-                    "path": "data/sound/Synthwave.mp3"
+                    {
+                        "id": "player",
+                        "path": "data/assets/characters/0/0.png"
+                    },
+                    {
+                        "id": "guide",
+                        "path": "data/assets/characters/3/3.png"
+                    }
+                ],
+                "animation": [
+                    {
+                        "id": "player",
+                        "path": "data/assets/characters/0/0.0",
+                        "animTime": 1000
+                    },
+                    {
+                        "id": "guide",
+                        "path": "data/assets/characters/3/3.0",
+                        "animTime": 1000
+                    }
+                ],
+                "music": [
+                    {
+                        "id": "background_music",
+                        "path": "data/sound/Synthwave.mp3"
                 }
             ],
             "soundFX": [
