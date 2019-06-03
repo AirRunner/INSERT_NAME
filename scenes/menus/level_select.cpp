@@ -153,7 +153,7 @@ Scene* LevelSelect::update(float deltaTime)
     }
     systems::updatePos(registry, deltaTime);
     levelSelect = systems::updateButtons(registry, mousePos, mouseActive, levelSelect);
-    systems::updateAnims(registry, 0, deltaTime);
+    systems::updateAnims(registry, 3, deltaTime);
     return this;
 }
 

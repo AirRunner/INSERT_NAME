@@ -39,6 +39,7 @@ void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float delta
                             }
                         break;
                     default:
+                            anim.index = 0;
                         break;
                 }
             }
@@ -50,7 +51,7 @@ void systems::updateAnims(entt::DefaultRegistry* registry, int mode, float delta
      {
         button.index += deltaTime/(button.animHandle->animTime/button.animHandle->size);
         if(button.index > button.animHandle->size - 1)
-            button.index = 0;
+            button.index = button.animHandle->size - 1;
         if(button.selected == 0)
             button.index = 0;
      }
