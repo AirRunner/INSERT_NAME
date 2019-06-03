@@ -60,7 +60,7 @@ int main(int argc, char* argv[])
 
     fs::current_path("..");
 
-    Scene* scene = new StartScreen();
+    Scene* scene = new LevelSelect();
 
     #ifdef HOTRELOAD
     auto listener = jet::make_unique<ExampleListener>();
@@ -111,7 +111,7 @@ int main(int argc, char* argv[])
 
                         BeginTextureMode(target);
 
-                            ClearBackground((Color){ 30, 30, 30, 255 });
+                            ClearBackground((Color){ 15, 21, 27, 255 });
 
                             DrawFPS(0,0);
                             scene->render();
