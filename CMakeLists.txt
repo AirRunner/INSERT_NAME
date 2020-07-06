@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.5)
 
-set(CMAKE_C_COMPILER gcc-9)
-set(CMAKE_CXX_COMPILER g++-9)
+set(CMAKE_C_COMPILER gcc-10)
+set(CMAKE_CXX_COMPILER g++-10)
 
 file(GLOB CONTROLLER_SOURCES "controller/*.cpp")
 file(GLOB DATA_LAYER_SOURCES "data-layer/*.cpp")
